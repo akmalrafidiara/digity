@@ -1,4 +1,3 @@
-import './bootstrap';
 const menu = document.querySelector('.menu')
 const subMenu1 = document.querySelector('.sub-menu-1')
 const subMenu2 = document.querySelector('.sub-menu-2')
