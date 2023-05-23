@@ -9,6 +9,7 @@
   <link rel="icon" type="favicon.ico" href="/images/favicon.ico" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
@@ -52,11 +53,11 @@
         </div>
       </div>
     </div>
-    <div class="hero-image" data-aos="fade-left" data-aos-duration="2000">
+    <div class="hero-image d-flex justify-content-center " data-aos="fade-left" data-aos-duration="2000">
       <img src="assets/img/figma.svg" class="i-figma" alt="figma" />
       <img src="assets/img/xd.svg" class="i-xd" alt="xd" />
       <img src="assets/img/sketch.svg" class="i-sketch" alt="xd" />
-      <img src="assets/img/hero-image.png" alt="hero-image" />
+      <img class="rounded-circle" src="assets/img/aqmal-duyung.png" alt="hero-image" />
     </div>
   </section>
   <!-- end hero Section -->
