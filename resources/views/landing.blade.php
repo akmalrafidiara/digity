@@ -36,7 +36,7 @@
   <!-- end navbar -->
   {{-- Modal Sign Up --}}
   <div class="modal fade " id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ro">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
       <div class="modal-content  " style="border-radius:2rem;">
 
         
@@ -75,7 +75,8 @@
               <button type="button" class="btn rounded-pill text-white fw-bold " style="background-color: rgb(123, 0, 255);">Sign Up</button>
             </div>
           </form>
-          <small>Already have an account? <button type="button" @click="register = !register"> <u> Login </u></button type="button"> </small>
+          <small x-show="register">Already have an account? <button type="button" @click="register = !register"> <u> Login </u></button type="button"> </small>
+          <small x-show="!register">Don't have an account? <button type="button" @click="register = !register"> <u> Sign Up </u></button type="button"> </small>
         </div>
       </div>
     </div>
