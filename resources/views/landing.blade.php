@@ -10,8 +10,10 @@
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://unpkg.com/feather-icons"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
 </head>
 
 <body>
@@ -24,6 +26,7 @@
         <li class="sub-menu-2"><a href="#products">Products</a></li>
         <li class="sub-menu-3"><a href="#testimonials">Testimonials</a></li>
         <li class="sub-menu-4"><a href="#services">Services</a></li>
+        <button type="button" class="btn fs-6 rounded-pill text-dark" style="background-color: #E8E7FC;" data-bs-toggle="modal" data-bs-target="#signUpModal"  >Sign Up</button>
       </ul>
       <div class="menu">
         <i data-feather="menu"></i>
@@ -31,7 +34,53 @@
     </div>
   </nav>
   <!-- end navbar -->
+  {{-- Modal Sign Up --}}
+  <div class="modal fade " id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ro">
+      <div class="modal-content  " style="border-radius:2rem;">
 
+        
+        <div x-data="{register : true}" class="modal-body text-center">
+          <h3 class="modal-title text-center fw-bolder mb-3" id="signUpModalLabel">
+            <span x-show="register">Sign Up</span>
+            <span x-show="!register">Login</span>
+          </h3>
+          <form x-show="register" class="mx-3">
+            @csrf
+            <div class="mb-4 mt-1">
+              
+              <input type="text" class="form-control rounded-pill" style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="name" aria-describedby="nameHelp" placeholder="Name">
+            </div>
+            <div class="mb-4 mt-1">
+              <input type="email" class="form-control rounded-pill" style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="email" aria-describedby="emailHelp" placeholder="Email">
+            </div>
+            <div class="mb-4 mt-1">
+              <input type="password" class="form-control rounded-pill" style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="password" placeholder="Password">
+            </div>
+            <div class="d-grid mt-3 mb-4">
+              
+              <button type="button" class="btn rounded-pill text-white fw-bold " style="background-color: rgb(123, 0, 255);">Sign Up</button>
+            </div>
+          </form>
+          <form x-show="!register" class="mx-3">
+            @csrf
+            <div class="mb-4 mt-1">
+              <input type="email" class="form-control rounded-pill" style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="email" aria-describedby="emailHelp" placeholder="Email">
+            </div>
+            <div class="mb-4 mt-1">
+              <input type="password" class="form-control rounded-pill" style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="password" placeholder="Password">
+            </div>
+            <div class="d-grid mt-3 mb-4">
+              
+              <button type="button" class="btn rounded-pill text-white fw-bold " style="background-color: rgb(123, 0, 255);">Sign Up</button>
+            </div>
+          </form>
+          <small>Already have an account? <button type="button" @click="register = !register"> <u> Login </u></button type="button"> </small>
+        </div>
+      </div>
+    </div>
+
+  </div>
   <!-- start hero Section -->
   <section id="hero" class="container">
     <div class="hero-text" data-aos="fade-right" data-aos-duration="2000">
