@@ -23,18 +23,18 @@
     <!-- start navbar -->
     <nav id="navbar">
         <div class="navbar container" style="font-weight: bold;">
-            Digity
-            <ul>
-                <li class="sub-menu-1"><a href="#hero">Home</a></li>
-                <li class="sub-menu-2"><a href="#products">Products</a></li>
-                <li class="sub-menu-3"><a href="#testimonials">Testimonials</a></li>
-                <li class="sub-menu-4"><a href="#services">Services</a></li>
-                <li>|</li>
-                <li class="sub-menu-4"><a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal">Login</a>
-                </li>
-                <li class="sub-menu-4"><a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal">SignUp</a>
-                </li>
-            </ul>
+            <div class="web-icon">
+                Digity
+            </div>
+            <div class="nav-menu">
+                <a href="#hero">Home</a>
+                <a href="#products">Products</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#services">Services</a>
+                <span>|</span>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal">Login</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal">SignUp</a>
+            </div>
             <div class="menu">
                 <i data-feather="menu"></i>
             </div>
@@ -105,9 +105,9 @@
     <section id="hero" class="container">
         <div class="hero-text" data-aos="fade-right" data-aos-duration="2000">
             <h1 class="text-super">
-                We Design Impactful Digital
+                We Design Your Business
                 <span>
-                    Product
+                    Grow Up
                 </span>
             </h1>
             <p class="text-paraghraph">
@@ -342,7 +342,7 @@
         feather.replace()
         AOS.init()
     </script>
-    <script src="/assets/img/js/app.js"></script>
+    <script src="/assets/js/app.js"></script>
 </body>
 
 </html>
