@@ -47,7 +47,7 @@
             <div class="modal-content  " style="border-radius:2rem;">
 
 
-                <div x-data="{ register: true }" class="modal-body text-center">
+                <div x-data="{ register: true }" class="modal-body text-center custom-modal-signin">
                     <h3 class="modal-title text-center fw-bolder mb-3" id="signUpModalLabel">
                         <span x-show="register">Sign Up</span>
                         <span x-show="!register">Login</span>
@@ -55,17 +55,19 @@
                     <form x-show="register" class="mx-3">
                         @csrf
                         <div class="mb-4 mt-1">
-
+                            <img src="/assets/img/profile-avatar.svg" alt="" class="icon-svg">
                             <input type="text" class="form-control rounded-pill"
                                 style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="name"
                                 aria-describedby="nameHelp" placeholder="Name">
                         </div>
                         <div class="mb-4 mt-1">
+                            <img src="/assets/img/email.svg" alt="" class="icon-svg">
                             <input type="email" class="form-control rounded-pill"
                                 style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="email"
                                 aria-describedby="emailHelp" placeholder="Email">
                         </div>
                         <div class="mb-4 mt-1">
+                            <img src="/assets/img/lock.svg" alt="" class="icon-svg">
                             <input type="password" class="form-control rounded-pill"
                                 style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="password"
                                 placeholder="Password">
@@ -79,11 +81,13 @@
                     <form x-show="!register" class="mx-3">
                         @csrf
                         <div class="mb-4 mt-1">
+                            <img src="/assets/img/email.svg" alt="" class="icon-svg">
                             <input type="email" class="form-control rounded-pill"
                                 style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="email"
                                 aria-describedby="emailHelp" placeholder="Email">
                         </div>
                         <div class="mb-4 mt-1">
+                            <img src="/assets/img/lock.svg" alt="" class="icon-svg">
                             <input type="password" class="form-control rounded-pill"
                                 style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="password"
                                 placeholder="Password">
@@ -95,11 +99,11 @@
                         </div>
                     </form>
                     <small x-show="register">Already have an account? <button type="button"
-                            @click="register = !register"> <u> Login
-                            </u></button type="button"> </small>
+                            style="background-color: transparent; border: none;" @click="register = !register">
+                            <u> Login</u></button type="button"> </small>
                     <small x-show="!register">Don't have an account? <button type="button"
-                            @click="register = register"> <u> Sign Up
-                            </u></button type="button"> </small>
+                            style="background-color: transparent; border: none;" @click="register = !register">
+                            <u> Sign Up </u></button type="button"> </small>
                 </div>
             </div>
         </div>
@@ -347,6 +351,7 @@
         AOS.init()
     </script>
     <script src="/assets/js/app.js"></script>
+    <script src="https://kit.fontawesome.com/9f2df5a5e8.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

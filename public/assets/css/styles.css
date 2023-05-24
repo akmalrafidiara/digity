@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -56,7 +57,7 @@ html {
 }
 
 #hero {
-  padding: 100px 0;
+  padding: 200px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -130,7 +131,7 @@ html {
   #hero {
     display: flex;
     flex-direction: column-reverse;
-    padding: 100px 10px 130px 10px;
+    padding: 150px 10px 130px 10px;
     gap: 30px;
   }
   #hero .hero-text,
@@ -280,7 +281,7 @@ nav .navbar .menu {
 
 @media (max-width: 760px) {
   nav .navbar {
-    padding: 20px 0px;
+    padding: 20px;
   }
   nav .nav-menu {
     position: absolute;
@@ -667,3 +668,32 @@ footer .copyright p {
     margin-bottom: 50px;
   }
 }/*# sourceMappingURL=styles.css.map */
+
+/* CUSTOM CSS */
+
+.custom-modal-signin {
+    padding: 70px 30px!important;
+    background-color: #E8E7FC;
+}
+
+.custom-modal-signin .modal-title span {
+    font-size: 38px;
+}
+
+.custom-modal-signin input {
+    border-radius: 15px!important;
+    padding: 10px 15px 10px 40px!important;
+}
+
+.custom-modal-signin small {
+    color: #706fe5;
+}
+
+.icon-svg {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    margin-top: 12px;
+    margin-left: 60px;
+}
+
