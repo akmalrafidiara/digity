@@ -384,15 +384,15 @@ nav .navbar .menu {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-#products .products .other-product .card {
+#products .products .other-product .other-product-card {
   padding: 10px;
   width: 47%;
   margin-bottom: 20px;
 }
-#products .products .other-product .card h3 {
+#products .products .other-product .other-product-card h3 {
   margin-top: 10px;
 }
-#products .products .other-product .card img {
+#products .products .other-product .other-product-card img {
   width: 100%;
 }
 
@@ -404,7 +404,7 @@ nav .navbar .menu {
   .products .main-product img {
     width: 100%;
   }
-  .other-product .card h3 {
+  .other-product .other-product-card h3 {
     font-size: 16px;
   }
 }
@@ -547,6 +547,12 @@ nav .navbar .menu {
 #services .services .service h3 {
   margin: 10px 0;
 }
+#services .services .service .service-card {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #ffffff;
+}
 
 @media (max-width: 810px) {
   #services {
@@ -683,6 +689,9 @@ footer .copyright p {
 .custom-modal-signin input {
     border-radius: 15px!important;
     padding: 10px 15px 10px 40px!important;
+    -webkit-box-shadow:inset 0 2px 4px rgba(0, 0, 0, 0.3);
+       -moz-box-shadow:inset 0 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow:inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .custom-modal-signin small {
