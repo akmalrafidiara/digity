@@ -33,7 +33,7 @@
                 <a href="#testimonials">Testimonials</a>
                 <a href="#services">Services</a>
                 <span>|</span>
-                <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" class="signup">Sign Up</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" class="signup">Sign In</a>
             </div>
             <div class="menu">
                 <i data-feather="menu"></i>
@@ -46,17 +46,65 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ro">
             <div class="modal-content  " style="border-radius:2rem;">
 
-        
-        <div x-data="{register : true}" class="modal-body text-center">
-          <h3 class="modal-title text-center fw-bolder mb-3" id="signUpModalLabel">
-            <span x-show="register">Sign Up</span>
-            <span x-show="!register">Login</span>
-          </h3>
-          <form x-show="register" class="mx-3">
-            @csrf
-            <div class="mb-4 mt-1">
-              
-              <input type="text" class="form-control rounded-pill" style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="name" aria-describedby="nameHelp" placeholder="Name">
+
+                <div x-data="{ register: true }" class="modal-body text-center custom-modal-signin">
+                    <h3 class="modal-title text-center fw-bolder mb-3" id="signUpModalLabel">
+                        <span x-show="register">Sign Up</span>
+                        <span x-show="!register">Login</span>
+                    </h3>
+                    <form x-show="register" class="mx-3">
+                        @csrf
+                        <div class="mb-4 mt-1">
+                            <img src="/assets/img/profile-avatar.svg" alt="" class="icon-svg">
+                            <input type="text" class="form-control rounded-pill"
+                                style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="name"
+                                aria-describedby="nameHelp" placeholder="Name">
+                        </div>
+                        <div class="mb-4 mt-1">
+                            <img src="/assets/img/email.svg" alt="" class="icon-svg">
+                            <input type="email" class="form-control rounded-pill"
+                                style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="email"
+                                aria-describedby="emailHelp" placeholder="Email">
+                        </div>
+                        <div class="mb-4 mt-1">
+                            <img src="/assets/img/lock.svg" alt="" class="icon-svg">
+                            <input type="password" class="form-control rounded-pill"
+                                style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="password"
+                                placeholder="Password">
+                        </div>
+                        <div class="d-grid mt-3 mb-4">
+
+                            <button type="button" class="btn rounded-pill text-white fw-bold "
+                                style="background-color: #706fe5;">Sign Up</button>
+                        </div>
+                    </form>
+                    <form x-show="!register" class="mx-3">
+                        @csrf
+                        <div class="mb-4 mt-1">
+                            <img src="/assets/img/email.svg" alt="" class="icon-svg">
+                            <input type="email" class="form-control rounded-pill"
+                                style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="email"
+                                aria-describedby="emailHelp" placeholder="Email">
+                        </div>
+                        <div class="mb-4 mt-1">
+                            <img src="/assets/img/lock.svg" alt="" class="icon-svg">
+                            <input type="password" class="form-control rounded-pill"
+                                style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="password"
+                                placeholder="Password">
+                        </div>
+                        <div class="d-grid mt-3 mb-4">
+
+                            <button type="button" class="btn rounded-pill text-white fw-bold "
+                                style="background-color: #706fe5;">Sign Up</button>
+                        </div>
+                    </form>
+                    <small x-show="register">Already have an account? <button type="button"
+                            style="background-color: transparent; border: none;" @click="register = !register">
+                            <u> Login</u></button type="button"> </small>
+                    <small x-show="!register">Don't have an account? <button type="button"
+                            style="background-color: transparent; border: none;" @click="register = !register">
+                            <u> Sign Up </u></button type="button"> </small>
+                </div>
             </div>
             <div class="mb-4 mt-1">
               <input type="email" class="form-control rounded-pill" style="filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.3))" id="email" aria-describedby="emailHelp" placeholder="Email">
@@ -184,22 +232,22 @@
                 </p>
             </div>
             <div class="other-product">
-                <div class="other-product-card" data-aos="fade-up" data-aos-duration="2000">
+                <div class="card" data-aos="fade-up" data-aos-duration="2000">
                     <img src="assets/img/other-png01.png" alt="produtcs" />
                     <p class="text-tiny">App Design - June 20, 2022</p>
                     <h3>Redesign channel website landing page</h3>
                 </div>
-                <div class="other-product-card" data-aos="fade-up" data-aos-duration="3000">
+                <div class="card" data-aos="fade-up" data-aos-duration="3000">
                     <img src="assets/img/other-png02.png" alt="produtcs" />
                     <p class="text-tiny">App Design - June 20, 2022</p>
                     <h3>New Locator App For a New Company</h3>
                 </div>
-                <div class="other-product-card" data-aos="fade-up" data-aos-duration="2000">
+                <div class="card" data-aos="fade-up" data-aos-duration="2000">
                     <img src="assets/img/other-png03.png" alt="produtcs" />
                     <p class="text-tiny">App Design - June 20, 2022</p>
                     <h3>Rental Rooms Web App Platform</h3>
                 </div>
-                <div class="other-product-card" data-aos="fade-up" data-aos-duration="3000">
+                <div class="card" data-aos="fade-up" data-aos-duration="3000">
                     <img src="assets/img/other-png04.png" alt="produtcs" />
                     <p class="text-tiny">App Design - June 20, 2022</p>
                     <h3>Calendar App for Big SASS Company</h3>
@@ -278,7 +326,7 @@
         </div>
         <div class="services">
             <div class="service" data-aos="fade-up" data-aos-duration="2000">
-                <div class="service-card">
+                <div class="card">
                     <img src="assets/img/ux.svg" alt="services-logo" />
                     <h3 class="text-paraghraph">UI/UX Design</h3>
                     <p class="text-tiny">
@@ -287,7 +335,7 @@
                 </div>
             </div>
             <div class="service" data-aos="fade-up" data-aos-duration="3000">
-                <div class="service-card">
+                <div class="card">
                     <img src="assets/img/logo-branding.svg" alt="services-logo" />
                     <h3 class="text-paraghraph">Logo Branding</h3>
                     <p class="text-tiny">
@@ -296,7 +344,7 @@
                 </div>
             </div>
             <div class="service" data-aos="fade-up" data-aos-duration="2000">
-                <div class="service-card">
+                <div class="card">
                     <img src="assets/img/app design.svg" alt="services-logo" />
                     <h3 class="text-paraghraph">App Design</h3>
                     <p class="text-tiny">
@@ -305,7 +353,7 @@
                 </div>
             </div>
             <div class="service" data-aos="fade-up" data-aos-duration="3000">
-                <div class="service-card">
+                <div class="card">
                     <img src="assets/img/web design.svg" alt="services-logo" />
                     <h3 class="text-paraghraph">Website Design</h3>
                     <p class="text-tiny">
