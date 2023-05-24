@@ -141,14 +141,46 @@
 
     <!-- start partnership -->
     <section id="partnership" data-aos="fade-up" data-aos-duration="2000">
-        <h3 class="text-subtitle">Trusted by greatest companies</h3>
-        <div class="partnership-logo">
+        <h3 class="text-subtitle">Why we're worth your consideration</h3>
+        <div class="why-us container">
+            <div class="why-us-card">
+                <i class="fa-solid fa-rocket"></i>
+                <h3 class="text-paraghraph">Flexibility and Collaboration</h3>
+                <p class="text-tiny">
+                    We will listen to your needs and preferences, and provide expert advice to produce the perfect
+                    design.
+                </p>
+            </div>
+            <div class="why-us-card">
+                <i class="fa-solid fa-paintbrush"></i>
+                <h3 class="text-paraghraph">Comprehensive Design Solutions</h3>
+                <p class="text-tiny">
+                    Whatever type of design you need, we are ready to provide the appropriate solutions.
+                </p>
+            </div>
+            <div class="why-us-card">
+                <i class="fa-solid fa-medal"></i>
+                <h3 class="text-paraghraph">High Quality in a Short Timeframe</h3>
+                <p class="text-tiny">
+                    We value your time and are committed to delivering high-quality design results in the shortest
+                    possible time.
+                </p>
+            </div>
+            <div class="why-us-card">
+                <i class="fa-solid fa-address-card"></i>
+                <h3 class="text-paraghraph">Experienced Professional Team</h3>
+                <p class="text-tiny">
+                    We prioritize customer satisfaction and always strive to deliver the best results.
+                </p>
+            </div>
+        </div>
+        {{-- <div class="partnership-logo">
             <img src="assets/img/google.svg" alt="google-icon" />
             <img src="assets/img/airbnb.svg" alt="airbnb-icon" />
             <img src="assets/img/creative market.svg" alt="creative market-icon" />
             <img src="assets/img/shopify.svg" alt="shopify-icon" />
             <img src="assets/img/amazon.svg" alt="amazon-icon" />
-        </div>
+        </div> --}}
     </section>
     <!-- end partnership -->
 
