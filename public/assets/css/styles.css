@@ -224,6 +224,13 @@ nav .navbar {
 
 nav .web-icon {
     font-size: 20px;
+    display: flex;
+}
+nav .web-icon img {
+    width: 25px;
+    height: 25px;
+    margin-right: -12px;
+    margin-top: -2px;
 }
 nav .nav-menu {
     display: flex;

@@ -24,6 +24,7 @@
     <nav id="navbar">
         <div class="navbar container" style="font-weight: bold;">
             <div class="web-icon">
+                <img src="/assets/img/digity-pentool.svg" alt="">
                 Digity
             </div>
             <div class="nav-menu">
