@@ -253,6 +253,12 @@ nav .nav-menu span {
     cursor: default;
 }
 
+nav .nav-menu .signup {
+    background-color: #E8E7FC;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
 /* nav .navbar ul {
   display: flex;
   gap: 60px;

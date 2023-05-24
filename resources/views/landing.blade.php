@@ -33,8 +33,7 @@
                 <a href="#testimonials">Testimonials</a>
                 <a href="#services">Services</a>
                 <span>|</span>
-                <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal">Login</a>
-                <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal">SignUp</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" class="signup">Sign In</a>
             </div>
             <div class="menu">
                 <i data-feather="menu"></i>
@@ -74,7 +73,7 @@
                         <div class="d-grid mt-3 mb-4">
 
                             <button type="button" class="btn rounded-pill text-white fw-bold "
-                                style="background-color: rgb(123, 0, 255);">Sign Up</button>
+                                style="background-color: #706fe5;">Sign Up</button>
                         </div>
                     </form>
                     <form x-show="!register" class="mx-3">
@@ -92,10 +91,14 @@
                         <div class="d-grid mt-3 mb-4">
 
                             <button type="button" class="btn rounded-pill text-white fw-bold "
-                                style="background-color: rgb(123, 0, 255);">Sign Up</button>
+                                style="background-color: #706fe5;">Sign Up</button>
                         </div>
                     </form>
-                    <small>Already have an account? <button type="button" @click="register = !register"> <u> Login
+                    <small x-show="register">Already have an account? <button type="button"
+                            @click="register = !register"> <u> Login
+                            </u></button type="button"> </small>
+                    <small x-show="!register">Don't have an account? <button type="button"
+                            @click="register = register"> <u> Sign Up
                             </u></button type="button"> </small>
                 </div>
             </div>
