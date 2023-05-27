@@ -129,7 +129,8 @@
             <img src="assets/img/figma.svg" class="i-figma" alt="figma" />
             <img src="assets/img/xd.svg" class="i-xd" alt="xd" />
             <img src="assets/img/sketch.svg" class="i-sketch" alt="xd" />
-            <img class="rounded-circle" src="assets/img/aqmal-duyung.png" alt="hero-image" />
+            {{-- <img class="rounded-circle" src="assets/img/aqmal-duyung.png" alt="hero-image" /> --}}
+            <img src="assets/img/hero-image.png" alt="hero-image" />
         </div>
     </section>
     <!-- end hero Section -->
