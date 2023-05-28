@@ -26,12 +26,15 @@
                 <div class="botmenu">
                     <a href="#"><i class="fa-solid fa-gear"></i>Setting</a>
                     <a href="/"><i class="fa-solid fa-home"></i>Go To Home</a>
-                    <a href="#"><i class="fa-solid fa-right-from-bracket"></i>Log Out</a>
+                    <a href="#" class="logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</a>
                 </div>
             </div>
         </section>
         <section id="mainbar">
             <nav>
+                <div class="burger">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
                 <div class="user">
                     <div class="user-img">
                         {{-- <img src="/assets/img/user.png" alt=""> --}}
@@ -93,6 +96,7 @@
     </div>
 
     <script src="https://kit.fontawesome.com/9f2df5a5e8.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/dashboard.js"></script>
 </body>
 
 </html>
