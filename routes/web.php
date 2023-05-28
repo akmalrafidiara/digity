@@ -20,3 +20,19 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard/dashboard');
 });
+
+Route::get('/dashboard/product', function () {
+    return view('dashboard/admin/product');
+});
+
+Route::get('/dashboard/transaction', function () {
+    return view('dashboard/admin/transaction');
+});
+
+Route::get('/dashboard/user', function () {
+    return view('dashboard/admin/user');
+});
+
+Route::get('/dashboard/order', function () {
+    return view('dashboard/admin/order');
+});

@@ -7,3 +7,7 @@ const toogleMenu = () => {
 
 sidebar.addEventListener('click', () => toogleMenu())
 burger.addEventListener('click', () => toogleMenu())
+
+$(document).ready(function () {
+    $('#myTable').DataTable();
+});
