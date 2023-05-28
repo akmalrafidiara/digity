@@ -15,18 +15,57 @@
         <table id="myTable" class="display">
             <thead>
                 <tr>
-                    <th>Column 1</th>
-                    <th>Column 2</th>
+                    <th style="width: 30px">#</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Row 1 Data 1</td>
-                    <td>Row 1 Data 2</td>
+                    <td>1</td>
+                    <td>akmalrafidiara@gmail.com</td>
+                    <td>Admin</td>
+                    <td>
+                        <a href="#" class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
+                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Row 2 Data 1</td>
-                    <td>Row 2 Data 2</td>
+                    <td>2</td>
+                    <td>aqmalpratama@gmail.com</td>
+                    <td>Designer</td>
+                    <td>
+                        <a href="#" class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
+                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>fathanbaka@gmail.com</td>
+                    <td>Designer</td>
+                    <td>
+                        <a href="#" class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
+                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>salwats@gmail.com</td>
+                    <td>Clinet</td>
+                    <td>
+                        <a href="#" class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
+                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>radenrziva@gmail.com</td>
+                    <td>Clinet</td>
+                    <td>
+                        <a href="#" class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
+                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

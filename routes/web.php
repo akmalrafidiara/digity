@@ -21,8 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard/dashboard');
 });
 
-Route::get('/dashboard/product', function () {
-    return view('dashboard/admin/product');
+Route::get('/dashboard/service', function () {
+    return view('dashboard/admin/service');
 });
 
 Route::get('/dashboard/transaction', function () {

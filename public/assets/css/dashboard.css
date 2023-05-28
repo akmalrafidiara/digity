@@ -266,3 +266,33 @@ html {
     background-color: #1e1f4b;
     color: #fff;
 }
+.btn {
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #fff;
+}
+.btn i {
+    margin-right: 10px;
+    color: #fff;
+}
+.btn-edit {
+    background-color: #FFC700;
+}
+.btn-edit:hover {
+    background-color: #C69A00;
+}
+.btn-delete {
+    background-color: #FF6E4F;
+}
+.btn-delete:hover {
+    background-color: #BC452B;
+}
+.table {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 20px;
+}

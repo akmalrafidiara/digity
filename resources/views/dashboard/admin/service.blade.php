@@ -1,15 +1,15 @@
 @php
-    $page = 'product';
-    $title = 'Product - Digity';
+    $page = 'service';
+    $title = 'Service - Digity';
 @endphp
 @extends('layouts.dashboard')
 @section('content')
     <div class="page-title">
-        <h1>Product</h1>
-        <p>Create Read Update Delete Digity Product!</p>
+        <h1>Service</h1>
+        <p>Create Read Update Delete Digity Service!</p>
     </div>
     <div class="btn-create">
-        <a href="#"><i class="fa-solid fa-plus"></i> Create Product</a>
+        <a href="#"><i class="fa-solid fa-plus"></i> Create Service</a>
     </div>
     <div class="table">
         <table id="myTable" class="display">

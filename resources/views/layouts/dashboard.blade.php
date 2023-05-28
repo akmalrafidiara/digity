@@ -21,15 +21,15 @@
                 <div class="mainmenu">
                     <a href="/dashboard" class="@if ($page == 'dashboard') active @endif"><i
                             class="fa-solid fa-gauge"></i>Dashboard</a>
-                    <a href="/dashboard/product" class="@if ($page == 'product') active @endif"><i
-                            class="fa-solid fa-box"></i>Product</a>
+                    <a href="/dashboard/service" class="@if ($page == 'service') active @endif"><i
+                            class="fa-solid fa-box"></i>Service</a>
                     <a href="/dashboard/transaction" class="@if ($page == 'transaction') active @endif"><i
                             class="fa-solid fa-money-check-dollar"></i>Transaction</a>
                     <a href="/dashboard/user" class="@if ($page == 'user') active @endif"><i
                             class="fa-regular fa-user"></i>User</a>
-                    <a href="/dashboard/task" class="@if ($page == 'task') active @endif"><i
-                            class="fa-solid fa-bars-progress"></i>Task</a>
-                    <a href="/dashboard/order"><i class="fa-solid fa-cart-shopping"></i>Order</a>
+                    <a href="/dashboard/project" class="@if ($page == 'project') active @endif"><i
+                            class="fa-solid fa-bars-progress"></i>My Project</a>
+                    <a href="/dashboard/invoice"><i class="fa-solid fa-cart-shopping"></i>Invoice</a>
                     <a href="/dashboard/wishlist"><i class="fa-regular fa-heart"></i>Wishlist</a>
                     <a href="/dashboard/history"><i class="fa-solid fa-clock-rotate-left"></i>History</a>
                 </div>
