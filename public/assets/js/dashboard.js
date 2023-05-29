@@ -9,5 +9,7 @@ sidebar.addEventListener('click', () => toogleMenu())
 burger.addEventListener('click', () => toogleMenu())
 
 $(document).ready(function () {
-    $('#myTable').DataTable();
+    $('#myTable').DataTable({
+        responsive: true
+    });
 });

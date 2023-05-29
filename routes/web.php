@@ -36,3 +36,7 @@ Route::get('/dashboard/user', function () {
 Route::get('/dashboard/order', function () {
     return view('dashboard/admin/order');
 });
+
+Route::get('/dashboard/project', function () {
+    return view('dashboard/admin/project');
+});

@@ -13,9 +13,9 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Code</th>
+                    <th>Order</th>
                     <th>Date</th>
-                    <th>User</th>
+                    <th>User Contact</th>
                     <th>Payment</th>
                     <th>Nominal</th>
                     <th>Status</th>
@@ -25,26 +25,30 @@
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>IG1M</td>
-                    <td>23/5/23</td>
-                    <td>fathanbaka</td>
+                    <td><a href="#">12 Feed Instagram</a></td>
+                    <td>2 May 23</td>
+                    <td>fathanbak<br><a href="#">085210542017</a></td>
                     <td>Transfer - Mandiri</td>
                     <td>Rp. 750.000</td>
                     <td>Paid</td>
                     <td>
-                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-check"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-xmark"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>IG1M</td>
-                    <td>01/5/23</td>
-                    <td>aqmalpratama</td>
+                    <td><a href="#">Banner</a></td>
+                    <td>10 June 23</td>
+                    <td>aqmalpratama<br><a href="#">085210542017</a></td>
                     <td>Transfer - BSI</td>
-                    <td>Rp. 750.000</td>
-                    <td>Paid</td>
+                    <td>Rp. 100.000</td>
+                    <td>Waiting for Approval</td>
                     <td>
-                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-check"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-xmark"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             </tbody>

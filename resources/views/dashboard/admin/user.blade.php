@@ -27,8 +27,8 @@
                     <td>akmalrafidiara@gmail.com</td>
                     <td>Admin</td>
                     <td>
-                        <a href="#" class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
-                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
                 <tr>
@@ -36,8 +36,8 @@
                     <td>aqmalpratama@gmail.com</td>
                     <td>Designer</td>
                     <td>
-                        <a href="#" class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
-                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
                 <tr>
@@ -45,8 +45,8 @@
                     <td>fathanbaka@gmail.com</td>
                     <td>Designer</td>
                     <td>
-                        <a href="#" class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
-                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
                 <tr>
@@ -54,8 +54,8 @@
                     <td>salwats@gmail.com</td>
                     <td>Clinet</td>
                     <td>
-                        <a href="#" class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
-                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
                 <tr>
@@ -63,8 +63,8 @@
                     <td>radenrziva@gmail.com</td>
                     <td>Clinet</td>
                     <td>
-                        <a href="#" class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
-                        <a href="#" class="btn btn-delete"><i class="fa-solid fa-trash"></i> Delete</a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             </tbody>

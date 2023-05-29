@@ -8,7 +8,7 @@
         <h1>Dashboard</h1>
         <p>Hi, Welcome to Digital Entity</p>
     </div>
-    <div class="status-process">
+    <div class="widget-client">
         <div class="card">
             <div class="card-title">
                 <h3>Order Compleate</h3>
@@ -46,6 +46,43 @@
                 </div>
             </div>
             <a href=""><i class="fa-solid fa-arrow-right"></i> Details </a>
+        </div>
+    </div>
+    <div class="widget-client">
+        <div class="card">
+            <div class="card-title">
+                <h3>Preview</h3>
+            </div>
+            <div class="card-img">
+                <img src="/assets/img/desain-pro-2.png" alt="">
+            </div>
+            <div class="card-caption">
+                <p>Apa fakta favoritmu tentang mawar? Bagikan dengan kami di komentar di bawah! 💬🌸 <br>#flowerfacts #rose
+                    #florallovers #hortensiaflorist</p>
+            </div>
+            <div class="card-action">
+                <a href="">Accept</a>
+                <a href="">Need Revision</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <h3>Preview</h3>
+            </div>
+            <div class="card-img">
+                <img src="/assets/img/desain-pro-1.png" alt="">
+            </div>
+            <div class="card-caption">
+                <p>"We believe that everyone has great potential to improve their skills! Join us and discover new ways to
+                    hone your skills. From art, programming, cooking, and more! With our expert guidance, you will gain
+                    valuable knowledge and insights . Add value to yourself and see incredible progress on your way to
+                    excellence! 💪✨" <br>
+                    #improveyourskills #skilldevelopment #learningjourney #personaldevelopment</p>
+            </div>
+            <div class="card-action">
+                <a href="">Accept</a>
+                <a href="">Need Revision</a>
+            </div>
         </div>
     </div>
 @endsection

@@ -37,8 +37,7 @@ button {
 }
 
 .text-paraghraph,
-button,
-a {
+button{
   font-size: clamp(1rem, 0.6875rem + 1vw, 1.25rem);
   line-height: 1.5;
 }
@@ -49,7 +48,7 @@ a {
 }
 
 .container {
-  width: min(85%, 1920px);
+  width: min(95%, 2440px);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -61,16 +60,18 @@ html {
 
 #sidebar {
     width: 300px;
+    height: 100%;
     max-width: 400px;
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
-    margin: 40px;
+    margin-top: 40px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: all 0.8s ease;
+    z-index: 100;
 }
 #sidebar .web-icon {
     font-weight: bold;
@@ -163,10 +164,9 @@ html {
     color: #777;
 }
 
-.status-process {
+.widget-client {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     gap: 20px;
     margin-top: 50px;
 }
@@ -216,6 +216,35 @@ html {
     justify-content: center;
 }
 
+.card-img {
+    width: 100%;
+    margin-top: 20px;
+}
+.card-img img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.card-caption {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+.card-action {
+    margin-bottom: 10px;
+}
+.card-action a {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #E8E7FC;
+    color: #1e1f4b;
+    font-weight: bold;
+    text-decoration: none;
+}
+.card-action a:hover {
+    background-color: #ddd;
+}
 @media screen and (max-width: 758px) {
     #sidebar {
         display: block;
@@ -274,7 +303,6 @@ html {
     color: #fff;
 }
 .btn i {
-    margin-right: 10px;
     color: #fff;
 }
 .btn-edit {
@@ -283,10 +311,10 @@ html {
 .btn-edit:hover {
     background-color: #C69A00;
 }
-.btn-delete {
+.btn-action {
     background-color: #FF6E4F;
 }
-.btn-delete:hover {
+.btn-action:hover {
     background-color: #BC452B;
 }
 .table {
