@@ -19,7 +19,7 @@
                     <th>Payment</th>
                     <th>Nominal</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th style="min-width: 10%">Action</th>
                 </tr>
             </thead>
             <tbody>

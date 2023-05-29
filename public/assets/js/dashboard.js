@@ -10,6 +10,8 @@ burger.addEventListener('click', () => toogleMenu())
 
 $(document).ready(function () {
     $('#myTable').DataTable({
-        responsive: true
+        responsive: {
+            orthogonal: 'responsive'
+        }
     });
 });

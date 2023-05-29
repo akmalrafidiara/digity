@@ -245,6 +245,20 @@ html {
 .card-action a:hover {
     background-color: #ddd;
 }
+.card-history {
+    width: calc(100% / 3 + 100% / 3  - 20px);
+}
+.card-history-img {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card-history-img img {
+    width: calc(100% / 3 - 20px);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 @media screen and (max-width: 758px) {
     #sidebar {
         display: block;

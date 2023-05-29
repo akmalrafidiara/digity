@@ -54,22 +54,6 @@
                 <h3>Preview</h3>
             </div>
             <div class="card-img">
-                <img src="/assets/img/desain-pro-2.png" alt="">
-            </div>
-            <div class="card-caption">
-                <p>Apa fakta favoritmu tentang mawar? Bagikan dengan kami di komentar di bawah! 💬🌸 <br>#flowerfacts #rose
-                    #florallovers #hortensiaflorist</p>
-            </div>
-            <div class="card-action">
-                <a href="">Accept</a>
-                <a href="">Need Revision</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-title">
-                <h3>Preview</h3>
-            </div>
-            <div class="card-img">
                 <img src="/assets/img/desain-pro-1.png" alt="">
             </div>
             <div class="card-caption">
@@ -82,6 +66,20 @@
             <div class="card-action">
                 <a href="">Accept</a>
                 <a href="">Need Revision</a>
+            </div>
+        </div>
+        <div class="card card-history">
+            <div class="card-title">
+                <h3>History</h3>
+            </div>
+            <div class="card-history-img">
+                <img src="/assets/img/desain-pro-2.png" alt="">
+                <img src="/assets/img/desain-pro-2.png" alt="">
+                <img src="/assets/img/desain-pro-2.png" alt="">
+                <img src="/assets/img/desain-pro-2.png" alt="">
+                <img src="/assets/img/desain-pro-2.png" alt="">
+                <img src="/assets/img/desain-pro-2.png" alt="">
+                <img src="/assets/img/desain-pro-2.png" alt="">
             </div>
         </div>
     </div>

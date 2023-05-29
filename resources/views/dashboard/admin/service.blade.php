@@ -60,6 +60,18 @@
                         <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Corporate Cloth Design</td>
+                    <td>Rp. 100.000 - Rp. 250.000</td>
+                    <td>Off</td>
+                    <td>Available</td>
+                    <td>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
+                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
