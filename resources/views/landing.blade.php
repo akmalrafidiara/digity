@@ -33,7 +33,8 @@
                 <a href="#testimonials">Testimonials</a>
                 <a href="#services">Services</a>
                 <span>|</span>
-                <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" class="signup">Sign Up</a>
+                {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" class="signup">Sign Up</a> --}}
+                <a href="/dashboard" class="signup">Akmal Rafi - Dashboard</a>
             </div>
             <div class="menu">
                 <i data-feather="menu"></i>

@@ -29,15 +29,20 @@
                             class="fa-regular fa-user"></i>User</a>
                     <a href="/dashboard/project" class="@if ($page == 'project') active @endif"><i
                             class="fa-solid fa-bars-progress"></i>My Project</a>
-                    <a href="/dashboard/invoice"><i class="fa-solid fa-cart-shopping"></i>Invoice</a>
-                    <a href="/dashboard/wishlist"><i class="fa-regular fa-heart"></i>Wishlist</a>
-                    <a href="/dashboard/history"><i class="fa-solid fa-clock-rotate-left"></i>History</a>
+                    <a href="/dashboard/invoice" class="@if ($page == 'invoice') active @endif"><i
+                            class="fa-solid fa-cart-shopping"></i>Invoice</a>
+                    <a href="/dashboard/wishlist" class="@if ($page == 'wishlist') active @endif"><i
+                            class="fa-regular fa-heart"></i>Wishlist</a>
+                    <a href="/dashboard/history" class="@if ($page == 'history') active @endif"><i
+                            class="fa-solid fa-clock-rotate-left"></i>History</a>
                 </div>
                 <div class="botmenu">
                     <a href="/dashboard/product"><i class="fa-solid fa-gear"></i>Setting</a>
                     <a href="/"><i class="fa-solid fa-home"></i>Go To Home</a>
                     <a href="/dashboard/product" class="logout"><i class="fa-solid fa-right-from-bracket"></i>Log
                         Out</a>
+                    <span style="font-size: small; color: #ddd; text-align: center; margin-top: 20px;">Digital Entity
+                        v1.0</span>
                 </div>
             </div>
         </section>

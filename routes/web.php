@@ -40,3 +40,7 @@ Route::get('/dashboard/order', function () {
 Route::get('/dashboard/project', function () {
     return view('dashboard/admin/project');
 });
+
+Route::get('/dashboard/invoice', function () {
+    return view('dashboard/admin/invoice');
+});

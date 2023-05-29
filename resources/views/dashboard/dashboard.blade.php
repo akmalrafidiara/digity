@@ -73,13 +73,14 @@
                 <h3>History</h3>
             </div>
             <div class="card-history-img">
+                <img src="/assets/img/desain-pro-1.png" alt="">
                 <img src="/assets/img/desain-pro-2.png" alt="">
+                <img src="/assets/img/desain-pro-3.png" alt="">
+                <img src="/assets/img/desain-pro-4.png" alt="">
+                <img src="/assets/img/desain-pro-1.png" alt="">
                 <img src="/assets/img/desain-pro-2.png" alt="">
-                <img src="/assets/img/desain-pro-2.png" alt="">
-                <img src="/assets/img/desain-pro-2.png" alt="">
-                <img src="/assets/img/desain-pro-2.png" alt="">
-                <img src="/assets/img/desain-pro-2.png" alt="">
-                <img src="/assets/img/desain-pro-2.png" alt="">
+                <img src="/assets/img/desain-pro-3.png" alt="">
+                <img src="/assets/img/desain-pro-4.png" alt="">
             </div>
         </div>
     </div>
