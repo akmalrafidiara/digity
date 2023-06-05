@@ -57,13 +57,26 @@
                     <div class="col-6">
                         <div class="panel-item">
                             <h3>Caption</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos recusandae aliquam cumque?
-                                Iusto nemo facilis necessitatibus accusantium, sed voluptatibus natus maxime cum eaque
-                                architecto, modi nihil iure sint!</p>
+                            <p>𝐄𝐥𝐞𝐯𝐚𝐭𝐢𝐧𝐠 𝐜𝐫𝐞𝐚𝐭𝐢𝐯𝐢𝐭𝐲 𝐭𝐨 𝐧𝐞𝐰 𝐡𝐞𝐢𝐠𝐡𝐭𝐬<br><br>
+
+                                Digital Entity hadir sebagai mitra kreatif yang siap mewujudkan ide-ide luar biasa.
+                                Mari Berkolaborasi dengan Digity untuk Menghadirkan Transformasi Digital yang Luar Biasa!
+                                <br><br>➖➖➖➖➖➖➖➖➖➖<br>
+                                Kami siap berkolaborasi dan menghadirkan transformasi,
+                                <br>𝑺𝒊𝒍𝒂𝒌𝒂𝒏 𝒉𝒖𝒃𝒖𝒏𝒈𝒊 𝒌𝒂𝒎𝒊 𝒍𝒆𝒘𝒂𝒕 𝒌𝒐𝒏𝒕𝒂𝒌 𝒅𝒊 𝒃𝒂𝒘𝒂𝒉 𝒊𝒏𝒊.
+
+                                <br>📩 Email: info.digitalentitiy@gmail.com
+
+                                <br><br>➖➖➖➖➖➖➖➖➖➖
+                            </p>
                         </div>
                         <div class="panel-item">
                             <h3>Hashtag</h3>
-                            <p>#digity #digitalentity</p>
+                            <p>#DigityDesigns #DigitalEntity #DesignInnovation #SocialMediaSolutions #CreativeMarketing
+                                #DigitalTransformation #DesignExcellence #SocialMediaStrategies #InnovativeDesign
+                                #DigitalMarketingExperts #CreativeCampaigns #SocialMediaManagement #DesignInspiration
+                                #DigitalBranding #MarketingSolutions #DesignAgency #DigitalStrategy #SocialMediaSuccess
+                                #CreativeBranding #DigitalCampaigns</p>
                         </div>
                         <div class="panel-item">
                             <h3 style="margin-bottom: 15px">Action</h3>
@@ -115,13 +128,26 @@
                     <div class="col-6">
                         <div class="panel-item">
                             <h3>Caption</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos recusandae aliquam cumque?
-                                Iusto nemo facilis necessitatibus accusantium, sed voluptatibus natus maxime cum eaque
-                                architecto, modi nihil iure sint!</p>
+                            <p>𝐄𝐥𝐞𝐯𝐚𝐭𝐢𝐧𝐠 𝐜𝐫𝐞𝐚𝐭𝐢𝐯𝐢𝐭𝐲 𝐭𝐨 𝐧𝐞𝐰 𝐡𝐞𝐢𝐠𝐡𝐭𝐬<br><br>
+
+                                Digital Entity hadir sebagai mitra kreatif yang siap mewujudkan ide-ide luar biasa.
+                                Mari Berkolaborasi dengan Digity untuk Menghadirkan Transformasi Digital yang Luar Biasa!
+                                <br><br>➖➖➖➖➖➖➖➖➖➖<br>
+                                Kami siap berkolaborasi dan menghadirkan transformasi,
+                                <br>𝑺𝒊𝒍𝒂𝒌𝒂𝒏 𝒉𝒖𝒃𝒖𝒏𝒈𝒊 𝒌𝒂𝒎𝒊 𝒍𝒆𝒘𝒂𝒕 𝒌𝒐𝒏𝒕𝒂𝒌 𝒅𝒊 𝒃𝒂𝒘𝒂𝒉 𝒊𝒏𝒊.
+
+                                <br>📩 Email: info.digitalentitiy@gmail.com
+
+                                <br><br>➖➖➖➖➖➖➖➖➖➖
+                            </p>
                         </div>
                         <div class="panel-item">
                             <h3>Hashtag</h3>
-                            <p>#digity #digitalentity</p>
+                            <p>#DigityDesigns #DigitalEntity #DesignInnovation #SocialMediaSolutions #CreativeMarketing
+                                #DigitalTransformation #DesignExcellence #SocialMediaStrategies #InnovativeDesign
+                                #DigitalMarketingExperts #CreativeCampaigns #SocialMediaManagement #DesignInspiration
+                                #DigitalBranding #MarketingSolutions #DesignAgency #DigitalStrategy #SocialMediaSuccess
+                                #CreativeBranding #DigitalCampaigns</p>
                         </div>
                         <div class="panel-item">
                             <h3 style="margin-bottom: 15px">Action</h3>
