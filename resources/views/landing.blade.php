@@ -34,7 +34,12 @@
                 <a href="#services">Services</a>
                 <span>|</span>
                 {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" class="signup">Sign Up</a> --}}
-                <a href="/dashboard" class="signup">Akmal Rafi - Dashboard</a>
+                @if (Auth::check())
+                    <a href="/dashboard" class="signup">{{Auth::user()->name}} - Dashboard</a>
+                @else
+                    <a class="btn signup" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</a>
+                @endif
+
             </div>
             <div class="menu">
                 <i data-feather="menu"></i>
@@ -43,55 +48,53 @@
     </nav>
     <!-- end navbar -->
     {{-- Modal Sign Up --}}
-    <div class="modal fade " id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal " id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ro">
             <div class="modal-content  " style="border-radius:2rem;">
+                <div x-data="{ register: true }" class="modal-body text-center custom-modal-signin" @click.outside="register=true" >
 
-
-                <div x-data="{ register: true }" class="modal-body text-center custom-modal-signin">
                     <h3 class="modal-title text-center fw-bolder mb-3" id="signUpModalLabel">
                         <span x-show="register">Sign Up</span>
                         <span x-show="!register">Login</span>
                     </h3>
-                    <form x-show="register" class="mx-3">
+                    <form action="{{route('register')}}" method="POST" x-show="register" class="mx-3">
                         @csrf
                         <div class="mb-4 mt-1">
                             <img src="/assets/img/profile-avatar.svg" alt="" class="icon-svg">
-                            <input type="text" class="form-control rounded-pill" id="name"
+                            <input name="name" type="text" class="form-control rounded-pill" id="nameRegister"
                                 aria-describedby="nameHelp" placeholder="Name">
                         </div>
                         <div class="mb-4 mt-1">
                             <img src="/assets/img/email.svg" alt="" class="icon-svg">
-                            <input type="email" class="form-control rounded-pill" id="email"
+                            <input name="email" type="email" class="form-control rounded-pill" id="emailRegister"
                                 aria-describedby="emailHelp" placeholder="Email">
                         </div>
                         <div class="mb-4 mt-1">
                             <img src="/assets/img/lock.svg" alt="" class="icon-svg">
-                            <input type="password" class="form-control rounded-pill" id="password"
+                            <input name="password" type="password" class="form-control rounded-pill" id="password"
                                 placeholder="Password">
                         </div>
                         <div class="d-grid mt-3 mb-4">
 
-                            <button type="button" class="btn rounded-pill text-white fw-bold "
+                            <button type="submit" class="btn rounded-pill text-white fw-bold "
                                 style="background-color: #706fe5;">Sign Up</button>
                         </div>
                     </form>
-                    <form x-show="!register" class="mx-3">
+                    <form action="{{ route('login')}}" method="POST" x-show="!register" class="mx-3">
                         @csrf
                         <div class="mb-4 mt-1">
                             <img src="/assets/img/email.svg" alt="" class="icon-svg">
-                            <input type="email" class="form-control rounded-pill" id="email"
+                            <input name="email" type="email" class="form-control rounded-pill" id="emailLogin"
                                 aria-describedby="emailHelp" placeholder="Email">
                         </div>
                         <div class="mb-4 mt-1">
                             <img src="/assets/img/lock.svg" alt="" class="icon-svg">
-                            <input type="password" class="form-control rounded-pill" id="password"
+                            <input name="password" type="password" class="form-control rounded-pill" id="passwordLogin"
                                 placeholder="Password">
                         </div>
                         <div class="d-grid mt-3 mb-4">
-
-                            <button type="button" class="btn rounded-pill text-white fw-bold "
-                                style="background-color: #706fe5;">Sign Up</button>
+                            <button type="submit" class="btn rounded-pill text-white fw-bold "
+                                style="background-color: #706fe5;">Log in</button>
                         </div>
                     </form>
                     <small x-show="register">Already have an account? <button type="button"
@@ -100,6 +103,8 @@
                     <small x-show="!register">Don't have an account? <button type="button"
                             style="background-color: transparent; border: none;" @click="register = !register">
                             <u> Sign Up </u></button type="button"> </small>
+                    
+
                 </div>
             </div>
         </div>
