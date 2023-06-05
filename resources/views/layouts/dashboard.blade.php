@@ -39,7 +39,7 @@
                 <div class="botmenu">
                     <a href="/dashboard/product"><i class="fa-solid fa-gear"></i>Setting</a>
                     <a href="/"><i class="fa-solid fa-home"></i>Go To Home</a>
-                    <a href="{{route('logout')}}" class="logout"><i class="fa-solid fa-right-from-bracket"></i>Log
+                    <a href="{{ route('logout') }}" class="logout"><i class="fa-solid fa-right-from-bracket"></i>Log
                         Out</a>
                     <span style="font-size: small; color: #ddd; text-align: center; margin-top: 20px;">Digital Entity
                         v1.0</span>
@@ -57,7 +57,7 @@
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <div class="user-name">
-                        <p>Hi, <strong>{{Auth::user()->name}}</strong></p>
+                        <p>Hi, <strong>{{ Auth::user()->name }}</strong></p>
                     </div>
                 </div>
             </nav>
