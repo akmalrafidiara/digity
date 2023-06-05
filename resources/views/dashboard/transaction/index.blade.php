@@ -8,7 +8,7 @@
         <h1>Transaction</h1>
         <p>Log transaction digity watch traffic!</p>
     </div>
-    <div class="table">
+    <div class="dashboard-container">
         <table id="myTable" class="display">
             <thead>
                 <tr>

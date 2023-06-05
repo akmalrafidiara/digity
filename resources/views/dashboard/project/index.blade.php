@@ -8,7 +8,11 @@
         <h1>My Project</h1>
         <p>Take Control of Your Projects!</p>
     </div>
-    <div class="table">
+    <div class="btn-create">
+        <a href="project/create"><i class="fa-solid fa-plus"></i> Create Project</a>
+        <span>**visible for admin only</span>
+    </div>
+    <div class="dashboard-container">
         <table id="myTable" class="display">
             <thead>
                 <tr>
@@ -23,7 +27,7 @@
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>Digital Entity Instagram Content</td>
+                    <td><a href="project/detail">Digital Entity Instagram Content</a></td>
                     <td><a href="#">12 Feed Instagram</a></td>
                     <td>22 June 23</td>
                     <td>On Progress</td>
@@ -34,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>Banner Utama Toko</td>
+                    <td><a href="project/detail">Banner Utama Toko</a></td>
                     <td><a href="#">Banner</a></td>
                     <td>22 June 23</td>
                     <td>On Progress</td>
@@ -45,7 +49,7 @@
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>Desain Baju</td>
+                    <td><a href="project/detail">Desain Baju</a></td>
                     <td><a href="#">Corporate Cloth Design</a></td>
                     <td>22 June 23</td>
                     <td>On Progress</td>

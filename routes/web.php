@@ -15,35 +15,47 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('landing');
+    return view('frontend/index');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard/dashboard');
+    return view('dashboard/index');
 });
 
 Route::get('/dashboard/service', function () {
-    return view('dashboard/admin/service');
+    return view('dashboard/service/index');
+});
+Route::get('/dashboard/service/create', function () {
+    return view('dashboard/service/create');
 });
 
 Route::get('/dashboard/transaction', function () {
-    return view('dashboard/admin/transaction');
+    return view('dashboard/transaction/index');
 });
 
 Route::get('/dashboard/user', function () {
-    return view('dashboard/admin/user');
+    return view('dashboard/user/index');
+});
+Route::get('/dashboard/user/create', function () {
+    return view('dashboard/user/create');
 });
 
 Route::get('/dashboard/order', function () {
-    return view('dashboard/admin/order');
+    return view('dashboard/order/index');
 });
 
 Route::get('/dashboard/project', function () {
-    return view('dashboard/admin/project');
+    return view('dashboard/project/index');
+});
+Route::get('/dashboard/project/create', function () {
+    return view('dashboard/project/create');
+});
+Route::get('/dashboard/project/detail', function () {
+    return view('dashboard/project/detail');
 });
 
 Route::get('/dashboard/invoice', function () {
-    return view('dashboard/admin/invoice');
+    return view('dashboard/invoice/index');
 });
 
 Route::post('/register', [UserController::class, 'register'])->name('register');

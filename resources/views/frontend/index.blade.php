@@ -35,7 +35,7 @@
                 <span>|</span>
                 {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" class="signup">Sign Up</a> --}}
                 @if (Auth::check())
-                    <a href="/dashboard" class="signup">{{Auth::user()->name}} - Dashboard</a>
+                    <a href="/dashboard" class="signup">{{ Auth::user()->name }} - Dashboard</a>
                 @else
                     <a class="btn signup" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</a>
                 @endif
@@ -51,13 +51,14 @@
     <div class="modal " id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ro">
             <div class="modal-content  " style="border-radius:2rem;">
-                <div x-data="{ register: true }" class="modal-body text-center custom-modal-signin" @click.outside="register=true" >
+                <div x-data="{ register: true }" class="modal-body text-center custom-modal-signin"
+                    @click.outside="register=true">
 
                     <h3 class="modal-title text-center fw-bolder mb-3" id="signUpModalLabel">
                         <span x-show="register">Sign Up</span>
                         <span x-show="!register">Login</span>
                     </h3>
-                    <form action="{{route('register')}}" method="POST" x-show="register" class="mx-3">
+                    <form action="{{ route('register') }}" method="POST" x-show="register" class="mx-3">
                         @csrf
                         <div class="mb-4 mt-1">
                             <img src="/assets/img/profile-avatar.svg" alt="" class="icon-svg">
@@ -80,7 +81,7 @@
                                 style="background-color: #706fe5;">Sign Up</button>
                         </div>
                     </form>
-                    <form action="{{ route('login')}}" method="POST" x-show="!register" class="mx-3">
+                    <form action="{{ route('login') }}" method="POST" x-show="!register" class="mx-3">
                         @csrf
                         <div class="mb-4 mt-1">
                             <img src="/assets/img/email.svg" alt="" class="icon-svg">
@@ -89,8 +90,8 @@
                         </div>
                         <div class="mb-4 mt-1">
                             <img src="/assets/img/lock.svg" alt="" class="icon-svg">
-                            <input name="password" type="password" class="form-control rounded-pill" id="passwordLogin"
-                                placeholder="Password">
+                            <input name="password" type="password" class="form-control rounded-pill"
+                                id="passwordLogin" placeholder="Password">
                         </div>
                         <div class="d-grid mt-3 mb-4">
                             <button type="submit" class="btn rounded-pill text-white fw-bold "
@@ -103,7 +104,7 @@
                     <small x-show="!register">Don't have an account? <button type="button"
                             style="background-color: transparent; border: none;" @click="register = !register">
                             <u> Sign Up </u></button type="button"> </small>
-                    
+
 
                 </div>
             </div>

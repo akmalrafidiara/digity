@@ -15,3 +15,32 @@ $(document).ready(function () {
         }
     });
 });
+
+// preview image
+function previewImage() {
+    const image = document.querySelector('#image');
+    const imagePreview = document.querySelector('.image-preview img');
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+
+    oFReader.onload = function (oFREvent) {
+        imagePreview.src = oFREvent.target.result;
+    }
+}
+
+const acc = document.getElementsByClassName("accordion");
+let i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+
+        const panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
