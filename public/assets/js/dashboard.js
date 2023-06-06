@@ -20,6 +20,7 @@ $(document).ready(function () {
 function previewImage() {
     const image = document.querySelector('#image');
     const imagePreview = document.querySelector('.image-preview img');
+    const btnFinal = document.querySelector('.btn-final');
 
     const oFReader = new FileReader();
     oFReader.readAsDataURL(image.files[0]);
@@ -27,7 +28,10 @@ function previewImage() {
     oFReader.onload = function (oFREvent) {
         imagePreview.src = oFREvent.target.result;
     }
+
+    btnFinal.classList.remove('disabled');
 }
+
 
 const acc = document.getElementsByClassName("accordion");
 let i;

@@ -496,10 +496,10 @@ html {
 
 .main-accordion .active, .accordion:hover {
     background-color: #E8E7FC;
+    z-index: -9999!important;
 }
 
 .panel {
-    position: relative;
     padding: 20px;
     border-radius: 5px;
     padding-top: 30px;
@@ -508,8 +508,7 @@ html {
     display: none;
     overflow: hidden;
     transition: all 0.8s ease;
-    z-index: -9999!important;
-    margin-top: -20px;
+    margin-top: -10px;
     margin-bottom: 10px;
 }
 .panel h3 {
@@ -528,4 +527,69 @@ html {
     object-fit: contain;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.h3-final {
+    margin-bottom: 10px;
+}
+.btn-action-final {
+    background-color: #fff;
+    border: 1px solid #FF6E4F;
+    color: #FF6E4F;
+    transition: all 0.3s ease;
+}
+.btn-action-final i {
+    color: #FF6E4F;
+    transition: all 0.3s ease;
+}
+.btn-action-final:hover {
+    background-color: #FF6E4F;
+    color: #fff;
+}
+.btn-action-final:hover i {
+    color: #fff;
+}
+.disabled {
+    display: none;
+}
+.card-final-view {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-between;
+    gap: 10px;
+}
+.card-final-view .card-final-item {
+    position: relative;
+    max-width: calc(100% / 3 - 20px);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+.card-final-view .card-final-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.card-final-view .card-final-item img {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+.card-final-view .card-final-item a {
+    position: absolute;
+    right: 0;
+    top: -10;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #FF6E4F;
+    margin-top: -20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.card-final-view .card-final-item a:hover {
+    scale: 1.1;
+}
+.card-final-view .card-final-item a i {
+    color: #fff;
+    font-size: 12px;
 }

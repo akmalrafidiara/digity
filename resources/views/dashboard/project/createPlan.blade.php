@@ -1,0 +1,83 @@
+@php
+    $page = 'project';
+    $title = 'Create Project - Digity';
+@endphp
+@extends('layouts.dashboard')
+@section('content')
+    <div class="page-title">
+        <h1>Create Editorial Plan</h1>
+        <p>For Digital Entity Instagram Content</p>
+    </div>
+    <div class="btn-create">
+        <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    </div>
+    <div class="dashboard-container">
+        <form action="" method="POST">
+            @csrf
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-field">
+                        <label for="Title">Title</label>
+                        <input type="text" name="Title" id="Title" placeholder="Title">
+                    </div>
+                    <div class="form-field">
+                        <div class="form-field">
+                            <label for="Type">Type</label>
+                            <input type="text" name="Type" id="Type" placeholder="Example: Feed">
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="time">Upload Time (optional)</label>
+                        <input type="time" name="time" id="time">
+                    </div>
+                    <div class="form-field">
+                        <label for="date">Upload Date (optional)</label>
+                        <input type="date" name="date" id="date">
+                    </div>
+                    <div class="form-field">
+                        <label for="status">Status</label>
+                        <select name="status" id="status">
+                            <option value="" selected disabled>Select Status</option>
+                            <option value="1">Queue</option>
+                            <option value="2">On Progress</option>
+                            <option value="3">Done</option>
+                            <option value="4">Need Revision</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="detail">Detail</label>
+                        <textarea name="detail" id="detail" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-field">
+                        <label for="caption">Caption</label>
+                        <textarea name="caption" id="caption" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label for="hashtag">Hashtag</label>
+                        <textarea name="hashtag" id="hashtag" cols="30" rows="10" placeholder="Hashtag"></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label for="revision">Revision</label>
+                        <textarea name="revision" id="revision" cols="30" rows="10"></textarea>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-field form-submit">
+                <button type="submit" class="btn btn-submit">Start Project</button>
+            </div>
+
+
+        </form>
+    </div>
+@endsection
+@section('script')
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('detail');
+        CKEDITOR.replace('caption');
+        CKEDITOR.replace('revision');
+    </script>
+@endsection

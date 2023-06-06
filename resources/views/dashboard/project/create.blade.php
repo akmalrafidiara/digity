@@ -32,9 +32,9 @@
                 </div>
                 <div class="col-6">
                     <div class="form-field">
-                        <label for="stackholder">Stakeholder</label>
-                        <select name="stackholder" id="stackholder">
-                            <option value="" selected disabled>Select stackholder</option>
+                        <label for="stakeholder">Stakeholder</label>
+                        <select name="stakeholder" id="stakeholder">
+                            <option value="" selected disabled>Select stakeholder</option>
                             {{-- client --}}
                             <option value="1">Akmal</option>
                             <option value="1">Fathan</option>

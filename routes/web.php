@@ -53,6 +53,12 @@ Route::get('/dashboard/project/create', function () {
 Route::get('/dashboard/project/detail', function () {
     return view('dashboard/project/detail');
 });
+Route::get('/dashboard/project/create-plan', function () {
+    return view('dashboard/project/createPlan');
+});
+Route::get('/dashboard/project/upload-file', function () {
+    return view('dashboard/project/uploadFile');
+});
 
 Route::get('/dashboard/invoice', function () {
     return view('dashboard/invoice/index');
