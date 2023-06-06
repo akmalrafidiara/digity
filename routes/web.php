@@ -18,9 +18,18 @@ Route::get('/', function () {
     return view('frontend/index');
 });
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard/index');
+// });
 Route::get('/dashboard', function () {
-    return view('dashboard/index');
+    if(Auth()->user()->role_id == 2){
+        return view('dashboard/index');
+    }else{
+        return view('frontend/index');
+    }
 });
+
+
 
 Route::get('/dashboard/service', function () {
     return view('dashboard/service/index');

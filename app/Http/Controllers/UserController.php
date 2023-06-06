@@ -60,4 +60,13 @@ class UserController extends Controller
         return redirect('/')->with('status', 'Logout berhasil!');
     }
 
+    public function createUser(Request $request){
+        $validate = $request->validate([
+            'name' => 'required|max:55',
+            'email' => 'email|required|unique:users',
+            'password' => 'required|min:6',
+            'role_id' => 'required',
+        ]);
+    }
+
 }
