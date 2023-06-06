@@ -73,6 +73,18 @@ Route::get('/dashboard/invoice', function () {
     return view('dashboard/invoice/index');
 });
 
+Route::get('/dashboard/wishlist', function () {
+    return view('dashboard/wishlist/index');
+});
+
+Route::get('/dashboard/history', function () {
+    return view('dashboard/history/index');
+});
+
+Route::get('/dashboard/setting', function () {
+    return view('dashboard/setting/index');
+});
+
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
