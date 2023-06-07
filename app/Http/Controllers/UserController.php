@@ -84,7 +84,7 @@ class UserController extends Controller
         // dd($user);
         // update the profile image if changed
         if($user->profile != null){
-            $file = '/assets/profile/'.$user->profile;
+            $file = '/assets//'.$user->profile;
             if(file_exists($file)){
                 unlink($file);
             }
@@ -93,7 +93,7 @@ class UserController extends Controller
             $file = $request->file('profile');
             $extension = $file->getClientOriginalExtension();
             $filename = 'profile.'.$request->username.time() . '.' . $extension;
-            $file->move('assets/profile/', $filename);
+            $file->move('assets//', $filename);
             $user->profile = $filename;
             }
         
@@ -136,7 +136,7 @@ class UserController extends Controller
             $file = $request->file('profile');
             $extension = $file->getClientOriginalExtension();
             $filename = 'profile.'.$request->username.time() . '.' . $extension;
-            $file->move('assets/profile/', $filename);
+            $file->move('assets//', $filename);
             $user->profile = $filename;
             
         }

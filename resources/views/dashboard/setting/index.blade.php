@@ -4,6 +4,9 @@
 @endphp
 @extends('layouts.dashboard')
 @section('content')
+@php
+    $user = Auth::user();
+@endphp
     <div class="page-title">
         <h1>Setting</h1>
         <p>Create Digity User!</p>
@@ -21,22 +24,26 @@
                 <div class="col-6">
                     <div class="form-field">
                         <label for="name">Full Name</label>
-                        <input type="text" name="name" id="name" placeholder="Your Name">
+                        <input type="text" name="name" id="name" placeholder="Your Name" value="{{$user->name}}">
                     </div>
                     <div class="form-field">
                         <label for="username">Username</label>
-                        <input type="text" name="username" id="username" placeholder="Fill with username">
+                        <input type="text" name="username" id="username" placeholder="Fill with username" value="{{$user->username}}">
                     </div>
                     <div class="form-field">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="example@mail.com">
+                        <input type="email" name="email" id="email" placeholder="example@mail.com" value="{{$user->email}}">
+                    </div>
+                    <div class="form-field">
+                        <label for="phone_number">Telp/Wa</label>
+                        <input type="text" name="phone_number" id="phone_number" placeholder="Fill with telp/wa" value="{{$user->phone_number}}">
                     </div>
                     <div class="form-field">
                         <label for="image">Profile Image</label>
                         <div class="form-file">
-                            <input type="file" name="image" id="image" onchange="previewImage()">
+                            <input type="file" name="profile" id="image" onchange="previewImage()">
                             <div class="image-preview">
-                                <img src="" alt="">
+                                <img src="/assets/profile/{{$user->profile}}" alt="">
                             </div>
                         </div>
                     </div>
@@ -44,7 +51,7 @@
                 <div class="col-6">
                     <div class="form-field">
                         <label for="password">password</label>
-                        <input type="password" name="password" id="password" placeholder="">
+                        <input type="password" name="password" id="password" placeholder="" value="">
                     </div>
                     <div class="form-field">
                         <label for="confirm-password">Confirm password</label>
@@ -52,7 +59,7 @@
                     </div>
                     <div class="form-field">
                         <label for="bio">Bio</label>
-                        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Description"></textarea>
+                        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Des ription">{{{ $user->bio }}}</textarea>
                     </div>
                 </div>
             </div>
