@@ -24,7 +24,7 @@ return new class extends Migration
                     '2',
                     '3',
                 ]
-            )->default('1')->comment('1 = admin, 2 = user, 3 = guest');
+            )->default('1')->comment('1 = klien, 2 = admin, 3 = desginer');
             $table->string('profile')->nullable();
             $table->string('address')->nullable();
             $table->date('date_of_birth')->nullable();
