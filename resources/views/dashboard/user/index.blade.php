@@ -34,10 +34,14 @@
                             <td>Client</td>
                         @endif
                         <td>
+                            <form action="user/delete/{{ $user->id }}" method="POST">
                             <a href="user/edit/{{ $user->id }}" class="btn btn-action"><i
                                     class="fa-solid fa-edit"></i></a>
-                            <a href="user/delete/{{ $user->id }}" class="btn btn-action"><i
-                                    class="fa-solid fa-trash"></i></a>
+                            {{-- tombol delete --}}
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-action"><i class="fa-solid fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
