@@ -14,106 +14,171 @@ use App\Http\Controllers\UserController;
 |
 */
 
+/*
+| ----------------------------------
+| Role Menu Assist Documentation
+| ----------------------------------
+| For Admin id : 1
+| For Staff id : 2
+| For Client id : 3
+*/
+
+// | ROUTE FRONTEND |
+//auth
+Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
+//home
 Route::get('/', function () {
     return view('frontend/index');
-});
-Route::get('/products', function () {
-    return view('frontend/product/index');
-});
-Route::get('/products/detail', function () {
-    return view('frontend/product/detail');
-});
+})->name('home');
 
-Route::get('/services', function () {
-    return view('frontend/service/index');
-});
-Route::get('/services/detail', function () {
-    return view('frontend/service/detail');
-});
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard/index');
-// });
-Route::get('/dashboard', function () {
-    if (Auth()->user()->role_id == 2 || Auth()->user()->role_id == 1) {
-        return view('dashboard/index');
-    } else {
-        return view('frontend/index');
-    }
-});
-
-// route grouping using middleware
-Route::group(['middleware' => ['auth']], function () {
-   Route::prefix('/dashboard')->group(function () {
-        Route::get('/', function () {
-            if (Auth()->user()->role_id == 2 || Auth()->user()->role_id == 1) {
-                return view('dashboard/index');
-            } else {
-                return view('frontend/index');
-            }
-        });
-        Route::get('/user', [UserController::class, 'index']);
-        Route::get('/user/create', function () {
-            return view('dashboard/user/create');
-        });
-        Route::post('/user/create', [UserController::class, 'createUser'])->name('createUser');
-        Route::get('/user/edit/{id}', [UserController::class, 'editUser'])->name('editUser');
-        Route::put('/user/edit', [UserController::class, 'updateUser'])->name('updateUser');
-        Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+//product page
+Route::prefix('/products')->group(function () {
+    Route::get('/', function () {
+        return view('frontend/product/index');
+    });
+    Route::get('/detail', function () {
+        return view('frontend/product/detail');
     });
 });
 
-Route::get('/dashboard/service', function () {
-    return view('dashboard/service/index');
-});
-Route::get('/dashboard/service/create', function () {
-    return view('dashboard/service/create');
-});
-
-Route::get('/dashboard/transaction', function () {
-    return view('dashboard/transaction/index');
-});
-
-
-
-Route::get('/dashboard/order', function () {
-    return view('dashboard/order/index');
+//service page
+Route::prefix('/services')->group(function () {
+    Route::get('/', function () {
+        return view('frontend/service/index');
+    });
+    Route::get('/detail', function () {
+        return view('frontend/service/detail');
+    });
 });
 
-Route::get('/dashboard/project', function () {
-    return view('dashboard/project/index');
-});
-Route::get('/dashboard/project/create', function () {
-    return view('dashboard/project/create');
-});
-Route::get('/dashboard/project/detail', function () {
-    return view('dashboard/project/detail');
-});
-Route::get('/dashboard/project/create-plan', function () {
-    return view('dashboard/project/createPlan');
-});
-Route::get('/dashboard/project/upload-file', function () {
-    return view('dashboard/project/uploadFile');
-});
+// | ROUTE DASHBOARD |
 
-Route::get('/dashboard/invoice', function () {
-    return view('dashboard/invoice/index');
+// General Route
+Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
+    //dashboard menu
+    Route::get('/', function () {
+        return view('dashboard/index');
+    });
+
+    //my project menu
+    Route::prefix('project')->group(function () {
+        Route::get('/', function () {
+            return view('dashboard/project/index');
+        });
+        Route::get('/detail', function () {
+            return view('dashboard/project/detail');
+        });
+    });
+
+    //setting menu
+    Route::get('/dashboard/setting', function () {
+        return view('dashboard/setting/index');
+    });
+
+    //logout menu
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+    // Staff Route with Admin access
+    Route::middleware(['role:1,2'])->group(function () {
+        //service menu
+        Route::prefix('service')->group(function () {
+            Route::get('/', function () {
+                return view('dashboard/service/index');
+            });
+            Route::get('/create', function () {
+                return view('dashboard/service/create');
+            });
+        });
+
+        //product menu
+        Route::prefix('product')->group(function () {
+            Route::get('/', function () {
+                return view('dashboard/product/index');
+            });
+            Route::get('/create', function () {
+                return view('dashboard/product/create');
+            });
+        });
+
+        //additional my project menu
+        Route::prefix('project')->group(function () {
+            Route::get('/create-plan', function () {
+                return view('dashboard/project/createPlan');
+            });
+            Route::get('/upload-file', function () {
+                return view('dashboard/project/uploadFile');
+            });
+        });
+
+        //history menu
+        Route::prefix('history')->group(function () {
+            Route::get('/', function () {
+                return view('dashboard/history/index');
+            });
+            Route::get('/detail', function () {
+                return view('dashboard/history/detail');
+            });
+        });
+    });
+
+    // Admin Route only
+    Route::middleware(['role:1'])->group(function () {
+        //transaction menu
+        Route::prefix('transaction')->group(function () {
+            Route::get('/', function () {
+                return view('dashboard/transaction/index');
+            });
+            Route::get('/detail', function () {
+                return view('dashboard/transaction/detail');
+            });
+        });
+
+        //user menu
+        Route::prefix('user')->group(function () {
+            Route::get('/', [UserController::class, 'index']);
+            Route::get('/create', function () {
+                return view('dashboard/user/create');
+            });
+            Route::post('/create', [UserController::class, 'createUser'])->name('createUser');
+            Route::get('/edit/{id}', [UserController::class, 'editUser'])->name('editUser');
+            Route::put('/edit', [UserController::class, 'updateUser'])->name('updateUser');
+            Route::delete('/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+        });
+    });
+
+
+    //Client Route only
+    Route::middleware(['role:3'])->group(function () {
+        //invoice menu
+        Route::prefix('invoice')->group(function () {
+            Route::get('/', function () {
+                return view('dashboard/invoice/index');
+            });
+            Route::get('/detail', function () {
+                return view('dashboard/invoice/detail');
+            });
+        });
+
+        //wishlist menu
+        Route::prefix('wishlist')->group(function () {
+            Route::get('/', function () {
+                return view('dashboard/wishlist/index');
+            });
+            Route::get('/detail', function () {
+                return view('dashboard/wishlist/detail');
+            });
+        });
+
+        //history menu
+        Route::prefix('history')->group(function () {
+            Route::get('/', function () {
+                return view('dashboard/history/index');
+            });
+            Route::get('/detail', function () {
+                return view('dashboard/history/detail');
+            });
+        });
+    });
 });
-
-Route::get('/dashboard/wishlist', function () {
-    return view('dashboard/wishlist/index');
-});
-
-Route::get('/dashboard/history', function () {
-    return view('dashboard/history/index');
-});
-
-Route::get('/dashboard/setting', function () {
-    return view('dashboard/setting/index');
-});
-
-
-
-Route::post('/register', [UserController::class, 'register'])->name('register');
-Route::post('/login', [UserController::class, 'login'])->name('login');
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
