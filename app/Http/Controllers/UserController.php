@@ -60,6 +60,35 @@ class UserController extends Controller
         return redirect('/')->with('status', 'Logout berhasil!');
     }
 
+    public function updateUser(Request $request){
+        $validate = $request->validate([
+            'name' => 'required|max:55',
+            'email' => 'email|required|unique:users',
+            'password' => 'required|min:6',
+            'role_id' => 'required',
+        ]);
+
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->role_id = $request->role_id;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->profile = $request->profile;
+        $user->address = $request->address;
+        $user->date_of_birth = $request->date_of_birth;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+
+        return redirect('/dashboard')->with('status', 'Data user berhasil diubah!');
+    }
+
+    public function deleteUser($id){
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/dashboard')->with('status', 'Data user berhasil dihapus!');
+    }
+
     public function createUser(Request $request){
         $validate = $request->validate([
             'name' => 'required|max:55',
@@ -67,6 +96,18 @@ class UserController extends Controller
             'password' => 'required|min:6',
             'role_id' => 'required',
         ]);
-    }
 
+        $user = new User;
+        $user->name = $request->name;
+        $user->role_id = $request->role_id;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->profile = $request->profile;
+        $user->address = $request->address;
+        $user->date_of_birth = $request->date_of_birth;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+
+        return redirect('/dashboard')->with('status', 'Data user berhasil ditambahkan!');
+    }
 }
