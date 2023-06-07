@@ -20,24 +20,36 @@
             </div>
             <div class="menu">
                 <div class="mainmenu">
+
                     <a href="/dashboard" class="@if ($page == 'dashboard') active @endif"><i
                             class="fa-solid fa-gauge"></i>Dashboard</a>
-                    <a href="/dashboard/service" class="@if ($page == 'service') active @endif"><i
-                            class="fa-solid fa-rocket"></i>Service</a>
-                    <a href="/dashboard/product" class="@if ($page == 'product') active @endif"><i
-                            class="fa-solid fa-box"></i>Product</a>
-                    <a href="/dashboard/transaction" class="@if ($page == 'transaction') active @endif"><i
-                            class="fa-solid fa-money-check-dollar"></i>Transaction</a>
-                    <a href="/dashboard/user" class="@if ($page == 'user') active @endif"><i
-                            class="fa-regular fa-user"></i>User</a>
+
+                    @if (Auth::user()->role_id == 2 || Auth::user()->role_id == 2)
+                        <a href="/dashboard/service" class="@if ($page == 'service') active @endif"><i
+                                class="fa-solid fa-rocket"></i>Service</a>
+                        <a href="/dashboard/product" class="@if ($page == 'product') active @endif"><i
+                                class="fa-solid fa-box"></i>Product</a>
+                    @endif
+
+                    @if (Auth::user()->role_id == 1)
+                        <a href="/dashboard/transaction" class="@if ($page == 'transaction') active @endif"><i
+                                class="fa-solid fa-money-check-dollar"></i>Transaction</a>
+                        <a href="/dashboard/user" class="@if ($page == 'user') active @endif"><i
+                                class="fa-regular fa-user"></i>User</a>
+                    @endif
+
                     <a href="/dashboard/project" class="@if ($page == 'project') active @endif"><i
                             class="fa-solid fa-bars-progress"></i>My Project</a>
-                    <a href="/dashboard/invoice" class="@if ($page == 'invoice') active @endif"><i
-                            class="fa-solid fa-cart-shopping"></i>Invoice</a>
-                    <a href="/dashboard/wishlist" class="@if ($page == 'wishlist') active @endif"><i
-                            class="fa-regular fa-heart"></i>Wishlist</a>
-                    <a href="/dashboard/history" class="@if ($page == 'history') active @endif"><i
-                            class="fa-solid fa-clock-rotate-left"></i>History</a>
+
+                    @if (Auth::user()->role_id == 3)
+                        <a href="/dashboard/invoice" class="@if ($page == 'invoice') active @endif"><i
+                                class="fa-solid fa-cart-shopping"></i>Invoice</a>
+                        <a href="/dashboard/wishlist" class="@if ($page == 'wishlist') active @endif"><i
+                                class="fa-regular fa-heart"></i>Wishlist</a>
+                        <a href="/dashboard/history" class="@if ($page == 'history') active @endif"><i
+                                class="fa-solid fa-clock-rotate-left"></i>History</a>
+                    @endif
+
                 </div>
                 <div class="botmenu">
                     <a href="/dashboard/setting" class="@if ($page == 'setting') active @endif"><i
