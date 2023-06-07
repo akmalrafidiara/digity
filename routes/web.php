@@ -17,14 +17,27 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('frontend/index');
 });
+Route::get('/products', function () {
+    return view('frontend/product/index');
+});
+Route::get('/products/detail', function () {
+    return view('frontend/product/detail');
+});
+
+Route::get('/services', function () {
+    return view('frontend/service/index');
+});
+Route::get('/services/detail', function () {
+    return view('frontend/service/detail');
+});
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard/index');
 // });
 Route::get('/dashboard', function () {
-    if(Auth()->user()->role_id == 2){
+    if (Auth()->user()->role_id == 2 || Auth()->user()->role_id == 1) {
         return view('dashboard/index');
-    }else{
+    } else {
         return view('frontend/index');
     }
 });

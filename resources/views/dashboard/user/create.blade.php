@@ -29,6 +29,10 @@
                         <input type="email" name="email" id="email" placeholder="example@mail.com">
                     </div>
                     <div class="form-field">
+                        <label for="phone_number">Telp/Wa</label>
+                        <input type="text" name="phone_number" id="phone_number" placeholder="Fill with telp/wa">
+                    </div>
+                    <div class="form-field">
                         <label for="role">Assign Role</label>
                         <select name="role" id="role">
                             <option value="" selected disabled>Select Role</option>

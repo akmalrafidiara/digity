@@ -23,7 +23,9 @@
                     <a href="/dashboard" class="@if ($page == 'dashboard') active @endif"><i
                             class="fa-solid fa-gauge"></i>Dashboard</a>
                     <a href="/dashboard/service" class="@if ($page == 'service') active @endif"><i
-                            class="fa-solid fa-box"></i>Service</a>
+                            class="fa-solid fa-rocket"></i>Service</a>
+                    <a href="/dashboard/product" class="@if ($page == 'product') active @endif"><i
+                            class="fa-solid fa-box"></i>Product</a>
                     <a href="/dashboard/transaction" class="@if ($page == 'transaction') active @endif"><i
                             class="fa-solid fa-money-check-dollar"></i>Transaction</a>
                     <a href="/dashboard/user" class="@if ($page == 'user') active @endif"><i

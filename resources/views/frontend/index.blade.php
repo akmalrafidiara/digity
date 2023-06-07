@@ -1,116 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digity Agency Digital</title>
-    <link rel="icon" type="favicon.ico" href="/images/favicon.ico" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
-</head>
-
-<body>
-    <!-- start navbar -->
-    <nav id="navbar">
-        <div class="navbar container" style="font-weight: bold;">
-            <div class="web-icon">
-                <img src="/assets/img/digity-pentool.svg" alt="">
-                Digity
-            </div>
-            <div class="nav-menu">
-                <a href="#hero">Home</a>
-                <a href="#products">Products</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#services">Services</a>
-                <span>|</span>
-                {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" class="signup">Sign Up</a> --}}
-                @if (Auth::check())
-                    <a href="/dashboard" class="signup">{{ Auth::user()->name }} - Dashboard</a>
-                @else
-                    <a class="btn signup" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</a>
-                @endif
-
-            </div>
-            <div class="menu">
-                <i data-feather="menu"></i>
-            </div>
-        </div>
-    </nav>
-    <!-- end navbar -->
-    {{-- Modal Sign Up --}}
-    <div class="modal " id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ro">
-            <div class="modal-content  " style="border-radius:2rem;">
-                <div x-data="{ register: true }" class="modal-body text-center custom-modal-signin"
-                    @click.outside="register=true">
-
-                    <h3 class="modal-title text-center fw-bolder mb-3" id="signUpModalLabel">
-                        <span x-show="register">Sign Up</span>
-                        <span x-show="!register">Login</span>
-                    </h3>
-                    <form action="{{ route('register') }}" method="POST" x-show="register" class="mx-3">
-                        @csrf
-                        <div class="mb-4 mt-1">
-                            <img src="/assets/img/profile-avatar.svg" alt="" class="icon-svg">
-                            <input name="name" type="text" class="form-control rounded-pill" id="nameRegister"
-                                aria-describedby="nameHelp" placeholder="Name">
-                        </div>
-                        <div class="mb-4 mt-1">
-                            <img src="/assets/img/email.svg" alt="" class="icon-svg">
-                            <input name="email" type="email" class="form-control rounded-pill" id="emailRegister"
-                                aria-describedby="emailHelp" placeholder="Email">
-                        </div>
-                        <div class="mb-4 mt-1">
-                            <img src="/assets/img/lock.svg" alt="" class="icon-svg">
-                            <input name="password" type="password" class="form-control rounded-pill" id="password"
-                                placeholder="Password">
-                        </div>
-                        <div class="d-grid mt-3 mb-4">
-
-                            <button type="submit" class="btn rounded-pill text-white fw-bold "
-                                style="background-color: #706fe5;">Sign Up</button>
-                        </div>
-                    </form>
-                    <form action="{{ route('login') }}" method="POST" x-show="!register" class="mx-3">
-                        @csrf
-                        <div class="mb-4 mt-1">
-                            <img src="/assets/img/email.svg" alt="" class="icon-svg">
-                            <input name="email" type="email" class="form-control rounded-pill" id="emailLogin"
-                                aria-describedby="emailHelp" placeholder="Email">
-                        </div>
-                        <div class="mb-4 mt-1">
-                            <img src="/assets/img/lock.svg" alt="" class="icon-svg">
-                            <input name="password" type="password" class="form-control rounded-pill"
-                                id="passwordLogin" placeholder="Password">
-                        </div>
-                        <div class="d-grid mt-3 mb-4">
-                            <button type="submit" class="btn rounded-pill text-white fw-bold "
-                                style="background-color: #706fe5;">Log in</button>
-                        </div>
-                    </form>
-                    <small x-show="register">Already have an account? <button type="button"
-                            style="background-color: transparent; border: none;" @click="register = !register">
-                            <u> Login</u></button type="button"> </small>
-                    <small x-show="!register">Don't have an account? <button type="button"
-                            style="background-color: transparent; border: none;" @click="register = !register">
-                            <u> Sign Up </u></button type="button"> </small>
-
-
-                </div>
-            </div>
-        </div>
-
-    </div>
+@php
+    $page = 'home';
+    $title = 'Digital Entity';
+@endphp
+@extends('layouts.frontend')
+@section('content')
     <!-- start hero Section -->
     <section id="hero" class="container">
         <div class="hero-text" data-aos="fade-right" data-aos-duration="2000">
@@ -125,11 +18,11 @@
                 business goals. we provide a high-quality services.
             </p>
             <div class="hero-button">
-                <button class="text-tiny">Contact Us</button>
-                <div class="watch-button">
-                    <img src="assets/img/Button.svg" alt="button" />
-                    <p class="text-tiny">Watch our introduction video</p>
-                </div>
+                @if (Auth::check())
+                    <a href="/dashboard" class="btn btn-digity">Dashboard</a>
+                @else
+                    <a class="btn btn-digity" data-bs-toggle="modal" data-bs-target="#signUpModal">Start Now</a>
+                @endif
             </div>
         </div>
         <div class="hero-image d-flex justify-content-center " data-aos="fade-left" data-aos-duration="2000">
@@ -137,7 +30,8 @@
             <img src="assets/img/xd.svg" class="i-xd" alt="xd" />
             <img src="assets/img/sketch.svg" class="i-sketch" alt="xd" />
             {{-- <img class="rounded-circle" src="assets/img/aqmal-duyung.png" alt="hero-image" /> --}}
-            <img src="assets/img/hero-image.png" alt="hero-image" />
+            {{-- <img src="assets/img/hero-image.png" alt="hero-image" /> --}}
+            <img src="assets/img/main-digity-700.svg" alt="hero-image" />
         </div>
     </section>
     <!-- end hero Section -->
@@ -190,22 +84,22 @@
     <!-- start example products -->
     <section id="products" class="container product">
         <div class="product-title" data-aos="fade-right" data-aos-duration="1000">
-            <h2 class="text-title">We create world-class digital products</h2>
+            <h2 class="text-title">We create creative-interactive digital products</h2>
             <p class="text-paraghraph">
-                By information about design the world to the best instructors, heatc
-                helping By information
+                Our product can assist your business in appearing more appealing and interactive
             </p>
         </div>
         <div class="products">
             <div class="main-product" data-aos="fade-right" data-aos-duration="2000">
-                <img src="assets/img/main-product.png" alt="produtcs" />
-                <p class="text-paraghraph">App Design - June 20, 2022</p>
-                <h3 class="text-subtitle">App Redesign</h3>
+                <img src="assets/img/prod-1.png" alt="produtcs" />
+                <p class="text-paraghraph">Social Media Design - June 1, 2023</p>
+                <h3 class="text-subtitle">Instagram Feed Design</h3>
                 <p class="text-tiny">
-                    By information about design the world to the best instructors, heatc
-                    helping By information about design the world to the best
-                    instructors, heatc helping
+                    Enhance your Instagram aesthetics with our premium Social Media Design. Engage your audience and
+                    make a lasting impression with captivating visuals and a cohesive layout that reflects your brand's
+                    unique identity.
                 </p>
+                <a href="" class="btn btn-digity">See More</a>
             </div>
             <div class="other-product">
                 <div class="other-product-card" data-aos="fade-up" data-aos-duration="2000">
@@ -233,57 +127,6 @@
     </section>
     <!-- end example products -->
 
-    <!-- start testimonials -->
-    <section id="testimonials" class="container testimonials">
-        <img src="assets/img/peoperty.svg" class="property-1" alt="property" />
-        <img src="assets/img/peoperty.svg" class="property-2" alt="property" />
-        <div class="testimonial-text">
-            <div data-aos="fade-up" data-aos-duration="2000">
-                <h2 class="text-title">Let’s hear</h2>
-                <h2 class="text-title">What they says</h2>
-            </div>
-            <div class="comment" data-aos="fade-up" data-aos-duration="2000">
-                <h1 class="petik-left" data-aos="fade-right" data-aos-duration="2000">
-                    "
-                </h1>
-                <h1 class="petik-right" data-aos="fade-left" data-aos-duration="2000">
-                    "
-                </h1>
-                <p class="paraghraph">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus vel
-                    lobortis tincidunt fames quisque mauris at diam. Nullam morbi ipsum
-                    turpis amet id posuere torto quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in voluptate velit esse cillum dolore.
-                </p>
-            </div>
-            <div class="people-image" data-aos="fade-down" data-aos-duration="2000">
-                <div class="image-container">
-                    <img src="assets/img/people01.png" alt="testimonials-picture" />
-                </div>
-                <div class="image-container">
-                    <img src="assets/img/people02.png" alt="testimonials-picture" />
-                </div>
-                <div class="image-container-main">
-                    <img src="assets/img/people03.png" alt="testimonials-picture" />
-                </div>
-                <div class="image-container">
-                    <img src="assets/img/people04.png" alt="testimonials-picture" />
-                </div>
-                <div class="image-container">
-                    <img src="assets/img/people05.png" alt="testimonials-picture" />
-                </div>
-            </div>
-            <div class="people-name" data-aos="fade-up" data-aos-duration="2000">
-                <h3 class="text-paraghraph">
-                    Jane Huston
-                </h3>
-                <p class="text-tiny">Founder of Vabrilio</p>
-            </div>
-        </div>
-    </section>
-    <!-- end testimonials -->
-
     <!-- start services -->
     <section id="services" class="container">
         <div class="newsletter" data-aos="fade-right" data-aos-duration="2000">
@@ -291,20 +134,15 @@
                 How We Can Help You
             </h1>
             <p class="text-tiny">
-                Follow our newsletter. We will regulary update our latest project and
-                availability.
+                Unlocking possibilities, delivering excellence. See all our service provide for you.
             </p>
-            <div class="email">
-                <i data-feather="mail" class="text-tiny"></i>
-                <input type="text" placeholder="Enter your email address" />
-                <button class="text-tiny">Subscribe</button>
-            </div>
+            <a href="/services" class="btn btn-digity">See All Service</a>
         </div>
         <div class="services">
             <div class="service" data-aos="fade-up" data-aos-duration="2000">
                 <div class="service-card">
                     <img src="assets/img/ux.svg" alt="services-logo" />
-                    <h3 class="text-paraghraph">UI/UX Design</h3>
+                    <h3 class="text-paraghraph">Social Media Design</h3>
                     <p class="text-tiny">
                         Sometimes features require a short description
                     </p>
@@ -322,7 +160,7 @@
             <div class="service" data-aos="fade-up" data-aos-duration="2000">
                 <div class="service-card">
                     <img src="assets/img/app design.svg" alt="services-logo" />
-                    <h3 class="text-paraghraph">App Design</h3>
+                    <h3 class="text-paraghraph">Social Media Manage</h3>
                     <p class="text-tiny">
                         Sometimes features require a short description
                     </p>
@@ -331,7 +169,7 @@
             <div class="service" data-aos="fade-up" data-aos-duration="3000">
                 <div class="service-card">
                     <img src="assets/img/web design.svg" alt="services-logo" />
-                    <h3 class="text-paraghraph">Website Design</h3>
+                    <h3 class="text-paraghraph">Custom Design</h3>
                     <p class="text-tiny">
                         Sometimes features require a short description
                     </p>
@@ -341,52 +179,31 @@
     </section>
     <!-- end services -->
 
-    <!-- start footer -->
-    <footer>
-        <div class="container">
-            <div class="socials-media">
-                <div class="logo-company">
-                    <span style="font-weight: bold;">Digity</span>
-                </div>
-                <div class="socmed-icon">
-                    <div class="icon-container">
-                        <img src="assets/img/instagram.svg" alt="socmed-icon" />
-                    </div>
-                    <div class="icon-container">
-                        <img src="assets/img/facebook.svg" alt="socmed-icon" />
-                    </div>
-                    <div class="icon-container">
-                        <img src="assets/img/twitter.svg" alt="socmed-icon" />
-                    </div>
-                    <div class="icon-container">
-                        <img src="assets/img/github.svg" alt="socmed-icon" />
-                    </div>
-                </div>
+    <!-- start about -->
+    <section id="about" class="container about">
+        <img src="assets/img/peoperty.svg" class="property-1" alt="property" />
+        <img src="assets/img/peoperty.svg" class="property-2" alt="property" />
+        <div class="testimonial-text">
+            <div data-aos="fade-up" data-aos-duration="2000">
+                <h2 class="text-title">About Us</h2>
+                <h2 class="text-title">Discover our story and join our journey today.</h2>
             </div>
-            <hr />
-            <div class="links">
-                <ul class="list text-tiny">
-                    <li><a class="text-tiny" href="#">Press</a></li>
-                    <li><a class="text-tiny" href="#">Investors</a></li>
-                    <li><a class="text-tiny" href="#">Events</a></li>
-                    <li><a class="text-tiny" href="#">Term of use</a></li>
-                    <li><a class="text-tiny" href="#">Privacy policy</a></li>
-                </ul>
-                <button class="text-tiny">Contact Us</button>
-            </div>
-            <div class="copyright">
-                <p>&copy;2023 - All Right Reserved</p>
+            <div class="comment" data-aos="fade-up" data-aos-duration="2000">
+                <h1 class="petik-left" data-aos="fade-right" data-aos-duration="2000">
+                    "
+                </h1>
+                <h1 class="petik-right" data-aos="fade-left" data-aos-duration="2000">
+                    "
+                </h1>
+                <p class="paraghraph">
+                    DIGITY (Digital Entity) is a dynamic venture specializing in design and social media management
+                    services. With a talented team of professionals, we cater to diverse industries, helping businesses
+                    establish and elevate their online presence. From creating visually stunning designs to crafting
+                    effective social media strategies, DIGITY is dedicated to delivering exceptional results that drive
+                    brand growth and engagement in the digital landscape.
+                </p>
             </div>
         </div>
-    </footer>
-    <!-- end footer -->
-
-    <script>
-        feather.replace()
-        AOS.init()
-    </script>
-    <script src="/assets/js/app.js"></script>
-    <script src="https://kit.fontawesome.com/9f2df5a5e8.js" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    </section>
+    <!-- end about -->
+@endsection
