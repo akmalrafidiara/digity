@@ -5,14 +5,14 @@
 @extends('layouts.dashboard')
 @section('content')
     <div class="page-title">
-        <h1>Create User</h1>
-        <p>Create Digity User!</p>
+        <h1>Edit User</h1>
+        <p>Editing {{$user->name}}</p>
     </div>
     <div class="btn-create">
         <a href="/dashboard/user"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
     <div class="dashboard-container">
-        <form action="{{route('updateUser',$user->id)}}" method="POST" enctype="multipart/form-data" >
+        <form action="{{route('updateUser')}}" method="POST" enctype="multipart/form-data" >
             @csrf
             @method('PUT')
             <input type="hidden" name="id" value="{{$user->id}}" id="">
@@ -55,7 +55,7 @@
                 <div class="col-6">
                     <div class="form-field">
                         <label for="password">password</label>
-                        <input type="password" name="password" id="password" placeholder="">
+                        <input type="password" name="password" id="password" placeholder="" value="">
                     </div>
                     <div class="form-field">
                         <label for="confirm-password">Confirm password</label>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="form-field">
                         <label for="bio">Bio</label>
-                        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Description">{{{ $user->bio }}}</textarea>
+                        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Des ription">{{{ $user->bio }}}</textarea>
                     </div>
                 </div>
             </div>

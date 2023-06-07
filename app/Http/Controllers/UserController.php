@@ -70,40 +70,44 @@ class UserController extends Controller
         return view('dashboard/user/edit', compact('user'));
     }
     public function updateUser(Request $request){
+        // dd($request->all());
         // dd($request->profile);
-        $validate = $request->validate([
-            'name' => 'required|max:55',
-            'username' => 'required|max:55',
-            'email' => 'email|required|unique:users',
-            'password' => 'min:6',
-            'role_id' => 'required',
-        ]);
+        // $validate = $request->validate([
+        //     'name' => 'required|max:55',
+        //     'email' => 'email|required|unique:users',
+        //     'role_id' => 'required',
+        // ]);
 
 
 
         $user = User::find($request->id);
-
+        // dd($user);
         // update the profile image if changed
+        if($user->profile != null){
+            $file = '/assets/img/'.$user->profile;
+            if(file_exists($file)){
+                unlink($file);
+               
+            }
+        }
         if($request->hasFile('profile')){
-                $file = public_path('/assets/img/').$user->profile;
-                if(file_exists($file)){
-                    unlink($file);
-                    $file = $request->file('profile');
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = 'profile.'.$request->username.time() . '.' . $extension;
-                    $file->move('assets/img/', $filename);
-                    $user->profile = $filename;
-                }
+            $file = $request->file('profile');
+            $extension = $file->getClientOriginalExtension();
+            $filename = 'profile.'.$request->username.time() . '.' . $extension;
+            $file->move('assets/img/', $filename);
+            $user->profile = $filename;
             }
         
 
         $user->name = $request->name;
         $user->role_id = $request->role_id;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->profile = $request->profile;
+        if($request->password != null){
+            $user->password = bcrypt($request->password);
+        }
+        $user->profile = $filename;
         $user->address = $request->address;
-        $user->date_of_birth = $request->date_of_birth;
+        $user->bio = $request->bio;
         $user->phone_number = $request->phone_number;
         $user->save();
 
@@ -133,7 +137,7 @@ class UserController extends Controller
             $file = $request->file('profile');
             $extension = $file->getClientOriginalExtension();
             $filename = 'profile.'.$request->username.time() . '.' . $extension;
-            $file->move('/assets/img/', $filename);
+            $file->move('assets/img/', $filename);
             $user->profile = $filename;
             
         }
