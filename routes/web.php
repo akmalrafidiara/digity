@@ -146,6 +146,13 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
             Route::put('/edit', [UserController::class, 'updateUser'])->name('updateUser');
             Route::delete('/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
         });
+
+        //additional my project menu
+        Route::prefix('project')->group(function () {
+            Route::get('/create', function () {
+                return view('dashboard/project/createPlan');
+            });
+        });
     });
 
 

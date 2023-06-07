@@ -23,21 +23,23 @@
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                <tr>
-                    <td style="width: 30px">{{$loop->iteration}}</td>
-                    <td>{{$user->email}}</td>
-                    @if ($user->role_id == 1)
-                        <td>Admin</td>
-                    @elseif ($user->role_id == 2)
-                        <td>Staff</td>
-                    @elseif ($user->role_id == 3)
-                        <td>Client</td>
-                    @endif
-                    <td>
-                        <a href="user/edit/{{$user->id}}"><i class="fa-solid fa-edit"></i></a>
-                        <a href="user/delete/{{$user->id}}"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td style="width: 30px">{{ $loop->iteration }}</td>
+                        <td>{{ $user->email }}</td>
+                        @if ($user->role_id == 1)
+                            <td>Admin</td>
+                        @elseif ($user->role_id == 2)
+                            <td>Staff</td>
+                        @elseif ($user->role_id == 3)
+                            <td>Client</td>
+                        @endif
+                        <td>
+                            <a href="user/edit/{{ $user->id }}" class="btn btn-action"><i
+                                    class="fa-solid fa-edit"></i></a>
+                            <a href="user/delete/{{ $user->id }}" class="btn btn-action"><i
+                                    class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
