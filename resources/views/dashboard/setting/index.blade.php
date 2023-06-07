@@ -15,7 +15,7 @@
         <a href="../user"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
     <div class="dashboard-container">
-        <form action="{{route('updateUser')}}" method="POST">
+        <form action="{{route('updateUser')}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <input type="hidden" name="id" value="{{$user->id}}" id="">
