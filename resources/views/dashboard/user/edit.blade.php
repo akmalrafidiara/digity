@@ -9,36 +9,37 @@
         <p>Create Digity User!</p>
     </div>
     <div class="btn-create">
-        <a href="../user"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        <a href="/dashboard/user"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
     <div class="dashboard-container">
-        <form action="{{route('createUser')}}" method="POST" enctype="multipart/form-data" >
+        <form action="{{route('updateUser',$user->id)}}" method="POST" enctype="multipart/form-data" >
             @csrf
+            @method('PUT')
+            <input type="hidden" name="id" value="{{$user->id}}" id="">
             <div class="row">
                 <div class="col-6">
                     <div class="form-field">
                         <label for="name">Full Name</label>
-                        <input type="text" name="name" id="name" placeholder="Your Name">
+                        <input type="text" name="name" id="name" placeholder="Your Name" value="{{$user->name}}">
                     </div>
                     <div class="form-field">
                         <label for="username">Username</label>
-                        <input type="text" name="username" id="username" placeholder="Fill with username">
+                        <input type="text" name="username" id="username" placeholder="Fill with username" value="{{$user->username}}">
                     </div>
                     <div class="form-field">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="example@mail.com">
+                        <input type="email" name="email" id="email" placeholder="example@mail.com" value="{{$user->email}}">
                     </div>
                     <div class="form-field">
                         <label for="phone_number">Telp/Wa</label>
-                        <input type="text" name="phone_number" id="phone_number" placeholder="Fill with telp/wa">
+                        <input type="text" name="phone_number" id="phone_number" placeholder="Fill with telp/wa" value="{{$user->phone_number}}">
                     </div>
                     <div class="form-field">
                         <label for="role">Assign Role</label>
                         <select name="role_id" id="role">
-                            <option value="" selected disabled>Select Role</option>
-                            <option value="3">Client</option>
-                            <option value="2">Staff</option>
-                            <option value="1">Admin</option>
+                            <option value="1"{{$user->role_id == 1 ? 'selected' : '' }}>Admin</option>
+                            <option value="2"{{$user->role_id == 2 ? 'selected' : '' }}>Staff</option>
+                            <option value="3"{{$user->role_id == 3 ? 'selected' : '' }}>Client</option>
                         </select>
                     </div>
                     <div class="form-field">
@@ -46,7 +47,7 @@
                         <div class="form-file">
                             <input type="file" name="profile" id="image" onchange="previewImage()">
                             <div class="image-preview">
-                                <img src="" alt="">
+                                <img src="/assets/img/{{$user->profile}}" alt="">
                             </div>
                         </div>
                     </div>
@@ -62,12 +63,12 @@
                     </div>
                     <div class="form-field">
                         <label for="bio">Bio</label>
-                        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Description"></textarea>
+                        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Description">{{{ $user->bio }}}</textarea>
                     </div>
                 </div>
             </div>
             <div class="form-field form-submit">
-                <button type="submit" class="btn btn-submit">Create Account</button>
+                <button type="submit" class="btn btn-submit">Edit Account</button>
             </div>
 
         </form>

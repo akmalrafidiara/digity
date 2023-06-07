@@ -9,6 +9,11 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $users = User::orderBy('id', 'desc')->get();
+        return view('dashboard/user/index', compact('users'));
+    }
     public function register(Request $request)
     {
         $validatedData = $request->validate([
@@ -60,15 +65,38 @@ class UserController extends Controller
         return redirect('/')->with('status', 'Logout berhasil!');
     }
 
+    public function editUser($id){
+        $user = User::find($id);
+        return view('dashboard/user/edit', compact('user'));
+    }
     public function updateUser(Request $request){
+        // dd($request->profile);
         $validate = $request->validate([
             'name' => 'required|max:55',
+            'username' => 'required|max:55',
             'email' => 'email|required|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'min:6',
             'role_id' => 'required',
         ]);
 
+
+
         $user = User::find($request->id);
+
+        // update the profile image if changed
+        if($request->hasFile('profile')){
+                $file = public_path('/assets/img/').$user->profile;
+                if(file_exists($file)){
+                    unlink($file);
+                    $file = $request->file('profile');
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = 'profile.'.$request->username.time() . '.' . $extension;
+                    $file->move('assets/img/', $filename);
+                    $user->profile = $filename;
+                }
+            }
+        
+
         $user->name = $request->name;
         $user->role_id = $request->role_id;
         $user->email = $request->email;
@@ -79,7 +107,7 @@ class UserController extends Controller
         $user->phone_number = $request->phone_number;
         $user->save();
 
-        return redirect('/dashboard')->with('status', 'Data user berhasil diubah!');
+        return redirect('/dashboard/user')->with('status', 'Data user berhasil diubah!');
     }
 
     public function deleteUser($id){
@@ -90,6 +118,7 @@ class UserController extends Controller
     }
 
     public function createUser(Request $request){
+        // dd($request->all());
         $validate = $request->validate([
             'name' => 'required|max:55',
             'email' => 'email|required|unique:users',
@@ -97,17 +126,26 @@ class UserController extends Controller
             'role_id' => 'required',
         ]);
 
+        
         $user = new User;
+        // save the profile image
+        if($request->hasFile('profile')){
+            $file = $request->file('profile');
+            $extension = $file->getClientOriginalExtension();
+            $filename = 'profile.'.$request->username.time() . '.' . $extension;
+            $file->move('/assets/img/', $filename);
+            $user->profile = $filename;
+            
+        }
         $user->name = $request->name;
+        $user->username = $request->username;
         $user->role_id = $request->role_id;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->profile = $request->profile;
-        $user->address = $request->address;
-        $user->date_of_birth = $request->date_of_birth;
         $user->phone_number = $request->phone_number;
+        $user->password = bcrypt($request->password);
+        $user->profile = $filename;
+        $user->bio = $request->bio;
         $user->save();
-
-        return redirect('/dashboard')->with('status', 'Data user berhasil ditambahkan!');
+        return redirect('/dashboard/user')->with('status', 'Data user berhasil ditambahkan!');
     }
 }

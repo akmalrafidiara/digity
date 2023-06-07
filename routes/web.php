@@ -42,7 +42,26 @@ Route::get('/dashboard', function () {
     }
 });
 
-
+// route grouping using middleware
+Route::group(['middleware' => ['auth']], function () {
+   Route::prefix('/dashboard')->group(function () {
+        Route::get('/', function () {
+            if (Auth()->user()->role_id == 2 || Auth()->user()->role_id == 1) {
+                return view('dashboard/index');
+            } else {
+                return view('frontend/index');
+            }
+        });
+        Route::get('/user', [UserController::class, 'index']);
+        Route::get('/user/create', function () {
+            return view('dashboard/user/create');
+        });
+        Route::post('/user/create', [UserController::class, 'createUser'])->name('createUser');
+        Route::get('/user/edit/{id}', [UserController::class, 'editUser'])->name('editUser');
+        Route::put('/user/edit/{id}', [UserController::class, 'updateUser'])->name('updateUser');
+        Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+    });
+});
 
 Route::get('/dashboard/service', function () {
     return view('dashboard/service/index');
@@ -55,12 +74,7 @@ Route::get('/dashboard/transaction', function () {
     return view('dashboard/transaction/index');
 });
 
-Route::get('/dashboard/user', function () {
-    return view('dashboard/user/index');
-});
-Route::get('/dashboard/user/create', function () {
-    return view('dashboard/user/create');
-});
+
 
 Route::get('/dashboard/order', function () {
     return view('dashboard/order/index');
@@ -97,6 +111,8 @@ Route::get('/dashboard/history', function () {
 Route::get('/dashboard/setting', function () {
     return view('dashboard/setting/index');
 });
+
+
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');

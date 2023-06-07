@@ -22,51 +22,23 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($users as $user)
                 <tr>
-                    <td>1</td>
-                    <td>akmalrafidiara@gmail.com</td>
-                    <td>Admin</td>
+                    <td style="width: 30px">{{$loop->iteration}}</td>
+                    <td>{{$user->email}}</td>
+                    @if ($user->role_id == 1)
+                        <td>Admin</td>
+                    @elseif ($user->role_id == 2)
+                        <td>Staff</td>
+                    @elseif ($user->role_id == 3)
+                        <td>Client</td>
+                    @endif
                     <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
+                        <a href="user/edit/{{$user->id}}"><i class="fa-solid fa-edit"></i></a>
+                        <a href="user/delete/{{$user->id}}"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>aqmalpratama@gmail.com</td>
-                    <td>Designer</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>fathanbaka@gmail.com</td>
-                    <td>Designer</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>salwats@gmail.com</td>
-                    <td>Clinet</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>radenrziva@gmail.com</td>
-                    <td>Clinet</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
