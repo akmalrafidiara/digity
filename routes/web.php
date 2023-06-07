@@ -73,7 +73,7 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
     });
 
     //setting menu
-    Route::get('/dashboard/setting', function () {
+    Route::get('/setting', function () {
         return view('dashboard/setting/index');
     });
 
