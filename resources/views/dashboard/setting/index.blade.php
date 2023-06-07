@@ -19,7 +19,6 @@
             @csrf
             @method('PUT')
             <input type="hidden" name="id" value="{{$user->id}}" id="">
-            <input type="hidden" name="role_id" value="{{$user->role_id}}" id="">
             <div class="row">
                 <div class="col-6">
                     <div class="form-field">

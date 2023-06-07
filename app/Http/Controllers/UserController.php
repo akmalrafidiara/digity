@@ -99,7 +99,12 @@ class UserController extends Controller
         
 
         $user->name = $request->name;
-        $user->role_id = $request->role_id;
+        if($request->role_id != null){
+            $user->role_id = $request->role_id;
+        }else{
+            $find = User::find($request->id);
+            $user->role_id = $find->role_id;
+        }
         $user->email = $request->email;
         if($request->password != null){
             $user->password = bcrypt($request->password);
