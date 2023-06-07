@@ -47,7 +47,7 @@
                         <div class="form-file">
                             <input type="file" name="profile" id="image" onchange="previewImage()">
                             <div class="image-preview">
-                                <img src="/assets/img/{{$user->profile}}" alt="">
+                                <img src="/assets/profile/{{$user->profile}}" alt="">
                             </div>
                         </div>
                     </div>

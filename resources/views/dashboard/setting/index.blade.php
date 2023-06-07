@@ -12,8 +12,11 @@
         <a href="../user"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
     <div class="dashboard-container">
-        <form action="" method="POST">
+        <form action="{{route('updateUser')}}" method="POST">
             @csrf
+            @method('PUT')
+            <input type="hidden" name="id" value="{{$user->id}}" id="">
+            <input type="hidden" name="id" value="{{$user->role_id}}" id="">
             <div class="row">
                 <div class="col-6">
                     <div class="form-field">
@@ -27,16 +30,6 @@
                     <div class="form-field">
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" placeholder="example@mail.com">
-                    </div>
-                    <div class="form-field">
-                        <label for="role">Assign Role</label>
-                        <select name="role" id="role">
-                            <option value="" selected disabled>Select Role</option>
-                            <option value="client">Client</option>
-                            <option value="designer">Designer</option>
-                            <option value="staff">Staff</option>
-                            <option value="admin">Admin</option>
-                        </select>
                     </div>
                     <div class="form-field">
                         <label for="image">Profile Image</label>
