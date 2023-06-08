@@ -12,7 +12,7 @@
         <a href="../user"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
     <div class="dashboard-container">
-        <form action="{{route('createUser')}}" method="POST" enctype="multipart/form-data" >
+        <form action="{{route('storeUser')}}" method="POST" enctype="multipart/form-data" >
             @csrf
             <div class="row">
                 <div class="col-6">

@@ -119,7 +119,7 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
         Route::prefix('user')->group(function () {
             Route::get('/', [UserController::class, 'index']);
         Route::get('/create', [UserController::class, 'create'])->name('createUser');
-            Route::post('/create', [UserController::class, 'createUser'])->name('createUser');
+            Route::post('/create', [UserController::class, 'createUser'])->name('storeUser');
             Route::get('/edit/{id}', [UserController::class, 'editUser'])->name('editUser');
             Route::put('/edit', [UserController::class, 'updateUser'])->name('updateUser');
             Route::delete('/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
