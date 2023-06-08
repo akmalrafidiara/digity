@@ -11,18 +11,25 @@
     <div class="btn-create">
         <a href="../service"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
+    @if ($errors->any())
+        <div class="error-form">
+            {!! implode('', $errors->all('<div>:message</div>')) !!}
+        </div>
+    @endif
     <div class="dashboard-container">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-6">
                     <div class="form-field">
                         <label for="service">Service</label>
-                        <input type="text" name="service" id="service" placeholder="Service Name">
+                        <input type="text" name="name" id="service" placeholder="Service Name"
+                            value="{{ old('name') }}">
                     </div>
                     <div class="form-field">
                         <label for="caption">Caption</label>
-                        <input type="text" name="caption" id="caption" placeholder="Caption">
+                        <input type="text" name="caption" id="caption" placeholder="Caption"
+                            value="{{ old('caption') }}">
                     </div>
                     <div class="form-field">
                         <label for="image">Featured Image</label>
@@ -38,19 +45,21 @@
                 <div class="col-6">
                     <div class="form-field">
                         <label for="price-min">Price-Min</label>
-                        <input type="text" name="price-minn" id="price-min" placeholder="Price-Min">
+                        <input type="text" name="price_min" id="price-min" placeholder="Price-Min"
+                            value="{{ old('price_min') }}">
                     </div>
                     <div class="form-field">
                         <label for="price-max">Price-Max</label>
-                        <input type="text" name="price-max" id="price-max" placeholder="Price-Max (optional)">
+                        <input type="text" name="price_max" id="price-max" placeholder="Price-Max (optional)"
+                            value="{{ old('price_max') }}">
                     </div>
 
                     <div class="form-field">
                         <label>Pin</label>
                         <div class="form-radio">
-                            <input type="radio" name="pin" value="1" id="pin1"> <label
+                            <input type="radio" name="pin" value="yes" id="pin1"> <label
                                 for="pin1">Yes</label>
-                            <input type="radio" name="pin" value="0" id="pin0" checked> <label
+                            <input type="radio" name="pin" value="no" id="pin0" checked> <label
                                 for="pin0">No</label>
                         </div>
                     </div>
@@ -58,8 +67,11 @@
                         <label for="status">Status</label>
                         <select name="status" id="status">
                             <option value="" selected disabled>Select Status</option>
-                            <option value="1">Available</option>
-                            <option value="0">Not Available</option>
+                            <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>Available
+                            </option>
+                            <option value="not-available" {{ old('status') == 'not-available' ? 'selected' : '' }}>Not
+                                Available
+                            </option>
                         </select>
                     </div>
                 </div>

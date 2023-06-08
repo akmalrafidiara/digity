@@ -593,3 +593,11 @@ html {
     color: #fff;
     font-size: 12px;
 }
+.error-form {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 3px solid #FF6E4F;
+    background-color: #ff6f4f33;
+    color: #fff!important;
+}

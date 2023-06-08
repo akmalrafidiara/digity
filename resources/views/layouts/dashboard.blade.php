@@ -24,7 +24,7 @@
                     <a href="/dashboard" class="@if ($page == 'dashboard') active @endif"><i
                             class="fa-solid fa-gauge"></i>Dashboard</a>
 
-                    @if (Auth::user()->role_id == 2 || Auth::user()->role_id == 2)
+                    @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                         <a href="/dashboard/service" class="@if ($page == 'service') active @endif"><i
                                 class="fa-solid fa-rocket"></i>Service</a>
                         <a href="/dashboard/product" class="@if ($page == 'product') active @endif"><i

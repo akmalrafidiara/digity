@@ -24,54 +24,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>12 Feed Instagram + Content Planner</td>
-                    <td>Rp. 750.000</td>
-                    <td>Off</td>
-                    <td>Available</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>6 Feed Instagram + Content Planner</td>
-                    <td>Rp. 750.000</td>
-                    <td>Off</td>
-                    <td>Available</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Desain Custom</td>
-                    <td>Rp. 100.000 - Rp. 250.000</td>
-                    <td>Off</td>
-                    <td>Available</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Corporate Cloth Design</td>
-                    <td>Rp. 100.000 - Rp. 250.000</td>
-                    <td>Off</td>
-                    <td>Available</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
+                @foreach ($services as $service)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $service->name }}</td>
+                        <td>Rp. {{ number_format($service->price_min, 0, ',', '.') }}
+                            @if ($service->price != null)
+                                - Rp. {{ number_format($service->price_max, 0, ',', '.') }}
+                            @endif
+                        </td>
+                        <td>{{ $service->pin }}</td>
+                        <td>{{ $service->status }}</td>
+                        <td>
+                            <form action="/dashboard/service/{{ $service->id }}" method="POST" class="d-inline">
+                                <a href="/dashboard/service/{{ $service->id }}" class="btn btn-action"><i
+                                        class="fa-solid fa-eye"></i></a>
+                                <a href="/dashboard/service/{{ $service->id }}/edit" class="btn btn-action"><i
+                                        class="fa-solid fa-pen"></i></a>
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-action"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
