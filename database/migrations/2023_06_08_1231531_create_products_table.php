@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');
+            $table->string('name');
+            $table->unsignedBigInteger('service_id');
+            $table->reference('service_id')->on('services'); 
+            $table->integer('priceFix');
+            $table->string('description')->nullable();
+            $table->string('image');
+            $table->boolean('pin')->default(false);
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
+
+            $table->foreign('service_id')->references('id')->on('services');
         });
     }
 
