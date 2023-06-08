@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\design;
+use App\Models\ProjectPlanImage;
 use Illuminate\Http\Request;
 
-class DesignController extends Controller
+class ProjectPlanImageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('frontend/design/index');
+        //
     }
 
     /**
@@ -20,7 +20,7 @@ class DesignController extends Controller
      */
     public function create()
     {
-        return view('frontend/design/create');
+        //
     }
 
     /**
@@ -34,7 +34,7 @@ class DesignController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(design $design)
+    public function show(ProjectPlanImage $projectPlanImage)
     {
         //
     }
@@ -42,7 +42,7 @@ class DesignController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(design $design)
+    public function edit(ProjectPlanImage $projectPlanImage)
     {
         //
     }
@@ -50,7 +50,7 @@ class DesignController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, design $design)
+    public function update(Request $request, ProjectPlanImage $projectPlanImage)
     {
         //
     }
@@ -58,7 +58,7 @@ class DesignController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(design $design)
+    public function destroy(ProjectPlanImage $projectPlanImage)
     {
         //
     }

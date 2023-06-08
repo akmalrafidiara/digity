@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Models\ProjectPlan;
 use Illuminate\Http\Request;
 
-class TransactionController extends Controller
+class ProjectPlanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('frontend/invoice/index');
-    }
-
-    public function detail()
-    {
-        return view('frontend/invoice/detail');
+        //
     }
 
     /**
@@ -39,7 +34,7 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transaction $transaction)
+    public function show(ProjectPlan $projectPlan)
     {
         //
     }
@@ -47,7 +42,7 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transaction $transaction)
+    public function edit(ProjectPlan $projectPlan)
     {
         //
     }
@@ -55,7 +50,7 @@ class TransactionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, ProjectPlan $projectPlan)
     {
         //
     }
@@ -63,20 +58,8 @@ class TransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Transaction $transaction)
+    public function destroy(ProjectPlan $projectPlan)
     {
         //
-    }
-
-    // History transaction for user 
-    public function history()
-    {
-        return view('frontend/transaction/history');
-    }
-
-    // Detail transaction for user
-    public function history_detail()
-    {
-        return view('frontend/transaction/detail');
     }
 }
