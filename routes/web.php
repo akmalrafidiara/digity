@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DesignController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\InvoiceController;
+use App\Models\Transaction;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,12 +42,8 @@ Route::get('/', function () {
 
 //product page
 Route::prefix('/products')->group(function () {
-    Route::get('/', function () {
-        return view('frontend/product/index');
-    });
-    Route::get('/detail', function () {
-        return view('frontend/product/detail');
-    });
+    Route::get('/', [ProductController::class, 'index'])->name('products');
+    Route::get('/detail', [ProductController::class, 'detail'])->name('product.detail');
 });
 
 //service page
@@ -64,12 +67,8 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
 
     //my project menu
     Route::prefix('project')->group(function () {
-        Route::get('/', function () {
-            return view('dashboard/project/index');
-        });
-        Route::get('/detail', function () {
-            return view('dashboard/project/detail');
-        });
+        Route::get('/', [ProjectController::class, 'index'])->name('project');
+        Route::get('/detail', [ProjectController::class, 'detail'])->name('project.detail');
     });
 
     //setting menu
@@ -84,42 +83,26 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
     Route::middleware(['role:1,2'])->group(function () {
         //service menu
         Route::prefix('service')->group(function () {
-            Route::get('/', function () {
-                return view('dashboard/service/index');
-            });
-            Route::get('/create', function () {
-                return view('dashboard/service/create');
-            });
+            Route::get('/', [DesignController::class, 'index'])->name('service');
+            Route::get('/create', [DesignController::class, 'create'])->name('service.create');
         });
 
         //product menu
         Route::prefix('product')->group(function () {
-            Route::get('/', function () {
-                return view('dashboard/product/index');
-            });
-            Route::get('/create', function () {
-                return view('dashboard/product/create');
-            });
+            Route::get('/', [ProductController::class, 'index'])->name('product');
+            Route::get('/create', [ProductController::class, 'create'])->name('product.create');
         });
 
         //additional my project menu
         Route::prefix('project')->group(function () {
-            Route::get('/create-plan', function () {
-                return view('dashboard/project/createPlan');
-            });
-            Route::get('/upload-file', function () {
-                return view('dashboard/project/uploadFile');
-            });
+            Route::get('/create-plan', [ProjectController::class, 'createPlan'])->name('project.createPlan');
+            Route::get('/upload-file', [ProjectController::class, 'uploadFile'])->name('project.uploadFile');
         });
 
         //history menu
         Route::prefix('history')->group(function () {
-            Route::get('/', function () {
-                return view('dashboard/history/index');
-            });
-            Route::get('/detail', function () {
-                return view('dashboard/history/detail');
-            });
+            Route::get('/', [TransactionController::class, 'history'])->name('history');
+            Route::get('/detail', [TransactionController::class, 'history_detail'])->name('history.detail');
         });
     });
 
@@ -127,20 +110,15 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
     Route::middleware(['role:1'])->group(function () {
         //transaction menu
         Route::prefix('transaction')->group(function () {
-            Route::get('/', function () {
-                return view('dashboard/transaction/index');
-            });
-            Route::get('/detail', function () {
-                return view('dashboard/transaction/detail');
+            Route::get('/', [TransactionController::class, 'index'])->name('transaction');
+            Route::get('/detail', [TransactionController::class, 'detail'])->name('transaction.detail');
             });
         });
 
         //user menu
         Route::prefix('user')->group(function () {
             Route::get('/', [UserController::class, 'index']);
-            Route::get('/create', function () {
-                return view('dashboard/user/create');
-            });
+        Route::get('/create', [UserController::class, 'create'])->name('createUser');
             Route::post('/create', [UserController::class, 'createUser'])->name('createUser');
             Route::get('/edit/{id}', [UserController::class, 'editUser'])->name('editUser');
             Route::put('/edit', [UserController::class, 'updateUser'])->name('updateUser');
@@ -149,9 +127,7 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
 
         //additional my project menu
         Route::prefix('project')->group(function () {
-            Route::get('/create', function () {
-                return view('dashboard/project/create');
-            });
+            Route::get('/create', [ProjectController::class, 'create'])->name('project.create');
         });
     });
 
@@ -160,32 +136,20 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
     Route::middleware(['role:3'])->group(function () {
         //invoice menu
         Route::prefix('invoice')->group(function () {
-            Route::get('/', function () {
-                return view('dashboard/invoice/index');
-            });
-            Route::get('/detail', function () {
-                return view('dashboard/invoice/detail');
-            });
+            Route::get('/', [InvoiceController::class, 'index'])->name('invoice');
+            Route::get('/detail', [InvoiceController::class, 'detail'])->name('invoice.detail');
         });
 
         //wishlist menu
         Route::prefix('wishlist')->group(function () {
-            Route::get('/', function () {
-                return view('dashboard/wishlist/index');
-            });
-            Route::get('/detail', function () {
-                return view('dashboard/wishlist/detail');
-            });
+            Route::get('/', [WishlistController::class, 'index'])->name('wishlist']);
+            Route::get('/detail', [WishlistController::class, 'detail'])->name('wishlist.detail' );
         });
 
         //history menu
         Route::prefix('history')->group(function () {
-            Route::get('/', function () {
-                return view('dashboard/history/index');
-            });
-            Route::get('/detail', function () {
-                return view('dashboard/history/detail');
-            });
+            Route::get('/', [TransactionController::class, 'history'])->name('history');
+            Route::get('/detail', [TransactionController::class, 'history_detail'])->name('history.detail');
         });
-    });
 });
+

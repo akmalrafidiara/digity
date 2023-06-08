@@ -14,6 +14,11 @@ class UserController extends Controller
         $users = User::orderBy('id', 'desc')->get();
         return view('dashboard/user/index', compact('users'));
     }
+
+    public function create()
+    {
+        return view('dashboard/user/create');
+    }
     public function register(Request $request)
     {
         $validatedData = $request->validate([
