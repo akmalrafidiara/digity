@@ -17,13 +17,10 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('note')->nullable();
             $table->unsignedBigInteger('stackholder');
-            $table->reference('stackholder')->on('users');
             $table->unsignedBigInteger('PIC');
-            $table->reference('PIC')->on('users');
             $table->date('date_start');
             $table->date('date_end')->nullable();
             $table->unsignedBigInteger('service_id');
-            $table->reference('service_id')->on('services');
             $table->enum('status', ['queue', 'preparation' . 'onprogess', 'done' , 'notavailable'])->default('queue');
             $table->timestamps();
 

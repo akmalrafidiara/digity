@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('project_plans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id');
-            $table->reference('project_id')->on('projects');
             $table->string('title');
             $table->string('type');
             $table->time('upload_time')->nullable();
