@@ -142,7 +142,7 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
 
         //wishlist menu
         Route::prefix('wishlist')->group(function () {
-            Route::get('/', [WishlistController::class, 'index'])->name('wishlist']);
+            Route::get('/', [WishlistController::class, 'index'])->name('wishlist');
             Route::get('/detail', [WishlistController::class, 'detail'])->name('wishlist.detail' );
         });
 
