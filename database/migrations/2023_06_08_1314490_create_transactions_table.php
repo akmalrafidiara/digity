@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('service_id');
-            $table->reference('service_id')->on('services');
             $table->unsignedBigInteger('user_id');
-            $table->reference('user_id')->on('users');
             $table->date('date');
             $table->integer('total');
             $table->string('payment_method');
