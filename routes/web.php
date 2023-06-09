@@ -8,7 +8,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
-use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\FrontendController;
 use App\Models\Transaction;
 
@@ -133,8 +132,8 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
 Route::middleware(['role:3'])->group(function () {
     //invoice menu
     Route::prefix('invoice')->group(function () {
-        Route::get('/', [InvoiceController::class, 'index'])->name('invoice');
-        Route::get('/detail', [InvoiceController::class, 'detail'])->name('invoice.detail');
+        Route::get('/', [TransactionController::class, 'index'])->name('invoice');
+        Route::get('/detail', [TransactionController::class, 'detail'])->name('invoice.detail');
     });
 
     //wishlist menu
