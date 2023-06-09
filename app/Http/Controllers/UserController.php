@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 use App\Models\User;
 
 class UserController extends Controller
@@ -161,4 +163,35 @@ class UserController extends Controller
         $user->save();
         return redirect('/dashboard/user')->with('status', 'Data user berhasil ditambahkan!');
     }
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function handleGoogleCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+            // dd($user);
+            $isUser = User::where('google_id', $user->id)->first();
+            // dd($isUser);
+            if($isUser){
+                Auth::login($isUser);
+                return redirect('/dashboard');
+            }else{
+                $createUser = User::create([
+                    'name' => $user->name,
+                    'username' => $user->name,
+                    'email' => $user->email,
+                    'google_id' => $user->id,
+                    'password' => bcrypt(Str::random(24))
+                ]);
+                Auth::login($createUser);
+                return redirect('/dashboard');
+            }
+        } catch (\Throwable $th) {
+            return redirect('/')->with('status', 'Login gagal!');
+        }
+    }
+
 }

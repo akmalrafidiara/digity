@@ -34,6 +34,9 @@ use App\Models\Transaction;
 //auth
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');
+// login google
+Route::get('/login/google', [UserController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/auth/google/callback', [UserController::class, 'handleGoogleCallback'])->name('login.google.callback');
 
 //home
 Route::get('/', function () {

@@ -104,8 +104,9 @@
                     <small x-show="!register">Don't have an account? <button type="button"
                             style="background-color: transparent; border: none;" @click="register = !register">
                             <u style="font-size: 16px;"> Sign Up </u></button type="button"> </small>
-
-
+                    
+                    <a class="btn btn-success" href="{{route('login.google')}}">Google</a>
+                    
                 </div>
             </div>
         </div>
