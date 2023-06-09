@@ -139,42 +139,18 @@
             <a href="/services" class="btn btn-digity">See All Service</a>
         </div>
         <div class="services">
-            <div class="service" data-aos="fade-up" data-aos-duration="2000">
-                <div class="service-card">
-                    <img src="assets/img/ux.svg" alt="services-logo" />
-                    <h3 class="text-paraghraph">Social Media Design</h3>
-                    <p class="text-tiny">
-                        Sometimes features require a short description
-                    </p>
+            @foreach ($services as $service)
+                <div class="service" data-aos="fade-up"
+                    data-aos-duration="{{ $loop->iteration % 2 == 0 ? '2000' : '3000' }}">
+                    <div class="service-card">
+                        <img src="/assets/img/{{ $service->image }}" alt="services-logo" />
+                        <h3 class="text-paraghraph">{{ $service->name }}</h3>
+                        <p class="text-tiny">
+                            {{ $service->caption }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="service" data-aos="fade-up" data-aos-duration="3000">
-                <div class="service-card">
-                    <img src="assets/img/logo-branding.svg" alt="services-logo" />
-                    <h3 class="text-paraghraph">Logo Branding</h3>
-                    <p class="text-tiny">
-                        Sometimes features require a short description
-                    </p>
-                </div>
-            </div>
-            <div class="service" data-aos="fade-up" data-aos-duration="2000">
-                <div class="service-card">
-                    <img src="assets/img/app design.svg" alt="services-logo" />
-                    <h3 class="text-paraghraph">Social Media Manage</h3>
-                    <p class="text-tiny">
-                        Sometimes features require a short description
-                    </p>
-                </div>
-            </div>
-            <div class="service" data-aos="fade-up" data-aos-duration="3000">
-                <div class="service-card">
-                    <img src="assets/img/web design.svg" alt="services-logo" />
-                    <h3 class="text-paraghraph">Custom Design</h3>
-                    <p class="text-tiny">
-                        Sometimes features require a short description
-                    </p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
     <!-- end services -->

@@ -10,51 +10,26 @@
             <p>Unlocking possibilities, delivering excellence. See all our service provide for you.</p>
         </div>
         <div class="section-service">
-            <div class="service-item">
-                <div class="service-img">
-                    <img src="/assets/img/ux.svg" alt="services-logo" />
+            @foreach ($services as $service)
+                <div class="service-item">
+                    <div class="service-img">
+                        <img src="/assets/img/{{ $service->image }}" alt="services-logo" />
+                    </div>
+                    <div class="service-info">
+                        <small>{{ $service->status }}</small>
+                        <h3><a href="/services/detail" class="service-name">{{ $service->name }}</a></h3>
+                        <p>{{ $service->caption }}.</p>
+                        <p>Rp. {{ number_format($service->price_min, 0, ',', '.') }}
+                            @if ($service->price_max != null)
+                                - Rp. {{ number_format($service->price_max, 0, ',', '.') }}
+                            @endif
+                        </p>
+                        <a href="/services/detail" class="btn btn-order">Detail</a>
+                        <a href="https://wa.me/6285210542017?text={{ urlencode('Halo admin DIGITY, saya tertarik dengan layanan ' . $service->name . ', apakah ada info lebih lanjut mengenai layanan ini?') }}"
+                            class="btn btn-order" target="_blank">What's App</a>
+                    </div>
                 </div>
-                <div class="service-info">
-                    <small>Available</small>
-                    <h3><a href="/services/detail" class="service-name">Service Name</a></h3>
-                    <p>Caption---Branding is the process of giving a meaning to specific organization, company, products or
-                        services
-                        by
-                        creating and shaping a brand in consumers' minds.</p>
-                    <p>Rp. 100.000 - Rp. 750.000</p>
-                    <a href="/services/detail" class="btn btn-order">Order Now</a>
-                </div>
-            </div>
-            <div class="service-item">
-                <div class="service-img">
-                    <img src="/assets/img/ux.svg" alt="services-logo" />
-                </div>
-                <div class="service-info">
-                    <small>Available</small>
-                    <h3><a href="/services/detail" class="service-name">Service Name</a></h3>
-                    <p>Caption---Branding is the process of giving a meaning to specific organization, company, products or
-                        services
-                        by
-                        creating and shaping a brand in consumers' minds.</p>
-                    <p>Rp. 100.000 - Rp. 750.000</p>
-                    <a href="/services/detail" class="btn btn-order">Order Now</a>
-                </div>
-            </div>
-            <div class="service-item">
-                <div class="service-img">
-                    <img src="/assets/img/ux.svg" alt="services-logo" />
-                </div>
-                <div class="service-info">
-                    <small>Available</small>
-                    <h3><a href="/services/detail" class="service-name">Service Name</a></h3>
-                    <p>Caption---Branding is the process of giving a meaning to specific organization, company, products or
-                        services
-                        by
-                        creating and shaping a brand in consumers' minds.</p>
-                    <p>Rp. 100.000 - Rp. 750.000</p>
-                    <a href="/services/detail" class="btn btn-order">Order Now</a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 @endsection

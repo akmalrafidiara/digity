@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\FrontendController;
 use App\Models\Transaction;
 
 /*
@@ -36,24 +38,18 @@ Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 //home
-Route::get('/', function () {
-    return view('frontend/index');
-})->name('home');
+Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 //product page
 Route::prefix('/products')->group(function () {
-    Route::get('/', [ProductController::class, 'index'])->name('products');
-    Route::get('/detail', [ProductController::class, 'detail'])->name('product.detail');
+    Route::get('/', [FrontendController::class, 'index'])->name('products');
+    Route::get('/', [FrontendController::class, 'index'])->name('products');
 });
 
 //service page
 Route::prefix('/services')->group(function () {
-    Route::get('/', function () {
-        return view('frontend/service/index');
-    });
-    Route::get('/detail', function () {
-        return view('frontend/service/detail');
-    });
+    Route::get('/', [FrontendController::class, 'indexService'])->name('fontend.service');
+    Route::get('/{slug}', [FrontendController::class, 'detailService'])->name('fontend.service.detail');
 });
 
 // | ROUTE DASHBOARD |
@@ -86,6 +82,9 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
             Route::get('/', [ServiceController::class, 'index'])->name('service');
             Route::get('/create', [ServiceController::class, 'create'])->name('service.create');
             Route::post('/create', [ServiceController::class, 'store'])->name('service.store');
+            Route::put('/{slug}', [ServiceController::class, 'update'])->name('service.update');
+            Route::get('/{slug}', [ServiceController::class, 'edit'])->name('service.edit');
+            Route::delete('/{slug}', [ServiceController::class, 'destroy'])->name('service.destroy');
         });
 
         //product menu
@@ -98,12 +97,6 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
         Route::prefix('project')->group(function () {
             Route::get('/create-plan', [ProjectController::class, 'createPlan'])->name('project.createPlan');
             Route::get('/upload-file', [ProjectController::class, 'uploadFile'])->name('project.uploadFile');
-        });
-
-        //history menu
-        Route::prefix('history')->group(function () {
-            Route::get('/', [TransactionController::class, 'history'])->name('history');
-            Route::get('/detail', [TransactionController::class, 'history_detail'])->name('history.detail');
         });
     });
 

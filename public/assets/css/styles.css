@@ -547,6 +547,8 @@ nav .navbar .menu {
 }
 #services .services .service img {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 50px;
+
   border-radius: 10px;
 }
 #services .services .service h3 {
@@ -860,14 +862,19 @@ footer .copyright p {
     box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2);
 }
 .service-item .service-img {
-    width: 300px;
+    max-width: 300px;
+    min-width: 100px;
     margin: 0 auto;
     margin-bottom: 20px;
     padding: 20px;
     text-align: center;
 }
 .service-item .service-img img {
-    width: 80%;
+    width: 60%;
+    border-radius: 30px;
+}
+.service-info {
+    width: calc(100% - 300px);
 }
 .service-info .service-name {
     text-decoration: none;

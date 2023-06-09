@@ -61,7 +61,7 @@ class ServiceController extends Controller
 
         $service->save();
 
-        return redirect('/dashboard/service')->with('status', 'Service berhasil ditambahkan!');
+        return redirect('/dashboard/service')->with('status', 'The service has been successfully added!');
     }
 
     /**
@@ -75,24 +75,78 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+        // $service = Service::findOrFail($id);
+        $service = Service::where('slug', $slug)->firstOrFail();
+        return view('dashboard/service/edit', compact('service'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $slug)
     {
-        //
+        $oldService = Service::where('slug', $slug)->firstOrFail();
+        $validatedData = $request->validate([
+            'name' => 'required|max:55',
+            'pin' => 'required',
+            'price_min' => 'required',
+            'status' => 'required',
+        ]);
+
+        if ($request->slug != $oldService->slug) {
+            $validatedData = $request->validate([
+                'name' => 'required|max:55|unique:services',
+            ]);
+            $slug = str()->slug($request->name);
+        }
+
+        $filename = $oldService->image;
+        if ($request->hasFile('image')) {
+            if ($oldService->image) {
+                $image_path = 'assets/img/' . $oldService->image;
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+            }
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = 'service.' . $slug . '.' . time() . '.' . $extension;
+            $file->move('assets/img/', $filename);
+        }
+
+        $service = Service::findOrFail($oldService->id);
+        $service->name = $request->name;
+        $service->description = $request->description;
+        $service->slug = $slug;
+        $service->caption = $request->caption;
+        $service->image = $filename;
+        $service->pin = $request->pin;
+        $service->price_min = $request->price_min;
+        $service->price_max = $request->price_max;
+        $service->status = $request->status;
+
+        $service->save();
+
+        return redirect('/dashboard/service')->with('status', 'The service has been successfully updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
-        //
+        $service = Service::where('slug', $slug)->firstOrFail();
+        if ($service->image) {
+            $image_path = 'assets/img/' . $service->image;
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+        }
+        $service->delete();
+
+        return redirect('/dashboard/service')->with('status', 'The service has been successfully deleted!');
     }
 }
