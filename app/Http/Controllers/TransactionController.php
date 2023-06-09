@@ -12,12 +12,12 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('frontend/invoice/index');
+        return view('dashboard/invoice/index');
     }
 
     public function detail()
     {
-        return view('frontend/invoice/detail');
+        return view('dashboard/invoice/detail');
     }
 
     /**
@@ -71,12 +71,12 @@ class TransactionController extends Controller
     // History transaction for user 
     public function history()
     {
-        return view('frontend/transaction/history');
+        return view('dashboard/transaction/history');
     }
 
     // Detail transaction for user
     public function history_detail()
     {
-        return view('frontend/transaction/detail');
+        return view('dashboard/transaction/detail');
     }
 }
