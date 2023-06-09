@@ -8,10 +8,12 @@
         <h1>My Project</h1>
         <p>Take Control of Your Projects!</p>
     </div>
+    @if(Auth()->user()->role_id == 1)
     <div class="btn-create">
         <a href="project/create"><i class="fa-solid fa-plus"></i> Create Project</a>
         <span>**visible for admin only</span>
     </div>
+    @endif
     <div class="dashboard-container">
         <table id="myTable" class="display">
             <thead>
