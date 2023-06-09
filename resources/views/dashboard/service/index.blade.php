@@ -11,6 +11,11 @@
     <div class="btn-create">
         <a href="service/create"><i class="fa-solid fa-plus"></i> Create Service</a>
     </div>
+    @if ($session = Session::get('status'))
+        <div class="print-status">
+            <p>{{ $session }}</p>
+        </div>
+    @endif
     <div class="dashboard-container">
         <table id="myTable" class="display">
             <thead>
@@ -29,17 +34,18 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $service->name }}</td>
                         <td>Rp. {{ number_format($service->price_min, 0, ',', '.') }}
-                            @if ($service->price != null)
+                            @if ($service->price_max != null)
                                 - Rp. {{ number_format($service->price_max, 0, ',', '.') }}
                             @endif
                         </td>
                         <td>{{ $service->pin }}</td>
                         <td>{{ $service->status }}</td>
                         <td>
-                            <form action="/dashboard/service/{{ $service->id }}" method="POST" class="d-inline">
-                                <a href="/dashboard/service/{{ $service->id }}" class="btn btn-action"><i
+                            <form action="/dashboard/service/{{ $service->slug }}" method="POST"
+                                class="btn-action-container">
+                                <a href="/dashboard/service/{{ $service->slug }}" class="btn btn-action"><i
                                         class="fa-solid fa-eye"></i></a>
-                                <a href="/dashboard/service/{{ $service->id }}/edit" class="btn btn-action"><i
+                                <a href="/dashboard/service/{{ $service->slug }}" class="btn btn-action"><i
                                         class="fa-solid fa-pen"></i></a>
                                 @method('delete')
                                 @csrf

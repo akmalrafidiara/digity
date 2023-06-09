@@ -312,12 +312,24 @@ html {
     background-color: #1e1f4b;
     color: #fff;
 }
+.btn-action-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 .btn {
     text-decoration: none;
     font-size: 15px;
     border-radius: 5px;
     padding: 5px 10px;
     color: #fff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+button.btn {
+    display: inline-block;
+    box-sizing: content-box;
 }
 .btn i {
     color: #fff;
@@ -599,5 +611,13 @@ html {
     border-radius: 10px;
     border: 3px solid #FF6E4F;
     background-color: #ff6f4f33;
+    color: #fff!important;
+}
+.print-status {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 3px solid #8cff97;
+    background-color: #8cff9738;
     color: #fff!important;
 }

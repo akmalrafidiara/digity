@@ -57,8 +57,17 @@
                     <a href="/"><i class="fa-solid fa-home"></i>Go To Home</a>
                     <a href="{{ route('logout') }}" class="logout"><i class="fa-solid fa-right-from-bracket"></i>Log
                         Out</a>
-                    <span style="font-size: small; color: #ddd; text-align: center; margin-top: 20px;">Digital Entity
-                        v1.0</span>
+                    <span style="font-size: small; color: #ddd; text-align: center; margin-top: 20px;">
+                        @if (Auth::user()->role_id == 1)
+                            Admin
+                        @elseif (Auth::user()->role_id == 2)
+                            Staff
+                        @else
+                            Client
+                        @endif
+                        Digital Entity
+                        v1.0
+                    </span>
                 </div>
             </div>
         </section>

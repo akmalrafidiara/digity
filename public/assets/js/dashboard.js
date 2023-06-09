@@ -48,3 +48,11 @@ for (i = 0; i < acc.length; i++) {
         }
     });
 }
+
+const printStatus = document.querySelector('.print-status');
+
+if (printStatus != 'undefined') {
+    setTimeout(() => {
+        printStatus.style.display = 'none';
+    }, 6000);
+}
