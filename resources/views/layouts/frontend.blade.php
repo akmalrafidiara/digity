@@ -104,9 +104,20 @@
                     <small x-show="!register">Don't have an account? <button type="button"
                             style="background-color: transparent; border: none;" @click="register = !register">
                             <u style="font-size: 16px;"> Sign Up </u></button type="button"> </small>
-                    
-                    <a class="btn btn-success" href="{{route('login.google')}}">Google</a>
-                    
+
+                    {{-- <a class="btn btn-success" href="{{route('login.google')}}">Google</a> --}}
+                    <p>Or</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-outline-dark" href="{{ route('login.google') }}" role="button"
+                                style="text-transform:none">
+                                <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                                Login with Google
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
