@@ -123,7 +123,7 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
 
     //additional my project menu
     Route::prefix('project')->group(function () {
-        Route::get('/create', [ProjectController::class, 'create'])->name('project.create');
+        Route::get('/create', [ProjectController::class, 'createPlan'])->name('project.create');
     });
     //Client Route only
     Route::middleware(['role:3'])->group(function () {
