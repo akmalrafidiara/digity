@@ -93,6 +93,10 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
         Route::prefix('product')->group(function () {
             Route::get('/', [ProductController::class, 'index'])->name('product');
             Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+            Route::post('/create', [ProductController::class, 'store'])->name('product.store');
+            Route::put('/{slug}', [ProductController::class, 'update'])->name('product.update');
+            Route::get('/{slug}', [ProductController::class, 'edit'])->name('product.edit');
+            Route::delete('/{slug}', [ProductController::class, 'destroy'])->name('product.destroy');
         });
 
         //additional my project menu

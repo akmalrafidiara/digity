@@ -400,6 +400,7 @@ nav .navbar .menu {
 }
 #products .products .other-product .other-product-card img {
     width: 100%;
+    border-radius: 20px;
 }
 
 @media (max-width: 810px) {
@@ -930,6 +931,7 @@ footer .copyright p {
 }
 .service-detail-action img {
     width: 80%;
+    border-radius: 30px;
 }
 .service-detail-action a i {
     color: #706fe5;
@@ -938,4 +940,19 @@ footer .copyright p {
 }
 .service-detail-action a:hover i {
     color: #fff;
+}
+.btn-whatsapp {
+    border: 1px solid #25d366 !important;
+    color: #25d366;
+    transition: all 0.3s ease-in-out;
+}
+.btn-whatsapp:hover {
+    background-color: #25d366 !important;
+    color: #fff !important;
+}
+.btn-whatsapp:hover i {
+    color: #fff !important;
+}
+.btn-whatsapp i {
+    color: #25d366 !important;
 }

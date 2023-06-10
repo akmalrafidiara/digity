@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Service;
+
 
 class ProductController extends Controller
 {
@@ -12,20 +14,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('frontend/product/index');
+        $products = Product::all();
+        return view('dashboard/product/index', compact('products'));
     }
 
-    public function detail()
-    {
-        return view('frontend/product/detail');
-    }
-    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $services = Service::all();
+        return view('dashboard/product/create', compact('services'));
     }
 
     /**
@@ -33,7 +32,35 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:55|unique:products',
+            'pin' => 'required',
+            'service_id' => 'required',
+            'status' => 'required',
+        ]);
+
+        $slug = str()->slug($request->name);
+        $filename = null;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = 'product.' . $slug . '.' . time() . '.' . $extension;
+            $file->move('assets/img/', $filename);
+        }
+
+        $product = Product::create([
+            'name' => $request->name,
+            'slug' => $slug,
+            'description' => $request->description,
+            'service_id' => $request->service_id,
+            'caption' => $request->caption,
+            'date' => $request->date,
+            'image' => $filename,
+            'pin' => $request->pin,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('product')->with('success', 'Product created successfully.');
     }
 
     /**
