@@ -125,26 +125,24 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
     Route::prefix('project')->group(function () {
         Route::get('/create', [ProjectController::class, 'create'])->name('project.create');
     });
-});
+    //Client Route only
+    Route::middleware(['role:3'])->group(function () {
+        //invoice menu
+        Route::prefix('invoice')->group(function () {
+            Route::get('/', [TransactionController::class, 'index'])->name('invoice');
+            Route::get('/detail', [TransactionController::class, 'detail'])->name('invoice.detail');
+        });
 
+        //wishlist menu
+        Route::prefix('wishlist')->group(function () {
+            Route::get('/', [WishlistController::class, 'index'])->name('wishlist');
+            Route::get('/detail', [WishlistController::class, 'detail'])->name('wishlist.detail');
+        });
 
-//Client Route only
-Route::middleware(['role:3'])->group(function () {
-    //invoice menu
-    Route::prefix('invoice')->group(function () {
-        Route::get('/', [TransactionController::class, 'index'])->name('invoice');
-        Route::get('/detail', [TransactionController::class, 'detail'])->name('invoice.detail');
-    });
-
-    //wishlist menu
-    Route::prefix('wishlist')->group(function () {
-        Route::get('/', [WishlistController::class, 'index'])->name('wishlist');
-        Route::get('/detail', [WishlistController::class, 'detail'])->name('wishlist.detail');
-    });
-
-    //history menu
-    Route::prefix('history')->group(function () {
-        Route::get('/', [TransactionController::class, 'history'])->name('history');
-        Route::get('/detail', [TransactionController::class, 'history_detail'])->name('history.detail');
+        //history menu
+        Route::prefix('history')->group(function () {
+            Route::get('/', [TransactionController::class, 'history'])->name('history');
+            Route::get('/detail', [TransactionController::class, 'history_detail'])->name('history.detail');
+        });
     });
 });

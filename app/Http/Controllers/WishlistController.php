@@ -12,12 +12,12 @@ class WishlistController extends Controller
      */
     public function index()
     {
-        return view('frontend/wishlist/index');
+        return view('dashboard/wishlist/index');
     }
 
     public function detail()
     {
-        return view('frontend/wishlist/detail');
+        return view('dashboard/wishlist/detail');
     }
 
     /**
