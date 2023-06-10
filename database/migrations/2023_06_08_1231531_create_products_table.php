@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('service_id');
             $table->string('description')->nullable();
-            $table->string('image');
-            $table->boolean('pin')->default(false);
+            $table->string('caption')->nullable();
+            $table->date('date')->nullable();
+            $table->string('image')->nullable();
+            $table->enum('pin', ['yes', 'no'])->default('no');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
 
