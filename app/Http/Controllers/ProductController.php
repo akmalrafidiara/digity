@@ -18,12 +18,6 @@ class ProductController extends Controller
         return view('dashboard/product/index', compact('products'));
     }
 
-    public function frontend()
-    {
-        $products = Product::all();
-        return view('frontend/product/index', compact('products'));
-    }
-
     /**
      * Show the form for creating a new resource.
      */

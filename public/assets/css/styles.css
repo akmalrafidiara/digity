@@ -955,4 +955,26 @@ footer .copyright p {
 }
 .btn-whatsapp i {
     color: #25d366 !important;
+    transition: all 0.3s ease-in-out;
+}
+.contact-whatsapp {
+    background-color: #706fe5;
+    padding: 30px 0px;
+}
+.contact-whatsapp-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.contact-whatsapp-text h2, .contact-whatsapp-text p {
+    color: #fff!important;
+}
+.contact-whatsapp-text {
+    width: 75%;
+}
+.contact-whatsapp-btn {
+    width: 20%;
+}
+.contact-whatsapp-btn a {
+    transform: scale(1.5);
 }

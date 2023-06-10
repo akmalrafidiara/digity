@@ -44,14 +44,14 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 //product page
 Route::prefix('/products')->group(function () {
-    Route::get('/', [FrontendController::class, 'index'])->name('products');
-    Route::get('/', [FrontendController::class, 'index'])->name('products');
+    Route::get('/', [FrontendController::class, 'indexProduct'])->name('frontend.product');
+    Route::get('/{slug}', [FrontendController::class, 'detailProduct'])->name('frontend.product.detail');
 });
 
 //service page
 Route::prefix('/services')->group(function () {
-    Route::get('/', [FrontendController::class, 'indexService'])->name('fontend.service');
-    Route::get('/{slug}', [FrontendController::class, 'detailService'])->name('fontend.service.detail');
+    Route::get('/', [FrontendController::class, 'indexService'])->name('frontend.service');
+    Route::get('/{slug}', [FrontendController::class, 'detailService'])->name('frontend.service.detail');
 });
 
 // | ROUTE DASHBOARD |

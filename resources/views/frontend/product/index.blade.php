@@ -9,18 +9,28 @@
             <h1>Digital Entity Product</h1>
             <p>Our product can assist your business in appearing more appealing and interactive</p>
         </div>
-        <div class="product-container">
+        <div class="section-product">
             @foreach ($products as $product)
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                    <div class="product-img">
+                        <a href="/products/{{ $product->slug }}">
+                            <img src="/assets/img/{{ $product->image }}" alt="Product 1">
+                        </a>
                     </div>
                     <div class="product-info">
-                        <h3>{{ $product->name }}</h3>
-                        <p>{{ $product->description }}</p>
-                        <a href="{{ route('product.show', $product->slug) }}" class="btn btn-primary">Detail</a>
+                        <a href="/services/{{ $product->service->slug }}">
+                            <small>{{ $product->service->name }}</small>
+                        </a>
+                        <a href="/products/{{ $product->slug }}">
+                            <h3>{{ $product->name }}</h3>
+                        </a>
+                        <p>{{ $product->caption }}</p>
+                        <div class="product-action">
+                            <a href="" class="btn btn-order"><i class="fa-regular fa-heart"></i></a>
+                        </div>
                     </div>
                 </div>
             @endforeach
+        </div>
     </section>
 @endsection

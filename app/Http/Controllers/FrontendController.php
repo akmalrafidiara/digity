@@ -18,6 +18,18 @@ class FrontendController extends Controller
         return view('frontend/index', compact('services', 'products'));
     }
 
+    public function indexProduct()
+    {
+        $products = Product::all();
+        return view('frontend/product/index', compact('products'));
+    }
+    public function detailProduct(String $slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        $products = Product::where('service_id', $product->service_id)->where('slug', '!=', $slug)->inRandomOrder()->limit(3)->get();
+        return view('frontend/product/detail', compact('product', 'products'));
+    }
+
     public function indexService()
     {
         $services = Service::all();
@@ -25,7 +37,8 @@ class FrontendController extends Controller
     }
     public function detailService(String $slug)
     {
-        $service = Service::where('slug', $slug)->limit(4)->get();
-        return view('frontend/service/detail', compact('service'));
+        $service = Service::where('slug', $slug)->first();
+        $services = Service::where('pin', 'yes')->limit(4)->orderBy('id', 'desc')->get();
+        return view('frontend/service/detail', compact('service', 'services'));
     }
 }
