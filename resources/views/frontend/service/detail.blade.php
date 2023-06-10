@@ -8,21 +8,22 @@
         <a href="{{ url()->previous() }}" class="btn btn-back"><i class="fa-solid fa-arrow-left"></i> Back</a>
         <div class="service-detail">
             <div class="service-detail-info">
-                <small>Available</small>
-                <h3>Service Name</h3>
-                <p>Rp. 100.000 - Rp. 750.000</p>
-                <p>Caption---Branding is the process of giving a meaning to specific organization, company, products or
-                    services by creating and shaping a brand in consumers' minds.</p>
-                <p>Description -- Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur nobis non molestiae
-                    fugiat fugit, commodi aliquid expedita ab veniam temporibus doloribus libero ut saepe laboriosam beatae
-                    quibusdam facere magni neque rem dolores provident unde mollitia repellat! Nam corporis vero, nostrum
-                    aut aliquid cumque error labore, ratione itaque ab sequi nihil ullam aliquam, quo iste laborum.
-                    Perspiciatis dolorum sapiente magni consequuntur. Omnis aspernatur iusto quidem eius debitis placeat
-                    doloremque velit provident!</p>
+                <small>{{ $service->status }}</small>
+                <h3>{{ $service->name }}</h3>
+                <p>
+                    Rp. {{ number_format($service->price_min, 0, ',', '.') }}
+                    @if ($service->price_max != null)
+                        - Rp. {{ number_format($service->price_max, 0, ',', '.') }}
+                    @endif
+                </p>
+                <p>{{ $service->caption }}</p>
+                {!! $service->description !!}
             </div>
             <div class="service-detail-action">
-                <img src="/assets/img/ux.svg" alt="">
+                <img src="/assets/img/{{ $service->image }}" alt="">
                 <a href="" class="btn btn-digity"><i class="fa-solid fa-check-to-slot"></i> Make Order</a>
+                <a href="https://wa.me/6285210542017?text={{ urlencode('Halo admin DIGITY, saya tertarik dengan layanan ' . $service->name . ', apakah ada info lebih lanjut mengenai layanan ini?') }}"
+                    target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Request WA</a>
             </div>
         </div>
     </section>

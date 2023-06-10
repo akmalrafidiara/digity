@@ -91,37 +91,26 @@
         </div>
         <div class="products">
             <div class="main-product" data-aos="fade-right" data-aos-duration="2000">
-                <img src="assets/img/prod-1.png" alt="produtcs" />
-                <p class="text-paraghraph">Social Media Design - June 1, 2023</p>
-                <h3 class="text-subtitle">Instagram Feed Design</h3>
+                <img src="assets/img/{{ $products[0]->image }}" alt="produtcs" />
+                <p class="text-paraghraph">{{ $products[0]->service->name }} -
+                    {{ date('M d, Y', strtotime($products[0]->date)) }}</p>
+                <h3 class="text-subtitle">{{ $products[0]->name }}</h3>
                 <p class="text-tiny">
-                    Enhance your Instagram aesthetics with our premium Social Media Design. Engage your audience and
-                    make a lasting impression with captivating visuals and a cohesive layout that reflects your brand's
-                    unique identity.
+                    {{ $products[0]->caption }}
                 </p>
                 <a href="" class="btn btn-digity">See More</a>
             </div>
             <div class="other-product">
-                <div class="other-product-card" data-aos="fade-up" data-aos-duration="2000">
-                    <img src="assets/img/other-png01.png" alt="produtcs" />
-                    <p class="text-tiny">App Design - June 20, 2022</p>
-                    <h3>Redesign channel website landing page</h3>
-                </div>
-                <div class="other-product-card" data-aos="fade-up" data-aos-duration="3000">
-                    <img src="assets/img/other-png02.png" alt="produtcs" />
-                    <p class="text-tiny">App Design - June 20, 2022</p>
-                    <h3>New Locator App For a New Company</h3>
-                </div>
-                <div class="other-product-card" data-aos="fade-up" data-aos-duration="2000">
-                    <img src="assets/img/other-png03.png" alt="produtcs" />
-                    <p class="text-tiny">App Design - June 20, 2022</p>
-                    <h3>Rental Rooms Web App Platform</h3>
-                </div>
-                <div class="other-product-card" data-aos="fade-up" data-aos-duration="3000">
-                    <img src="assets/img/other-png04.png" alt="produtcs" />
-                    <p class="text-tiny">App Design - June 20, 2022</p>
-                    <h3>Calendar App for Big SASS Company</h3>
-                </div>
+                @foreach ($products as $product)
+                    @if (!$loop->first)
+                        <div class="other-product-card" data-aos="fade-up" data-aos-duration="2000">
+                            <img src="assets/img/{{ $product->image }}" alt="produtcs" />
+                            <p class="text-tiny">{{ $product->service->name }} -
+                                {{ date('M d, Y', strtotime($product->date)) }}</p>
+                            <h3>{{ $product->name }}e</h3>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </section>

@@ -17,16 +17,14 @@
                     </div>
                     <div class="service-info">
                         <small>{{ $service->status }}</small>
-                        <h3><a href="/services/detail" class="service-name">{{ $service->name }}</a></h3>
+                        <h3><a href="/services/{{ $service->slug }}" class="service-name">{{ $service->name }}</a></h3>
                         <p>{{ $service->caption }}.</p>
                         <p>Rp. {{ number_format($service->price_min, 0, ',', '.') }}
                             @if ($service->price_max != null)
                                 - Rp. {{ number_format($service->price_max, 0, ',', '.') }}
                             @endif
                         </p>
-                        <a href="/services/detail" class="btn btn-order">Detail</a>
-                        <a href="https://wa.me/6285210542017?text={{ urlencode('Halo admin DIGITY, saya tertarik dengan layanan ' . $service->name . ', apakah ada info lebih lanjut mengenai layanan ini?') }}"
-                            class="btn btn-order" target="_blank">What's App</a>
+                        <a href="/services/{{ $service->slug }}" class="btn btn-order">Detail</a>
                     </div>
                 </div>
             @endforeach
