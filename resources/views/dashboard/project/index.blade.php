@@ -27,39 +27,23 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($projects as $project)
                 <tr>
-                    <td>1</td>
-                    <td><a href="project/detail">Digital Entity Instagram Content</a></td>
-                    <td><a href="#">12 Feed Instagram</a></td>
-                    <td>22 June 23</td>
-                    <td>On Progress</td>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $project->name }}</td>
+                    <td>{{ $project->service->name }}</td>
+                    <td>{{ $project->date_start }}</td>
+                    <td>{{ $project->status}}</td>
                     <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
+                        <form action="project/delete/{{ $project->id }}" method="POST">
+                            <a href="project/edit/{{ $project->id }}" class="btn btn-action"><i class="fa-solid fa-edit"></i></a>
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-action"><i class="fa-solid fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td><a href="project/detail">Banner Utama Toko</a></td>
-                    <td><a href="#">Banner</a></td>
-                    <td>22 June 23</td>
-                    <td>On Progress</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td><a href="project/detail">Desain Baju</a></td>
-                    <td><a href="#">Corporate Cloth Design</a></td>
-                    <td>22 June 23</td>
-                    <td>On Progress</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i></a>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

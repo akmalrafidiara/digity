@@ -17,15 +17,15 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('note')->nullable();
             $table->unsignedBigInteger('stackholder');
-            $table->unsignedBigInteger('PIC');
+            $table->unsignedBigInteger('pic');
             $table->date('date_start');
             $table->date('date_end')->nullable();
             $table->unsignedBigInteger('service_id');
-            $table->enum('status', ['queue', 'preparation' . 'onprogess', 'done' , 'notavailable'])->default('queue');
+            $table->enum('status', ['queue', 'preparation' , 'onprogess', 'done' , 'notavailable'])->default('queue');
             $table->timestamps();
 
             $table->foreign('stackholder')->references('id')->on('users');
-            $table->foreign('PIC')->references('id')->on('users');
+            $table->foreign('pic')->references('id')->on('users');
             $table->foreign('service_id')->references('id')->on('services');
         });
     }

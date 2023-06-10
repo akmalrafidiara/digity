@@ -124,6 +124,10 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
     //additional my project menu
     Route::prefix('project')->group(function () {
         Route::get('/create', [ProjectController::class, 'createPlan'])->name('project.create');
+        Route::post('/create', [ProjectController::class, 'storeProject'])->name('project.store');
+        Route::get('/edit/{id}', [ProjectController::class, 'editProject'])->name('project.edit');
+        Route::put('/edit', [ProjectController::class, 'updateProject'])->name('project.update');
+        Route::delete('/delete/{id}', [ProjectController::class, 'deleteProject'])->name('project.delete');
     });
     //Client Route only
     Route::middleware(['role:3'])->group(function () {
