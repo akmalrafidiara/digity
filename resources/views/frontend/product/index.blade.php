@@ -9,58 +9,18 @@
             <h1>Digital Entity Product</h1>
             <p>Our product can assist your business in appearing more appealing and interactive</p>
         </div>
-        <div class="section-product">
-            <div class="product-card">
-                <div class="product-img">
-                    <a href="/products/detail"><img src="/assets/img/prod-1.png" alt="Product 1"></a>
-                </div>
-                <div class="product-info">
-                    <small>Social Media Design</small>
-                    <a href="/products/detail">
-                        <h3>Instagram Feed Design</h3>
-                    </a>
-                    <p>Enhance your Instagram aesthetics with our premium Social Media Design. Engage your audience and
-                        make a lasting impression with captivating visuals and a cohesive layout that reflects your brand's
-                        unique identity.</p>
-                    <div class="product-action">
-                        <a href="" class="btn btn-order"><i class="fa-regular fa-heart"></i></a>
+        <div class="product-container">
+            @foreach ($products as $product)
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                    </div>
+                    <div class="product-info">
+                        <h3>{{ $product->name }}</h3>
+                        <p>{{ $product->description }}</p>
+                        <a href="{{ route('product.show', $product->slug) }}" class="btn btn-primary">Detail</a>
                     </div>
                 </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img">
-                    <a href="/products/detail"><img src="/assets/img/prod-1.png" alt="Product 1"></a>
-                </div>
-                <div class="product-info">
-                    <small>Social Media Design</small>
-                    <a href="/products/detail">
-                        <h3>Instagram Feed Design</h3>
-                    </a>
-                    <p>Enhance your Instagram aesthetics with our premium Social Media Design. Engage your audience and
-                        make a lasting impression with captivating visuals and a cohesive layout that reflects your brand's
-                        unique identity.</p>
-                    <div class="product-action">
-                        <a href="" class="btn btn-order"><i class="fa-regular fa-heart"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img">
-                    <a href="/products/detail"><img src="/assets/img/prod-1.png" alt="Product 1"></a>
-                </div>
-                <div class="product-info">
-                    <small>Social Media Design</small>
-                    <a href="/products/detail">
-                        <h3>Instagram Feed Design</h3>
-                    </a>
-                    <p>Enhance your Instagram aesthetics with our premium Social Media Design. Engage your audience and
-                        make a lasting impression with captivating visuals and a cohesive layout that reflects your brand's
-                        unique identity.</p>
-                    <div class="product-action">
-                        <a href="" class="btn btn-order"><i class="fa-regular fa-heart"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+            @endforeach
     </section>
 @endsection
