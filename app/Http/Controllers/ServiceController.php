@@ -118,17 +118,17 @@ class ServiceController extends Controller
         }
 
         $service = Service::findOrFail($oldService->id);
-        $service->name = $request->name;
-        $service->description = $request->description;
-        $service->slug = $slug;
-        $service->caption = $request->caption;
-        $service->image = $filename;
-        $service->pin = $request->pin;
-        $service->price_min = $request->price_min;
-        $service->price_max = $request->price_max;
-        $service->status = $request->status;
-
-        $service->save();
+        $service->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'slug' => $slug,
+            'caption' => $request->caption,
+            'image' => $filename,
+            'pin' => $request->pin,
+            'price_min' => $request->price_min,
+            'price_max' => $request->price_max,
+            'status' => $request->status,
+        ]);
 
         return redirect('/dashboard/service')->with('status', 'The service has been successfully updated!');
     }

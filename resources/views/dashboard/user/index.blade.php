@@ -11,6 +11,11 @@
     <div class="btn-create">
         <a href="user/create"><i class="fa-solid fa-plus"></i> Create User</a>
     </div>
+    @if ($session = Session::get('status'))
+        <div class="print-status">
+            <p>{{ $session }}</p>
+        </div>
+    @endif
     <div class="dashboard-container">
         <table id="myTable" class="display">
             <thead>
@@ -35,9 +40,9 @@
                         @endif
                         <td>
                             <form action="user/delete/{{ $user->id }}" method="POST">
-                            <a href="user/edit/{{ $user->id }}" class="btn btn-action"><i
-                                    class="fa-solid fa-edit"></i></a>
-                            {{-- tombol delete --}}
+                                <a href="user/edit/{{ $user->id }}" class="btn btn-action"><i
+                                        class="fa-solid fa-edit"></i></a>
+                                {{-- tombol delete --}}
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-action"><i class="fa-solid fa-trash"></i></button>

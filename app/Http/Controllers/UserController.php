@@ -23,45 +23,47 @@ class UserController extends Controller
     }
     public function register(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:55',
-            'email' => 'email|required|unique:users',
-            'password' => 'required|min:6'
-        ]
-        , [
-            'name.required' => 'Name harus diisi!',
-            'email.required' => 'Email harus diisi!',
-            'password.required' => 'Password harus diisi!'
-        ]);  
+        $validatedData = $request->validate(
+            [
+                'name' => 'required|max:55',
+                'email' => 'email|required|unique:users',
+                'password' => 'required|min:6'
+            ],
+            [
+                'name.required' => 'Name harus diisi!',
+                'email.required' => 'Email harus diisi!',
+                'password.required' => 'Password harus diisi!'
+            ]
+        );
 
-        
+
         $validatedData['password'] = bcrypt($validatedData['password']);
         User::create($validatedData);
-        
-        $loginData = $request->only('email', 'password');
-        
-        if(Auth::attempt($loginData)) {
-            return redirect('/dashboard');
-        }else{
-            return redirect('/')->with('status', 'Register gagal!');
-        }
 
-    ;
+        $loginData = $request->only('email', 'password');
+
+        if (Auth::attempt($loginData)) {
+            return redirect('/dashboard');
+        } else {
+            return redirect('/')->with('status', 'Register gagal!');
+        };
     }
 
     public function login(Request $request)
     {
-        $login = $request->validate([
-            'email' => 'email|required',
-            'password' => 'required'
-        ]
-        , [
-            'email.required' => 'Email harus diisi!',
-            'password.required' => 'Password harus diisi!'
-        ]);  
-        if(Auth::attempt($login)) {
+        $login = $request->validate(
+            [
+                'email' => 'email|required',
+                'password' => 'required'
+            ],
+            [
+                'email.required' => 'Email harus diisi!',
+                'password.required' => 'Password harus diisi!'
+            ]
+        );
+        if (Auth::attempt($login)) {
             return redirect('/dashboard');
-        }else{
+        } else {
             return redirect('/')->with('status', 'Login gagal!');
         }
     }
@@ -72,11 +74,13 @@ class UserController extends Controller
         return redirect('/')->with('status', 'Logout berhasil!');
     }
 
-    public function editUser($id){
+    public function editUser($id)
+    {
         $user = User::find($id);
         return view('dashboard/user/edit', compact('user'));
     }
-    public function updateUser(Request $request){
+    public function updateUser(Request $request)
+    {
         // dd($request->all());
         // dd($request->profile);
         // $validate = $request->validate([
@@ -90,30 +94,30 @@ class UserController extends Controller
         $user = User::find($request->id);
         // dd($user);
         // update the profile image if changed
-        if($user->profile != null){
-            $file = '/assets/profile/'.$user->profile;
-            if(file_exists($file)){
+        if ($user->profile != null) {
+            $file = '/assets/profile/' . $user->profile;
+            if (file_exists($file)) {
                 unlink($file);
             }
         }
-        if($request->hasFile('profile')){
+        if ($request->hasFile('profile')) {
             $file = $request->file('profile');
             $extension = $file->getClientOriginalExtension();
-            $filename = 'profile.'.$request->username.time() . '.' . $extension;
+            $filename = 'profile.' . $request->username . time() . '.' . $extension;
             $file->move('assets/profile/', $filename);
             $user->profile = $filename;
-            }
-        
+        }
+
 
         $user->name = $request->name;
-        if($request->role_id != null){
+        if ($request->role_id != null) {
             $user->role_id = $request->role_id;
-        }else{
+        } else {
             $find = User::find($request->id);
             $user->role_id = $find->role_id;
         }
         $user->email = $request->email;
-        if($request->password != null){
+        if ($request->password != null) {
             $user->password = bcrypt($request->password);
         }
         $user->profile = $filename;
@@ -125,14 +129,16 @@ class UserController extends Controller
         return redirect('/dashboard/user')->with('status', 'Data user berhasil diubah!');
     }
 
-    public function deleteUser($id){
+    public function deleteUser($id)
+    {
         $user = User::find($id);
         $user->delete();
 
         return redirect('/dashboard')->with('status', 'Data user berhasil dihapus!');
     }
 
-    public function createUser(Request $request){
+    public function createUser(Request $request)
+    {
         // dd($request->all());
         $validate = $request->validate([
             'name' => 'required|max:55',
@@ -141,16 +147,16 @@ class UserController extends Controller
             'role_id' => 'required',
         ]);
 
-        
+
         $user = new User;
         // save the profile image
-        if($request->hasFile('profile')){
+        $filename = null;
+        if ($request->hasFile('profile')) {
             $file = $request->file('profile');
             $extension = $file->getClientOriginalExtension();
-            $filename = 'profile.'.$request->username.time() . '.' . $extension;
+            $filename = 'profile.' . $request->username . time() . '.' . $extension;
             $file->move('assets/profile/', $filename);
             $user->profile = $filename;
-            
         }
         $user->name = $request->name;
         $user->username = $request->username;
@@ -175,10 +181,10 @@ class UserController extends Controller
             // dd($user);
             $isUser = User::where('google_id', $user->id)->first();
             // dd($isUser);
-            if($isUser){
+            if ($isUser) {
                 Auth::login($isUser);
                 return redirect('/dashboard');
-            }else{
+            } else {
                 $createUser = User::create([
                     'name' => $user->name,
                     'username' => $user->name,
@@ -193,5 +199,4 @@ class UserController extends Controller
             return redirect('/')->with('status', 'Login gagal!');
         }
     }
-
 }

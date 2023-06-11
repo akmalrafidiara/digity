@@ -35,12 +35,13 @@
                         <td><a href="/services/{{ $product->service->slug }}">{{ $product->service->name }}</a></td>
                         <td>{{ $product->status }}</td>
                         <td>
-                            <form action="{{ route('product.destroy', $product->id) }}" method="POST"
+                            <form action="/dashboard/product/{{ $product->slug }}" method="POST"
                                 class="btn-action-container">
                                 @csrf
                                 @method('DELETE')
-                                <a href="" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
-                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-action"><i
+                                <a href="/products/{{ $product->slug }}" class="btn btn-action"><i
+                                        class="fa-solid fa-eye"></i></a>
+                                <a href="/dashboard/product/{{ $product->slug }}" class="btn btn-action"><i
                                         class="fa-solid fa-pen"></i></a>
                                 <button type="submit" class="btn btn-action"><i class="fa-solid fa-trash"></i></button>
                             </form>
