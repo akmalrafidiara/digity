@@ -10,7 +10,9 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\InvoiceController;
 use App\Models\Transaction;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,16 +56,23 @@ Route::prefix('/products')->group(function () {
 Route::prefix('/services')->group(function () {
     Route::get('/', [FrontendController::class, 'indexService'])->name('frontend.service');
     Route::get('/{slug}', [FrontendController::class, 'detailService'])->name('frontend.service.detail');
+
+    //make order
+    Route::middleware(['auth'])->group(function () {
+        Route::prefix('/order')->group(function () {
+            Route::post('/{id}', [InvoiceController::class, 'makeInvoice'])->name('frontend.service.makeinvoice');
+        });
+    });
 });
+
+
 
 // | ROUTE DASHBOARD |
 
 // General Route
 Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
     //dashboard menu
-    Route::get('/', function () {
-        return view('dashboard/index');
-    });
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     //my project menu
     Route::prefix('project')->group(function () {
@@ -120,6 +129,9 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
         Route::prefix('transaction')->group(function () {
             Route::get('/', [TransactionController::class, 'index'])->name('transaction');
             Route::get('/detail', [TransactionController::class, 'detail'])->name('transaction.detail');
+            Route::put('/accept/{id}', [TransactionController::class, 'acceptPayment'])->name('transaction.accept');
+            Route::put('/reject/{id}', [TransactionController::class, 'rejectPayment'])->name('transaction.reject');
+            Route::delete('/{id}', [TransactionController::class, 'destroy'])->name('transaction.destroy');
         });
     });
 
@@ -145,8 +157,10 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
     Route::middleware(['role:3'])->group(function () {
         //invoice menu
         Route::prefix('invoice')->group(function () {
-            Route::get('/', [TransactionController::class, 'index'])->name('invoice');
-            Route::get('/detail', [TransactionController::class, 'detail'])->name('invoice.detail');
+            Route::get('/', [InvoiceController::class, 'index'])->name('invoice');
+            Route::post('/proof/{id}', [InvoiceController::class, 'proofUpload'])->name('invoice.proof.upload');
+            Route::get('/proof/{id}', [InvoiceController::class, 'proof'])->name('invoice.proof');
+            Route::delete('/{id}', [InvoiceController::class, 'destroy'])->name('invoice.destroy');
         });
 
         //wishlist menu

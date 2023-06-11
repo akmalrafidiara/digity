@@ -20,4 +20,14 @@ class Service extends Model
             ]
         ];
     }
+
+    public function isInvoiceExist()
+    {
+        $invoice = Transaction::where('user_id', auth()->user()->id)->where('service_id', $this->id)->where('status', 'waiting-for-payment')->first();
+        if ($invoice) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

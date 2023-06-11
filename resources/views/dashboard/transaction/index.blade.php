@@ -8,6 +8,11 @@
         <h1>Transaction</h1>
         <p>Log transaction digity watch traffic!</p>
     </div>
+    @if ($session = Session::get('status'))
+        <div class="print-status">
+            <p>{{ $session }}</p>
+        </div>
+    @endif
     <div class="dashboard-container">
         <table id="myTable" class="display">
             <thead>
@@ -18,6 +23,7 @@
                     <th>User Contact</th>
                     <th>Payment</th>
                     <th>Nominal</th>
+                    <th>Proof</th>
                     <th>Status</th>
                     <th style="min-width: 10%">Action</th>
                 </tr>
@@ -29,7 +35,7 @@
                         <td><a
                                 href="/dashboard/service/{{ $transaction->service->slug }}">{{ $transaction->service->name }}</a>
                         </td>
-                        <td>{{ date('d, M Y', strtotime($transaction->date)) }}</td>
+                        <td>{{ date('d, M Y', strtotime($transaction->created_at)) }}</td>
                         <td>
                             {{ $transaction->user->name }}
                             <br>
@@ -39,11 +45,31 @@
                         <td>{{ $transaction->payment_method }}</td>
                         <td>Rp. {{ number_format($transaction->total, 0, ',', '.') }}
                         </td>
+                        <td>
+                            <a href="/assets/img/{{ $transaction->image }}" target="_blank"><img
+                                    src="/assets/img/{{ $transaction->image }}" alt="" width="100px"></a>
+                        </td>
                         <td>{{ $transaction->status }}</td>
                         <td>
-                            <a href="#" class="btn btn-action"><i class="fa-solid fa-check"></i></a>
-                            <a href="#" class="btn btn-action"><i class="fa-solid fa-xmark"></i></a>
-                            <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
+                            <div class="btn-action-container">
+                                <form action="{{ route('transaction.accept', $transaction->id) }}" method="POST">
+                                    @method('put')
+                                    @csrf
+                                    <button type="submit" class="btn btn-action"><i class="fa-solid fa-check"></i></button>
+                                </form>
+                                <form action="{{ route('transaction.reject', $transaction->id) }}" method="POST"
+                                    class="btn-action-container">
+                                    @method('put')
+                                    @csrf
+                                    <button type="submit" class="btn btn-action"><i class="fa-solid fa-xmark"></i></button>
+                                </form>
+                                <form action="{{ route('transaction.destroy', $transaction->id) }}" method="POST"
+                                    class="btn-action-container">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-action"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

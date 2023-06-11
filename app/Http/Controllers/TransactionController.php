@@ -16,57 +16,36 @@ class TransactionController extends Controller
         return view('dashboard/transaction/index', compact('transactions'));
     }
 
-    public function detail()
+    public function acceptPayment($id)
     {
-        return view('dashboard/transaction/detail');
+        $transaction = Transaction::where('id', $id)->firstorfail();
+        $transaction->status = 'paid';
+        $transaction->save();
+
+        return redirect()->route('transaction')->with('status', 'Payment proof has been accepted!');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function rejectPayment($id)
     {
-        //
+        $transaction = Transaction::where('id', $id)->firstorfail();
+        $transaction->status = 'cancelled';
+        $transaction->save();
+
+        return redirect()->route('transaction')->with('status', 'Payment proof has been rejected!');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function destroy($id)
     {
-        //
-    }
+        $transaction = Transaction::where('id', $id)->firstorfail();
+        if ($transaction->image) {
+            $image_path = 'assets/img/' . $transaction->image;
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+        }
+        $transaction->delete();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Transaction $transaction)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Transaction $transaction)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Transaction $transaction)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Transaction $transaction)
-    {
-        //
+        return redirect()->route('transaction')->with('status', 'Transaction has been deleted!');
     }
 
     // History transaction for user

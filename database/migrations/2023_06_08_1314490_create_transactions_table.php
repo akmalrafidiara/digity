@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('service_id')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->date('date');
             $table->integer('total');
-            $table->string('payment_method');
+            $table->string('payment_method')->nullable();
+            $table->string('image')->nullable();
             $table->enum('status', ['waiting-for-payment', 'waiting-for-approval', 'paid', 'cancelled', 'not-available'])->default('waiting-for-payment');
             $table->timestamps();
 
