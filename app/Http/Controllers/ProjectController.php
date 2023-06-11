@@ -7,13 +7,15 @@ use App\Models\Project;
 use App\Models\Service;
 use App\Models\User;
 use App\Models\ProjectPlan;
+use App\Models\ProjectPlanImage;
 
 class ProjectController extends Controller
 {
     public function index()
     {
         $project = Project::all();
-        return view('dashboard/project/index',
+        return view(
+            'dashboard/project/index',
             [
                 'projects' => $project
             ]
@@ -24,19 +26,22 @@ class ProjectController extends Controller
     {
         $project = Project::find($id)->first();
         $plans = ProjectPlan::where('project_id', $id)->get();
-        return view('dashboard/project/detail',
+        return view(
+            'dashboard/project/detail',
             [
                 'project' => $project,
                 'plans' => $plans
-            ]);
+            ]
+        );
     }
     public function createProject()
     {
-        
+
         $stackholder = User::where('role_id', '3')->get();
         $PIC = User::where('role_id', '2')->get();
         $service = Service::all();
-        return view('dashboard/project/create',
+        return view(
+            'dashboard/project/create',
             [
                 'stackholder' => $stackholder,
                 'PIC' => $PIC,
@@ -45,7 +50,8 @@ class ProjectController extends Controller
         );
     }
 
-    public function storeProject(Request $request){
+    public function storeProject(Request $request)
+    {
         // dd($request->all());
         $request->validate([
             'name' => 'required',
@@ -77,7 +83,8 @@ class ProjectController extends Controller
         $stackholder = User::where('role_id', '3')->get();
         $pic = User::where('role_id', '2')->get();
         $service = Service::all();
-        return view('dashboard/project/update',
+        return view(
+            'dashboard/project/update',
             [
                 'project' => $project,
                 'stackholder' => $stackholder,
@@ -121,8 +128,42 @@ class ProjectController extends Controller
         return redirect('/dashboard/project');
     }
 
-    public function uploadFile()
+    public function uploadFile($id)
     {
-        return view('dashboard/project/upload');
+        $plan = ProjectPlan::find($id)->first();
+        $planImages = ProjectPlanImage::where('project_plan_id', $id)->get();
+
+        return view('dashboard/project/uploadFile', [
+            'plan' => $plan,
+            'planImages' => $planImages
+        ]);
+    }
+
+    public function storeFile(Request $request)
+    {
+        $file = $request->file('image');
+        $fileName = 'plan' . time() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('assets/img'), $fileName);
+
+        $image = new ProjectPlanImage;
+        $image->project_plan_id = $request->plan_id;
+        $image->image = $fileName;
+        $image->save();
+
+        return redirect()->back();
+    }
+
+    public function deleteFile($id)
+    {
+
+        $image = ProjectPlanImage::find($id)->first();
+        unlink('assets/img/' . $image->image);
+        $image->delete();
+
+
+        return response()->json([
+            'isDeleted' => true,
+        ]);
+        // return redirect()->back();
     }
 }

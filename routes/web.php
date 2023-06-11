@@ -108,7 +108,9 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
             Route::get('detail/{id}/create-plan', [ProjectPlanController::class, 'createPlan'])->name('project.create-plan');
             Route::post('detail/create-plan', [ProjectPlanController::class, 'storePlan'])->name('project.store-plan');
             Route::delete('detail/{id}/delete-plan', [ProjectPlanController::class, 'deletePlan'])->name('project.delete-plan');
-            Route::get('/upload-file', [ProjectController::class, 'uploadFile'])->name('project.uploadFile');
+            Route::get('/{id}/upload-file', [ProjectController::class, 'uploadFile'])->name('project.uploadFile');
+            Route::post('/upload-file', [ProjectController::class, 'storeFile'])->name('project.storeFile');
+            Route::delete('/delete-file/{id}', [ProjectController::class, 'deleteFile'])->name('project.deleteFile');
         });
     });
 
