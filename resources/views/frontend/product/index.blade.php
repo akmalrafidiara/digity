@@ -26,7 +26,12 @@
                         </a>
                         <p>{{ $product->caption }}</p>
                         <div class="product-action">
-                            <a href="" class="btn btn-order"><i class="fa-regular fa-heart"></i></a>
+                            {{-- wishlist button --}}
+                            <form action="{{route('frontend.product.add-to-wishlist')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{$product->slug}}" >
+                                <button type="submit" class="btn btn-order"><i class="fa-regular fa-heart"></i></a>
+                            </form>
                         </div>
                     </div>
                 </div>

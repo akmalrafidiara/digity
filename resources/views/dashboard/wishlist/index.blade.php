@@ -13,19 +13,21 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Service</th>
+                    <th>Product</th>
                     <th style="min-width: 10%">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><a href="#">12 Feed Instagram</a></td>
-                    <td>
+                @foreach ($wishlists as $wishlist)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $wishlist->product->name }}</td>
+                        <td>
                         <a href="#" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
                         <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

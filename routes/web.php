@@ -46,6 +46,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::prefix('/products')->group(function () {
     Route::get('/', [FrontendController::class, 'indexProduct'])->name('frontend.product');
     Route::get('/{slug}', [FrontendController::class, 'detailProduct'])->name('frontend.product.detail');
+    Route::post('/add-to-wishlist', [WishlistController::class, 'store'])->name('frontend.product.add-to-wishlist');
 });
 
 //service page

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class WishlistController extends Controller
      */
     public function index()
     {
-        return view('dashboard/wishlist/index');
+        $wishlists = Wishlist::where('user_id', auth()->user()->id)->get();
+        return view('dashboard/wishlist/index'
+            , compact('wishlists'));
     }
 
     public function detail()
@@ -20,44 +23,30 @@ class WishlistController extends Controller
         return view('dashboard/wishlist/detail');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'product_id' => 'required',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Wishlist $wishlist)
-    {
-        //
-    }
+        $product_id = Product::where('slug', $request->product_id)->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Wishlist $wishlist)
-    {
-        //
-    }
+        // check if product already in wishlist
+        $wishlist = Wishlist::where('user_id', auth()->user()->id)->where('product_id', $product_id->id)->first();
+        if ($wishlist) {
+            return redirect()->back()->with('error', 'Product already in wishlist');
+        }
+        Wishlist::create([
+            'user_id' => auth()->user()->id,
+            'product_id' => $product_id->id,
+            'date' => now(),
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Wishlist $wishlist)
-    {
-        //
+        return redirect()->back()->with('success', 'Product added to wishlist');
     }
 
     /**
