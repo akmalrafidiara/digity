@@ -21,10 +21,9 @@
                 @foreach ($wishlists as $wishlist)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $wishlist->product->name }}</td>
+                        <td><a href="/products/{{ $wishlist->product->slug }}" >{{ $wishlist->product->name }}</a></td>
                         <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
+                        <a href="/products/{{ $wishlist->product->slug }}" class="btn btn-action"><i class="fa-solid fa-eye"></i></a>
                     </td>
                 </tr>
                 @endforeach
