@@ -75,22 +75,29 @@
                                 <h3 style="margin-bottom: 15px">Action</h3>
                                 <a href="{{ route('project.edit-plan', $plan->id) }}" class="btn btn-action"><i
                                         class="fa-solid fa-pen"></i> Edit</a>
-                                <button class="btn btn-action delete-{{ $plan->id }}"
-                                    onclick="deleteProjectPlan({{ $plan->id }})"><i class="fa-solid fa-trash"></i>
-                                    Delete</button>
+                                @if (Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2)
+                                    <button class="btn btn-action delete-{{ $plan->id }}"
+                                        onclick="deleteProjectPlan({{ $plan->id }})"><i class="fa-solid fa-trash"></i>
+                                        Delete</button>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
+                            @if (Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2)
                             <h3 class="h3-final">Final</h3>
-                            <a href="{{ route('project.uploadFile', $plan->id) }}" class="btn btn-action-final"><i
-                                    class="fa-solid fa-plus"></i>
-                                Add Final</a>
+                                <a href="{{ route('project.uploadFile', $plan->id) }}" class="btn btn-action-final"><i
+                                        class="fa-solid fa-plus"></i>
+                                    Add Final</a>
+                            @endif
+
                             <div class="final-accor-img">
-                                <img src="/assets/img/digity-footer-ig2.png" alt="">
-                                <img src="/assets/img/digity-footer-ig3.png" alt="">
-                                <img src="/assets/img/digity-footer-ig1.png" alt="">
+                                @foreach ($planImages as $planImage)
+                                    @if ($planImage->project_plan_id == $plan->id)
+                                        <img src="/assets/img/{{ $planImage->image }}" alt="">
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -100,22 +107,24 @@
     </div>
 @endsection
 
-@section('script')
-    <script>
-        function deleteProjectPlan(plan_id) {
-            $.ajax({
-                type: "delete",
-                url: '{{ route('project.delete-plan', $plan->id) }}',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    id: plan_id
-                },
-                success: function(response) {
-                    if (response.isDeleted) {
-                        $('.detail-plan-' + plan_id).remove();
+@if (count($plans) > 0)
+    @section('script')
+        <script>
+            function deleteProjectPlan(plan_id) {
+                $.ajax({
+                    type: "delete",
+                    url: '{{ route('project.delete-plan', $plan->id) }}',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: plan_id
+                    },
+                    success: function(response) {
+                        if (response.isDeleted) {
+                            $('.detail-plan-' + plan_id).remove();
+                        }
                     }
-                }
-            });
-        }
-    </script>
-@endsection
+                });
+            }
+        </script>
+    @endsection
+@endif

@@ -26,11 +26,14 @@ class ProjectController extends Controller
     {
         $project = Project::find($id)->first();
         $plans = ProjectPlan::where('project_id', $id)->get();
+        $planImages = ProjectPlanImage::all();
+
         return view(
             'dashboard/project/detail',
             [
                 'project' => $project,
-                'plans' => $plans
+                'plans' => $plans,
+                'planImages' => $planImages
             ]
         );
     }

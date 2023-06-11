@@ -58,6 +58,7 @@
     </div>
 @endsection
 
+@if (count($planImages) > 0)
 @section('script')
     <script>
         function deletePlanImage(plan_image_id) {
@@ -77,3 +78,4 @@
         }
     </script>
 @endsection
+@endif

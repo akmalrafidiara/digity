@@ -11,6 +11,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\DashboardController;
 use App\Models\Transaction;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -78,6 +79,8 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
     Route::prefix('project')->group(function () {
         Route::get('/', [ProjectController::class, 'index'])->name('project');
         Route::get('/detail/{id}', [ProjectController::class, 'detail'])->name('project.detail');
+        Route::get('/detail/{id}/edit-plan', [ProjectPlanController::class, 'editPlan'])->name('project.edit-plan');
+        Route::put('/detail/edit-plan', [ProjectPlanController::class, 'updatePlan'])->name('project.update-plan');
     });
 
     //setting menu
@@ -112,8 +115,7 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
 
         //additional my project menu
         Route::prefix('project')->group(function () {
-            Route::get('/detail/{id}/edit-plan', [ProjectPlanController::class, 'editPlan'])->name('project.edit-plan');
-            Route::put('/detail/edit-plan', [ProjectPlanController::class, 'updatePlan'])->name('project.update-plan');
+
             Route::get('detail/{id}/create-plan', [ProjectPlanController::class, 'createPlan'])->name('project.create-plan');
             Route::post('detail/create-plan', [ProjectPlanController::class, 'storePlan'])->name('project.store-plan');
             Route::delete('detail/{id}/delete-plan', [ProjectPlanController::class, 'deletePlan'])->name('project.delete-plan');

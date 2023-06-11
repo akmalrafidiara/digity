@@ -19,6 +19,6 @@ class DashboardController extends Controller
             $data['transaction_waiting'] = Transaction::where('status', 'waiting-for-approval')->count();
             $data['project_ongoing'] = Transaction::where('status', 'progress')->count();
         }
-        return view('dashboard');
+        return view('dashboard/index');
     }
 }
