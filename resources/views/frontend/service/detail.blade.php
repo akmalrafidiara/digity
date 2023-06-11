@@ -21,8 +21,14 @@
             </div>
             <div class="service-detail-action">
                 <img src="/assets/img/{{ $service->image }}" alt="">
-                @if ($service->pin == 'no')
-                    <a href="" class="btn btn-digity"><i class="fa-solid fa-check-to-slot"></i> Make Order</a>
+                @if ($service->isInvoiceExist())
+                    <a href="{{ route('invoice') }}" class="btn btn-digity">Already Order</a>
+                @endif
+                @if ($service->pin == 'no' && $service->isInvoiceExist() == false)
+                    <form action="{{ route('frontend.service.makeinvoice', $service->id) }}" method="POST">
+                        @csrf
+                        <button class="btn btn-digity"><i class="fa-solid fa-check-to-slot"></i> Make Order</button>
+                    </form>
                 @endif
                 <a href="https://wa.me/6285210542017?text={{ urlencode('Halo admin DIGITY, saya tertarik dengan layanan ' . $service->name . ', apakah ada info lebih lanjut mengenai layanan ini?') }}"
                     target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Request WA</a>
