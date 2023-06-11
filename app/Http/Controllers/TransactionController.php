@@ -12,12 +12,13 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('dashboard/invoice/index');
+        $transactions = Transaction::where('status', '!=', 'waiting-for-payment')->get();
+        return view('dashboard/transaction/index', compact('transactions'));
     }
 
     public function detail()
     {
-        return view('dashboard/invoice/detail');
+        return view('dashboard/transaction/detail');
     }
 
     /**
@@ -68,7 +69,7 @@ class TransactionController extends Controller
         //
     }
 
-    // History transaction for user 
+    // History transaction for user
     public function history()
     {
         return view('dashboard/transaction/history');

@@ -100,6 +100,7 @@ class UserController extends Controller
                 unlink($file);
             }
         }
+        $filename = $user->profile;
         if ($request->hasFile('profile')) {
             $file = $request->file('profile');
             $extension = $file->getClientOriginalExtension();
@@ -120,6 +121,7 @@ class UserController extends Controller
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
         }
+        $user->username = $request->usernameat;
         $user->profile = $filename;
         $user->address = $request->address;
         $user->bio = $request->bio;
