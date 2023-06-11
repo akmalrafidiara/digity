@@ -23,34 +23,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><a href="#">12 Feed Instagram</a></td>
-                    <td>2 May 23</td>
-                    <td>fathanbak<br><a href="#">085210542017</a></td>
-                    <td>Transfer - Mandiri</td>
-                    <td>Rp. 750.000</td>
-                    <td>Paid</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-check"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-xmark"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><a href="#">Banner</a></td>
-                    <td>10 June 23</td>
-                    <td>aqmalpratama<br><a href="#">085210542017</a></td>
-                    <td>Transfer - BSI</td>
-                    <td>Rp. 100.000</td>
-                    <td>Waiting for Approval</td>
-                    <td>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-check"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-xmark"></i></a>
-                        <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
+                @foreach ($transactions as $transaction)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td><a
+                                href="/dashboard/service/{{ $transaction->service->slug }}">{{ $transaction->service->name }}</a>
+                        </td>
+                        <td>{{ date('d, M Y', strtotime($transaction->date)) }}</td>
+                        <td>
+                            {{ $transaction->user->name }}
+                            <br>
+                            <a href="https://wa.me/62{{ ltrim($transaction->user->phone_number, 0) }}"
+                                target="_blank">{{ $transaction->user->phone_number }}</a>
+                        </td>
+                        <td>{{ $transaction->payment_method }}</td>
+                        <td>Rp. {{ number_format($transaction->total, 0, ',', '.') }}
+                        </td>
+                        <td>{{ $transaction->status }}</td>
+                        <td>
+                            <a href="#" class="btn btn-action"><i class="fa-solid fa-check"></i></a>
+                            <a href="#" class="btn btn-action"><i class="fa-solid fa-xmark"></i></a>
+                            <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

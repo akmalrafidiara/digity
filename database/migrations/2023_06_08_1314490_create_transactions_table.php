@@ -13,14 +13,16 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('service_id');
+            $table->unsignedBigInteger('service_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->date('date');
             $table->integer('total');
             $table->string('payment_method');
-            $table->enum('status', ['waiting for payment', 'waiting for approval' . 'paid', 'cancelled' , 'notavailable'])->default('waiting for payment');
-            $table->enum('admin_view', ['on', 'off'])->default('on');
+            $table->enum('status', ['waiting-for-payment', 'waiting-for-approval', 'paid', 'cancelled', 'not-available'])->default('waiting-for-payment');
             $table->timestamps();
+
+            $table->foreign('service_id')->references('id')->on('services');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
