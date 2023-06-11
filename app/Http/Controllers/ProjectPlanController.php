@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProjectPlan;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\ProjectPlanImage;
 
 class ProjectPlanController extends Controller
 {
@@ -18,6 +19,7 @@ class ProjectPlanController extends Controller
         return view('dashboard/project/createPlan',
             [
                 'project' => $project,
+               
             ]
         );
     }
@@ -62,11 +64,20 @@ class ProjectPlanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProjectPlan $projectPlan)
+    public function editPlan($id)
     {
-        //
+        $projectPlan = ProjectPlan::find($id)->first();
+        $project = Project::find($projectPlan->project_id)->first();
+        $projectPlanImage = ProjectPlanImage::where('project_plan_id', $id)->get();
+        return view('dashboard/project/updatePlan',
+            [
+                'projectPlan' => $projectPlan,
+                'project' => $project,
+                'projectPlanImage' => $projectPlanImage,
+            ]
+        );
     }
-
+    
     /**
      * Update the specified resource in storage.
      */
@@ -78,8 +89,11 @@ class ProjectPlanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProjectPlan $projectPlan)
+    public function destroy($id)
     {
-        //
+        $projectPlan = ProjectPlan::find($id)->first();
+        $projectPlan->delete();
+        return redirect()->route('project.detail', $projectPlan->project_id)->with('status', 'Project Plan Deleted');
     }
+
 }

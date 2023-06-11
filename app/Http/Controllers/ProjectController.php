@@ -23,11 +23,11 @@ class ProjectController extends Controller
     public function detail($id)
     {
         $project = Project::find($id)->first();
-        $projectPlans = ProjectPlan::where('project_id', $id)->get();
+        $plans = ProjectPlan::where('project_id', $id)->get();
         return view('dashboard/project/detail',
             [
                 'project' => $project,
-                'projectPlans' => $projectPlans
+                'plans' => $plans
             ]);
     }
     public function createProject()

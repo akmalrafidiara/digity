@@ -103,6 +103,7 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
 
         //additional my project menu
         Route::prefix('project')->group(function () {
+            Route::get('/detail/{id}/edit-plan', [ProjectPlanController::class, 'editPlan'])->name('project.edit-plan');
             Route::get('detail/{id}/create-plan', [ProjectPlanController::class, 'createPlan'])->name('project.create-plan');
             Route::post('detail/create-plan', [ProjectPlanController::class, 'storePlan'])->name('project.store-plan');
             Route::get('/upload-file', [ProjectController::class, 'uploadFile'])->name('project.uploadFile');

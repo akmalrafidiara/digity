@@ -1,11 +1,11 @@
 @php
     $page = 'project';
-    $title = 'Create Project - Digity';
+    $title = 'Update Project Plan - Digity';
 @endphp
 @extends('layouts.dashboard')
 @section('content')
     <div class="page-title">
-        <h1>Create Editorial Plan</h1>
+        <h1>Update Editorial Plan</h1>
         <p>For {{$project->name}}</p>
     </div>
     <div class="btn-create">
