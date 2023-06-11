@@ -26,7 +26,6 @@ class FrontendController extends Controller
         // $getWishlists = ;
 
         if (auth()->user()) {
-            // $getWishlists = Wishlist::where('user_id', auth()->user()->id)->get();
             $products = [];
             foreach ($getProducts as $getProduct) {
                 $products[] = [
@@ -40,48 +39,18 @@ class FrontendController extends Controller
                     'wishlisted' => $wishlist->checkUserWishlist($getProduct->id),
                 ];
             }
-            // $products = json_encode($products, true);
         } else {
-            // $getWishlists = [];
+
             $products = $getProducts;
         }
-        // dd($products);
-        // $products = json_decode($products, true);
+
         return view('frontend/product/index', compact('products'));
     }
+
     public function detailProduct(String $slug)
     {
-        $getProduct = Product::where('slug', $slug)->first();
-        $getProducts = Product::where('service_id', $getProduct->service_id)->where('slug', '!=', $slug)->inRandomOrder()->limit(3)->get();
-        $wishlist = new Wishlist();
-        // $getWishlists = ;
-
-        if (auth()->user()) {
-            $getWishlists = Wishlist::where('user_id', auth()->user()->id)->get();
-            $products = [];
-            foreach ($getProducts as $getProduct) {
-                $products[] = [
-                    'id'        => $getProduct->id,
-                    'name'      => $getProduct->name,
-                    'slug'      => $getProduct->slug,
-                    'image'     => $getProduct->image,
-                    'caption'   => $getProduct->caption,
-                    'service'   => $getProduct->service,
-                    'date'      => $getProduct->date,
-                    'wishlisted' => $wishlist->checkUserWishlist($getProduct->id),
-                ];
-            }
-            // dd($getProduct);
-
-            $getProduct['wishlisted'] = $wishlist->checkUserWishlist($getProduct->id);
-            $product = $getProduct;
-        } else {
-
-            $products = $getProducts;
-            $product = $getProduct;
-        }
-
-        // dd($product);
+        $product = Product::where('slug', $slug)->first();
+        $products = Product::where('service_id', $product->service_id)->where('slug', '!=', $slug)->inRandomOrder()->limit(3)->get();
         return view('frontend/product/detail', compact('product', 'products'));
     }
 
