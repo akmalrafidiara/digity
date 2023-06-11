@@ -77,6 +77,25 @@ class ProjectPlanController extends Controller
             ]
         );
     }
+
+    public function updatePlan(Request $request)
+    {
+        $projectPlan = ProjectPlan::find($request->id)->first();
+        $projectPlan->title = $request->title;
+        $projectPlan->type = $request->type;
+        $projectPlan->upload_time = $request->upload_time;
+        $projectPlan->upload_date = $request->upload_date;
+        $projectPlan->status = $request->status;
+        $projectPlan->detail = $request->detail;
+        $projectPlan->caption = $request->caption;
+        $projectPlan->hashtag = $request->hashtag;
+        $projectPlan->revision = $request->revision;
+        $projectPlan->save();
+
+        return redirect()->route('project.detail', $projectPlan->project_id)->with('status', 'Project Plan Updated');
+    }
+        
+
     
     /**
      * Update the specified resource in storage.

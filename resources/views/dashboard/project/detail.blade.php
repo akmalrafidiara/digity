@@ -55,11 +55,11 @@
                         </div>
                         <div class="panel-item">
                             <h3>Detail</h3>
-                            <p>{{$plan->detail}}</p>
+                            <p>{!!$plan->detail!!}</p>
                         </div>
                         <div class="panel-item">
                             <h3>Revision Note</h3>
-                            <p>{{$plan->revision}}</p>
+                            <p>{!!$plan->revision!!}</p>
                         </div>
                     </div>
                     <div class="col-6">
