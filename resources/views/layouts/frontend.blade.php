@@ -17,7 +17,8 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="/assets/css/styles.css" />
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -106,8 +107,7 @@
                             style="background-color: transparent; border: none;" @click="register = !register">
                             <u style="font-size: 16px;"> Sign Up </u></button type="button"> </small>
 
-                    <p>Or</p>
-                    <div class="row mx-3">
+                    <div class="row mx-3 mt-3">
                         <a class="btn btn-outline-dark btn-signin-google" href="{{ route('login.google') }}"
                             role="button" style="text-transform:none">
                             <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
@@ -134,18 +134,27 @@
                     <span style="color: #fff;">info.digitalentity@gmail.com</span>
                 </div>
                 <div class="socmed-icon">
-                    <div class="icon-container">
-                        <img src="/assets/img/instagram.svg" alt="socmed-icon" />
-                    </div>
-                    <div class="icon-container">
-                        <img src="/assets/img/facebook.svg" alt="socmed-icon" />
-                    </div>
-                    <div class="icon-container">
-                        <img src="/assets/img/twitter.svg" alt="socmed-icon" />
-                    </div>
-                    <div class="icon-container">
-                        <img src="/assets/img/github.svg" alt="socmed-icon" />
-                    </div>
+                    <a href="https://instagram.com/digity.indonesia" target="_blank">
+                        <div class="icon-container">
+                            <img src="/assets/img/instagram.svg" alt="socmed-icon" />
+                        </div>
+                    </a>
+                    <a href="https://facebook.com" target="_blank">
+                        <div class="icon-container">
+                            <img src="/assets/img/facebook.svg" alt="socmed-icon" />
+                        </div>
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <div class="icon-container">
+                            <img src="/assets/img/twitter.svg" alt="socmed-icon" />
+                        </div>
+                    </a>
+                    <a href="https://github.com" target="_blank">
+                        <div class="icon-container">
+                            <img src="/assets/img/github.svg" alt="socmed-icon" />
+                        </div>
+                    </a>
+
                 </div>
             </div>
             <hr />
