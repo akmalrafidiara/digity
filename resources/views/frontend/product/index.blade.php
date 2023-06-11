@@ -56,7 +56,6 @@
                     product_id: product_id
                 },
                 success: function (response) {
-                    console.log(response.isWishlist)
                     let selector =  $('.product-'+response.productId);
                     if (response.isWishlist == true) {
                         if (selector.hasClass('wishlisted')) {

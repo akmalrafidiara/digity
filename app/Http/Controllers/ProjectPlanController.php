@@ -15,11 +15,12 @@ class ProjectPlanController extends Controller
     public function createPlan($id)
     {
         $project = Project::find($id)->first();
-        
-        return view('dashboard/project/createPlan',
+
+        return view(
+            'dashboard/project/createPlan',
             [
                 'project' => $project,
-               
+
             ]
         );
     }
@@ -69,7 +70,8 @@ class ProjectPlanController extends Controller
         $projectPlan = ProjectPlan::find($id)->first();
         $project = Project::find($projectPlan->project_id)->first();
         $projectPlanImage = ProjectPlanImage::where('project_plan_id', $id)->get();
-        return view('dashboard/project/updatePlan',
+        return view(
+            'dashboard/project/updatePlan',
             [
                 'projectPlan' => $projectPlan,
                 'project' => $project,
@@ -94,9 +96,9 @@ class ProjectPlanController extends Controller
 
         return redirect()->route('project.detail', $projectPlan->project_id)->with('status', 'Project Plan Updated');
     }
-        
 
-    
+
+
     /**
      * Update the specified resource in storage.
      */
@@ -108,11 +110,14 @@ class ProjectPlanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function deletePlan($id)
     {
         $projectPlan = ProjectPlan::find($id)->first();
         $projectPlan->delete();
-        return redirect()->route('project.detail', $projectPlan->project_id)->with('status', 'Project Plan Deleted');
-    }
 
+        return response()->json([
+            'isDeleted' => true,
+        ]);
+        // return redirect()->route('project.detail', $projectPlan->project_id)->with('status', 'Project Plan Deleted');
+    }
 }

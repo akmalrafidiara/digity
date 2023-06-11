@@ -33,7 +33,7 @@
     <div class="content-planner">
         @foreach($plans as $plan)
         <div class="main-accordion">
-            <div class="accordion">
+            <div class="accordion detail-plan-{{$plan->id}}">
                 <div class="accor-info">
                     <span>{{$loop->iteration}}</span>
                     <span>{{$plan->title}}</span>
@@ -42,7 +42,7 @@
                     <span>{{$plan->status}}</span>
                 </div>
             </div>
-            <div class="panel">
+            <div class="panel detail-plan-{{$plan->id}}">
                 <div class="row">
                     <div class="col-6">
                         <div class="panel-item">
@@ -73,8 +73,8 @@
                         </div>
                         <div class="panel-item">
                             <h3 style="margin-bottom: 15px">Action</h3>
-                            <a href="{{route('project.edit-plan',$project->id)}}" class="btn btn-action"><i class="fa-solid fa-pen"></i> Edit</a>
-                            <a href="#" class="btn btn-action"><i class="fa-solid fa-trash"></i> Delete</a>
+                            <a href="{{route('project.edit-plan',$plan->id)}}" class="btn btn-action"><i class="fa-solid fa-pen"></i> Edit</a>
+                            <button class="btn btn-action delete-{{$plan->id}}" onclick="deleteProjectPlan({{$plan->id}})"><i class="fa-solid fa-trash"></i> Delete</button>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,29 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
         @endforeach
     </div>
+@endsection
+
+@section('script')
+    <script>
+
+        function deleteProjectPlan(plan_id) {
+            $.ajax({
+                type: "delete",
+                url: '{{ route('project.delete-plan', $plan->id) }}',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: plan_id
+                },
+                success: function (response) {
+                    if (response.isDeleted) {
+                        $('.detail-plan-'+plan_id).remove();
+                    }
+                }
+            });
+        }
+
+    </script>
 @endsection
