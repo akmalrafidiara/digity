@@ -109,7 +109,7 @@
                             <img src="assets/img/{{ $product->image }}" alt="produtcs" />
                             <p class="text-tiny">{{ $product->service->name }} -
                                 {{ date('M d, Y', strtotime($product->date)) }}</p>
-                            <h3>{{ $product->name }}e</h3>
+                            <h3>{{ $product->name }}</h3>
                         </div>
                     @endif
                 @endforeach
