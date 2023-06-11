@@ -34,8 +34,10 @@
                             </form> --}}
 
                             <input type="hidden" name="product_id" value="{{ $product['id'] }}">
+                            @if(Auth::check())
                             <button class="btn btn-order {{ $product['wishlisted'] ? 'wishlisted' : '' }} product-{{ $product['id'] }}" onclick="toggleWishlist('{{ $product['id'] }}')"><i class="fa-solid fa-heart"></i></a>
-
+                            
+                            @endif
                         </div>
                     </div>
                 </div>

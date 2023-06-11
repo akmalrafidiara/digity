@@ -17,7 +17,9 @@
                 {!! $product->description !!}
             </p>
             <div class="product-action">
-                <a href="" class="btn btn-order"><i class="fa-regular fa-heart"></i></a>
+                @if(Auth::check())                
+                            <button class="btn btn-order {{ $product['wishlisted'] ? 'wishlisted' : '' }} product-{{ $product['id'] }}" onclick="toggleWishlist('{{ $product['id'] }}')"><i class="fa-solid fa-heart"></i></a>
+                        @endif
                 <a href="/services/{{ $product->service->slug }}" class="btn btn-order">See Service</a>
             </div>
         </div>
@@ -41,9 +43,11 @@
                             <h3>{{ $product->name }}</h3>
                         </a>
                         <p>{{ $product->caption }}</p>
+                        @if(Auth::check())
                         <div class="product-action">
                             <button class="btn btn-order {{ $product['wishlisted'] ? 'wishlisted' : '' }} product-{{ $product['id'] }}" onclick="toggleWishlist('{{ $product['id'] }}')"><i class="fa-solid fa-heart"></i></a>
                         </div>
+                        @endif
                     </div>
                 </div>
             @endforeach
