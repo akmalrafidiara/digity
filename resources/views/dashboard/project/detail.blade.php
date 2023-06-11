@@ -6,23 +6,28 @@
 @section('content')
     <div class="page-title">
         <h1>Detail Project</h1>
-        <p>Digital Entity Instagram Content</p>
+        <p>{{$project->name}}</p>
         <a href="#" class="btn btn-action"><i class="fa-solid fa-pen"></i> Edit This Project</a>
+        @if ($session = Session::get('status'))
+        <div class="print-status ">
+            <p>{{ $session }}</p>
+        </div>
+        @endif
         <div class="page-title-note">
             <h3>Description</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad aspernatur vel nobis dolorem fuga nulla
-                consectetur, nam optio porro, facilis repellendus dignissimos.</p>
+            <p>{!!$project->description!!}</p>
         </div>
         <div class="page-title-note">
             <h3>Note</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad aspernatur vel nobis dolorem fuga nulla
-                consectetur, nam optio porro, facilis repellendus dignissimos.</p>
+            <p>{!!$project->note!!}</p>
         </div>
     </div>
 
     <div class="btn-create">
-        <a href="../project"><i class="fa-solid fa-arrow-left"></i> Back</a>
-        <a href="../project/create-plan"><i class="fa-solid fa-plus"></i> Create Plan</a>
+    <a href="{{url()->previous()}}"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2)
+            <a href="../detail/{{$project->id}}/create-plan"><i class="fa-solid fa-plus"></i> Create Plan</a>
+        @endif
     </div>
 
     <div class="content-planner">

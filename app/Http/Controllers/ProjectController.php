@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\User;
+use App\Models\ProjectPlan;
 
 class ProjectController extends Controller
 {
@@ -19,7 +20,17 @@ class ProjectController extends Controller
         );
     }
 
-    public function createPlan()
+    public function detail($id)
+    {
+        $project = Project::find($id)->first();
+        $projectPlans = ProjectPlan::where('project_id', $id)->get();
+        return view('dashboard/project/detail',
+            [
+                'project' => $project,
+                'projectPlans' => $projectPlans
+            ]);
+    }
+    public function createProject()
     {
         
         $stackholder = User::where('role_id', '3')->get();

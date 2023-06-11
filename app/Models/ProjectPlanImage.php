@@ -9,4 +9,9 @@ class ProjectPlanImage extends Model
 {
     use HasFactory;
     protected $guarded=['id'];
+
+    public function projectPlan()
+    {
+        return $this->belongsTo(ProjectPlan::class);
+    }
 }

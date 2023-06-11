@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectPlanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TransactionController;
@@ -67,7 +68,7 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
     //my project menu
     Route::prefix('project')->group(function () {
         Route::get('/', [ProjectController::class, 'index'])->name('project');
-        Route::get('/detail', [ProjectController::class, 'detail'])->name('project.detail');
+        Route::get('/detail/{id}', [ProjectController::class, 'detail'])->name('project.detail');
     });
 
     //setting menu
@@ -102,7 +103,8 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
 
         //additional my project menu
         Route::prefix('project')->group(function () {
-            Route::get('/create-plan', [ProjectController::class, 'createPlan'])->name('project.createPlan');
+            Route::get('detail/{id}/create-plan', [ProjectPlanController::class, 'createPlan'])->name('project.create-plan');
+            Route::post('detail/create-plan', [ProjectPlanController::class, 'storePlan'])->name('project.store-plan');
             Route::get('/upload-file', [ProjectController::class, 'uploadFile'])->name('project.uploadFile');
         });
     });
@@ -128,7 +130,7 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function () {
 
     //additional my project menu
     Route::prefix('project')->group(function () {
-        Route::get('/create', [ProjectController::class, 'createPlan'])->name('project.create');
+        Route::get('/create', [ProjectController::class, 'createProject'])->name('project.create');
         Route::post('/create', [ProjectController::class, 'storeProject'])->name('project.store');
         Route::get('/edit/{id}', [ProjectController::class, 'editProject'])->name('project.edit');
         Route::put('/edit', [ProjectController::class, 'updateProject'])->name('project.update');

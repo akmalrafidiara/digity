@@ -9,7 +9,7 @@
         <p>Edit Digity Project!</p>
     </div>
     <div class="btn-create">
-        <a href="/project"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        <a href="{{ url()->previous() }} "><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
     <div class="dashboard-container">
         <form action="{{route('project.update')}}" method="POST">

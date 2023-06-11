@@ -30,12 +30,13 @@
                 @foreach($projects as $project)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $project->name }}</td>
+                    <td><a href="{{route('project.detail',$project->id)}}">{{ $project->name }}</a></td>
                     <td>{{ $project->service->name }}</td>
                     <td>{{ $project->date_start }}</td>
                     <td>{{ $project->status}}</td>
                     <td>
                         <form action="project/delete/{{ $project->id }}" method="POST">
+                            <a class="btn btn-action" href="{{route('project.detail',$project->id)}}"><i class="fa-solid fa-eye"></i></a>
                             <a href="project/edit/{{ $project->id }}" class="btn btn-action"><i class="fa-solid fa-edit"></i></a>
                             @csrf
                             @method('delete')

@@ -12,36 +12,38 @@
         <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
     <div class="dashboard-container">
-        <form action="" method="POST">
+        <form action="{{route('project.store-plan')}}" method="POST">
             @csrf
+            <input type="hidden" name="project_id" value="{{$project->id}}">
             <div class="row">
                 <div class="col-6">
                     <div class="form-field">
                         <label for="Title">Title</label>
-                        <input type="text" name="Title" id="Title" placeholder="Title">
+                        <input type="text" name="title" id="Title" placeholder="Title">
                     </div>
                     <div class="form-field">
                         <div class="form-field">
                             <label for="Type">Type</label>
-                            <input type="text" name="Type" id="Type" placeholder="Example: Feed">
+                            <input type="text" name="type" id="Type" placeholder="Example: Feed">
                         </div>
                     </div>
                     <div class="form-field">
                         <label for="time">Upload Time (optional)</label>
-                        <input type="time" name="time" id="time">
+                        <input type="time" name="upload_time" id="time">
                     </div>
                     <div class="form-field">
                         <label for="date">Upload Date (optional)</label>
-                        <input type="date" name="date" id="date">
+                        <input type="date" name="upload_date" id="date">
                     </div>
                     <div class="form-field">
                         <label for="status">Status</label>
                         <select name="status" id="status">
                             <option value="" selected disabled>Select Status</option>
-                            <option value="1">Queue</option>
-                            <option value="2">On Progress</option>
-                            <option value="3">Done</option>
-                            <option value="4">Need Revision</option>
+                            <option value="queue">Queue</option>
+                            <option value="preparation">Preparation</option>
+                            <option value="onprogress">On Progress</option>
+                            <option value="done">Done</option>
+                            <option value="notavailable">Not Available</option>
                         </select>
                     </div>
                     <div class="form-field">

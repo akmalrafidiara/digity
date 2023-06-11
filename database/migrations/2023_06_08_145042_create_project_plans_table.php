@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('type');
             $table->time('upload_time')->nullable();
             $table->date('upload_date')->nullable();
-            $table->enum('status', ['queue', 'preparation' . 'onprogess', 'done' , 'needrevision'])->default('queue');
+            $table->enum('status', ['queue', 'preparation' , 'onprogess', 'done' , 'needrevision'])->default('queue');
             $table->string('detail')->nullable();
             $table->text('caption')->nullable();
             $table->string('hashtag')->nullable();

@@ -4,23 +4,43 @@ namespace App\Http\Controllers;
 
 use App\Models\ProjectPlan;
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class ProjectPlanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function createPlan($id)
     {
-        //
+        $project = Project::find($id)->first();
+        
+        return view('dashboard/project/createPlan',
+            [
+                'project' => $project,
+            ]
+        );
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function storePlan(Request $request)
     {
-        //
+        $projectPlan = new ProjectPlan;
+        $projectPlan->project_id = $request->project_id;
+        $projectPlan->title = $request->title;
+        $projectPlan->type = $request->type;
+        $projectPlan->upload_time = $request->upload_time;
+        $projectPlan->upload_date = $request->upload_date;
+        $projectPlan->status = $request->status;
+        $projectPlan->detail = $request->detail;
+        $projectPlan->caption = $request->caption;
+        $projectPlan->hashtag = $request->hashtag;
+        $projectPlan->revision = $request->revision;
+        $projectPlan->save();
+
+        return redirect()->route('project.detail', $request->project_id)->with('status', 'Project Plan Created');
     }
 
     /**
