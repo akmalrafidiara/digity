@@ -42,7 +42,7 @@
                         </a>
                         <p>{{ $product->caption }}</p>
                         <div class="product-action">
-                            <a href="" class="btn btn-order"><i class="fa-regular fa-heart"></i></a>
+                            <button class="btn btn-order {{ $product['wishlisted'] ? 'wishlisted' : '' }} product-{{ $product['id'] }}" onclick="toggleWishlist('{{ $product['id'] }}')"><i class="fa-solid fa-heart"></i></a>
                         </div>
                     </div>
                 </div>
@@ -61,4 +61,38 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+
+        function toggleWishlist(product_id) {
+            $.ajax({
+                type: "post",
+                url: '{{ route('frontend.product.add-to-wishlist') }}',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: product_id
+                },
+                success: function (response) {
+                    console.log(response.isWishlist)
+                    let selector =  $('.product-'+response.productId);
+                    if (response.isWishlist == true) {
+                        if (selector.hasClass('wishlisted')) {
+                            selector.removeClass('wishlisted');
+                        } else {
+                            selector.addClass('wishlisted');
+                        }
+                    } else {
+                        if (selector.hasClass('wishlisted')) {
+                            selector.removeClass('wishlisted');
+                        } else {
+                            selector.addClass('wishlisted');
+                        }
+                    }
+                }
+            });
+        }
+
+    </script>
 @endsection

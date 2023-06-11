@@ -91,14 +91,16 @@
         </div>
         <div class="products">
             <div class="main-product" data-aos="fade-right" data-aos-duration="2000">
-                <img src="assets/img/{{ $products[0]->image }}" alt="produtcs" />
-                <p class="text-paraghraph">{{ $products[0]->service->name }} -
-                    {{ date('M d, Y', strtotime($products[0]->date)) }}</p>
-                <h3 class="text-subtitle">{{ $products[0]->name }}</h3>
-                <p class="text-tiny">
-                    {{ $products[0]->caption }}
-                </p>
-                <a href="" class="btn btn-digity">See More</a>
+                @if (isset($products[0]))
+                    <img src="assets/img/{{ $products[0]->image }}" alt="produtcs" />
+                    <p class="text-paraghraph">{{ $products[0]->service->name }} -
+                        {{ date('M d, Y', strtotime($products[0]->date)) }}</p>
+                    <h3 class="text-subtitle">{{ $products[0]->name }}</h3>
+                    <p class="text-tiny">
+                        {{ $products[0]->caption }}
+                    </p>
+                    <a href="" class="btn btn-digity">See More</a>
+                @endif
             </div>
             <div class="other-product">
                 @foreach ($products as $product)

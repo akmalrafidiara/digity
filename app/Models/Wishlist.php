@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Wishlist extends Model
 {
@@ -23,5 +24,14 @@ class Wishlist extends Model
     public function user()
     {
         return $this->hasOne(User::class);
+    }
+
+    public function checkUserWishlist($product_id)
+    {
+        $wishlist = Wishlist::where('user_id', auth()->user()->id)->where('product_id', $product_id)->first();
+        if ($wishlist) {
+            return true;
+        }
+        return false;
     }
 }

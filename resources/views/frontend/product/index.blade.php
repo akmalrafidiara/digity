@@ -13,29 +13,67 @@
             @foreach ($products as $product)
                 <div class="product-card">
                     <div class="product-img">
-                        <a href="/products/{{ $product->slug }}">
-                            <img src="/assets/img/{{ $product->image }}" alt="Product 1">
+                        <a href="/products/{{ $product['slug'] }}">
+                            <img src="/assets/img/{{ $product['image'] }}" alt="Product 1">
                         </a>
                     </div>
                     <div class="product-info">
-                        <a href="/services/{{ $product->service->slug }}">
-                            <small>{{ $product->service->name }}</small>
+                        <a href="/services/{{ $product['service']['slug'] }}">
+                            <small>{{ $product['service']['name'] }}</small>
                         </a>
-                        <a href="/products/{{ $product->slug }}">
-                            <h3>{{ $product->name }}</h3>
+                        <a href="/products/{{ $product['slug'] }}">
+                            <h3>{{ $product['name'] }}</h3>
                         </a>
-                        <p>{{ $product->caption }}</p>
+                        <p>{{ $product['caption'] }}</p>
                         <div class="product-action">
                             {{-- wishlist button --}}
-                            <form action="{{route('frontend.product.add-to-wishlist')}}" method="POST">
+                            {{-- <form action="{{route('frontend.product.add-to-wishlist')}}" method="POST">
                                 @csrf
-                                <input type="hidden" name="product_id" value="{{$product->slug}}" >
-                                <button type="submit" class="btn btn-order"><i class="fa-regular fa-heart"></i></a>
-                            </form>
+                                <input type="hidden" name="product_id" value="{{$product['slug']}}" id="product-id">
+                                <button type="submit" class="btn btn-order add-wishlist"><i class="fa-regular fa-heart"></i></a>
+                            </form> --}}
+
+                            <input type="hidden" name="product_id" value="{{ $product['id'] }}">
+                            <button class="btn btn-order {{ $product['wishlisted'] ? 'wishlisted' : '' }} product-{{ $product['id'] }}" onclick="toggleWishlist('{{ $product['id'] }}')"><i class="fa-solid fa-heart"></i></a>
+
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+
+        function toggleWishlist(product_id) {
+            $.ajax({
+                type: "post",
+                url: '{{ route('frontend.product.add-to-wishlist') }}',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: product_id
+                },
+                success: function (response) {
+                    console.log(response.isWishlist)
+                    let selector =  $('.product-'+response.productId);
+                    if (response.isWishlist == true) {
+                        if (selector.hasClass('wishlisted')) {
+                            selector.removeClass('wishlisted');
+                        } else {
+                            selector.addClass('wishlisted');
+                        }
+                    } else {
+                        if (selector.hasClass('wishlisted')) {
+                            selector.removeClass('wishlisted');
+                        } else {
+                            selector.addClass('wishlisted');
+                        }
+                    }
+                }
+            });
+        }
+
+    </script>
 @endsection

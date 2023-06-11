@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\Wishlist;
 
 class FrontendController extends Controller
 {
@@ -20,13 +21,67 @@ class FrontendController extends Controller
 
     public function indexProduct()
     {
-        $products = Product::all();
+        $getProducts = Product::all();
+        $wishlist = new Wishlist();
+        // $getWishlists = ;
+
+        if (auth()->user()) {
+            // $getWishlists = Wishlist::where('user_id', auth()->user()->id)->get();
+            $products = [];
+            foreach ($getProducts as $getProduct) {
+                $products[] = [
+                    'id'        => $getProduct->id,
+                    'name'      => $getProduct->name,
+                    'slug'      => $getProduct->slug,
+                    'image'     => $getProduct->image,
+                    'caption'   => $getProduct->caption,
+                    'service'   => $getProduct->service,
+                    'date'      => $getProduct->date,
+                    'wishlisted' => $wishlist->checkUserWishlist($getProduct->id),
+                ];
+            }
+            // $products = json_encode($products, true);
+        } else {
+            // $getWishlists = [];
+            $products = $getProducts;
+        }
+        // dd($products);
+        // $products = json_decode($products, true);
         return view('frontend/product/index', compact('products'));
     }
     public function detailProduct(String $slug)
     {
-        $product = Product::where('slug', $slug)->first();
-        $products = Product::where('service_id', $product->service_id)->where('slug', '!=', $slug)->inRandomOrder()->limit(3)->get();
+        $getProduct = Product::where('slug', $slug)->first();
+        $getProducts = Product::where('service_id', $getProduct->service_id)->where('slug', '!=', $slug)->inRandomOrder()->limit(3)->get();
+        $wishlist = new Wishlist();
+        // $getWishlists = ;
+
+        if (auth()->user()) {
+            $getWishlists = Wishlist::where('user_id', auth()->user()->id)->get();
+            $products = [];
+            foreach ($getProducts as $getProduct) {
+                $products[] = [
+                    'id'        => $getProduct->id,
+                    'name'      => $getProduct->name,
+                    'slug'      => $getProduct->slug,
+                    'image'     => $getProduct->image,
+                    'caption'   => $getProduct->caption,
+                    'service'   => $getProduct->service,
+                    'date'      => $getProduct->date,
+                    'wishlisted' => $wishlist->checkUserWishlist($getProduct->id),
+                ];
+            }
+            // dd($getProduct);
+
+            $getProduct['wishlisted'] = $wishlist->checkUserWishlist($getProduct->id);
+            $product = $getProduct;
+        } else {
+
+            $products = $getProducts;
+            $product = $getProduct;
+        }
+
+        // dd($product);
         return view('frontend/product/detail', compact('product', 'products'));
     }
 

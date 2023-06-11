@@ -17,6 +17,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="/assets/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -171,6 +172,7 @@
     </script>
     <script src="/assets/js/app.js"></script>
     <script src="https://kit.fontawesome.com/9f2df5a5e8.js" crossorigin="anonymous"></script>
+    @yield('script')
 </body>
 
 </html>

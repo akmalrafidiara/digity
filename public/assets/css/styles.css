@@ -966,8 +966,9 @@ footer .copyright p {
     align-items: center;
     justify-content: space-between;
 }
-.contact-whatsapp-text h2, .contact-whatsapp-text p {
-    color: #fff!important;
+.contact-whatsapp-text h2,
+.contact-whatsapp-text p {
+    color: #fff !important;
 }
 .contact-whatsapp-text {
     width: 75%;
@@ -977,4 +978,18 @@ footer .copyright p {
 }
 .contact-whatsapp-btn a {
     transform: scale(1.5);
+}
+.wishlisted {
+    background-color: #ff6774 !important;
+    color: #fff !important;
+}
+.product-action .wishlisted i {
+    color: #fff !important;
+}
+.product-action .wishlisted:hover {
+    background-color: #fff !important;
+    color: #ff6774 !important;
+}
+.product-action .wishlisted:hover i {
+    color: #ff6774 !important;
 }
