@@ -24,7 +24,7 @@ class ProjectController extends Controller
 
     public function detail($id)
     {
-        $project = Project::find($id)->first();
+        $project = Project::find($id);
         $plans = ProjectPlan::where('project_id', $id)->get();
         $planImages = ProjectPlanImage::all();
 
@@ -82,7 +82,7 @@ class ProjectController extends Controller
 
     public function editProject($id)
     {
-        $project = Project::find($id)->first();
+        $project = Project::find($id);
         $stackholder = User::where('role_id', '3')->get();
         $pic = User::where('role_id', '2')->get();
         $service = Service::all();
@@ -108,7 +108,7 @@ class ProjectController extends Controller
             'status' => 'required',
         ]);
 
-        $project = Project::find($request->id)->first();
+        $project = Project::find($request->id);
         $project->name = $request->name;
         $project->description = $request->description;
         $project->note = $request->note;
@@ -125,7 +125,7 @@ class ProjectController extends Controller
 
     public function deleteProject($id)
     {
-        $project = Project::find($id)->first();
+        $project = Project::find($id);
         $project->delete();
 
         return redirect('/dashboard/project');
@@ -133,7 +133,7 @@ class ProjectController extends Controller
 
     public function uploadFile($id)
     {
-        $plan = ProjectPlan::find($id)->first();
+        $plan = ProjectPlan::find($id);
         $planImages = ProjectPlanImage::where('project_plan_id', $id)->get();
 
         return view('dashboard/project/uploadFile', [
@@ -144,6 +144,9 @@ class ProjectController extends Controller
 
     public function storeFile(Request $request)
     {
+        $request->validate([
+            'image' => 'required',
+        ]);
         $file = $request->file('image');
         $fileName = 'plan' . time() . '.' . $file->getClientOriginalExtension();
         $file->move(public_path('assets/img'), $fileName);
@@ -159,7 +162,7 @@ class ProjectController extends Controller
     public function deleteFile($id)
     {
 
-        $image = ProjectPlanImage::find($id)->first();
+        $image = ProjectPlanImage::find($id);
         unlink('assets/img/' . $image->image);
         $image->delete();
 

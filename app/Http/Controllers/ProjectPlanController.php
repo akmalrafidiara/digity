@@ -14,7 +14,7 @@ class ProjectPlanController extends Controller
      */
     public function createPlan($id)
     {
-        $project = Project::find($id)->first();
+        $project = Project::find($id);
 
         return view(
             'dashboard/project/createPlan',
@@ -30,6 +30,7 @@ class ProjectPlanController extends Controller
      */
     public function storePlan(Request $request)
     {
+        // dd($request->all());
         $projectPlan = new ProjectPlan;
         $projectPlan->project_id = $request->project_id;
         $projectPlan->title = $request->title;
@@ -67,8 +68,8 @@ class ProjectPlanController extends Controller
      */
     public function editPlan($id)
     {
-        $projectPlan = ProjectPlan::find($id)->first();
-        $project = Project::find($projectPlan->project_id)->first();
+        $projectPlan = ProjectPlan::find($id);
+        $project = Project::find($projectPlan->project_id);
         $projectPlanImage = ProjectPlanImage::where('project_plan_id', $id)->get();
         return view(
             'dashboard/project/updatePlan',
@@ -82,7 +83,7 @@ class ProjectPlanController extends Controller
 
     public function updatePlan(Request $request)
     {
-        $projectPlan = ProjectPlan::find($request->id)->first();
+        $projectPlan = ProjectPlan::find($request->id);
         $projectPlan->title = $request->title;
         $projectPlan->type = $request->type;
         $projectPlan->upload_time = $request->upload_time;
@@ -112,7 +113,7 @@ class ProjectPlanController extends Controller
      */
     public function deletePlan($id)
     {
-        $projectPlan = ProjectPlan::find($id)->first();
+        $projectPlan = ProjectPlan::find($id);
         $projectPlan->delete();
 
         return response()->json([

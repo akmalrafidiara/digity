@@ -9,7 +9,7 @@
         <p>For {{ $plan->title }}!</p>
     </div>
     <div class="btn-create">
-        <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        <a href="{{ route('project.detail', $plan->project_id) }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
     <div class="dashboard-container">
         <form action="{{ route('project.storeFile') }}" method="POST" enctype="multipart/form-data">
@@ -49,9 +49,10 @@
                 <a href="#" class="btn-final-view"><i class="fa-solid fa-trash"></i></a>
             </div> --}}
             @foreach ($planImages as $planImage)
-                <div class="card-final-item card-final-item-{{$planImage->id}}">
-                    <img src="/assets/img/{{$planImage->image}}" alt="">
-                    <button class="btn-final-view" onclick="deletePlanImage({{$planImage->id}})"><i class="fa-solid fa-trash"></i></button>
+                <div class="card-final-item card-final-item-{{ $planImage->id }}">
+                    <img src="/assets/img/{{ $planImage->image }}" alt="">
+                    <button class="btn-final-view" onclick="deletePlanImage({{ $planImage->id }})"><i
+                            class="fa-solid fa-trash"></i></button>
                 </div>
             @endforeach
         </div>
@@ -59,23 +60,23 @@
 @endsection
 
 @if (count($planImages) > 0)
-@section('script')
-    <script>
-        function deletePlanImage(plan_image_id) {
-            $.ajax({
-                type: "delete",
-                url: '{{ route('project.deleteFile', $planImage->id) }}',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    id: plan_image_id
-                },
-                success: function(response) {
-                    if (response.isDeleted) {
-                        $('.card-final-item-' + plan_image_id).remove();
+    @section('script')
+        <script>
+            function deletePlanImage(plan_image_id) {
+                $.ajax({
+                    type: "delete",
+                    url: '{{ route('project.deleteFile', $planImage->id) }}',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: plan_image_id
+                    },
+                    success: function(response) {
+                        if (response.isDeleted) {
+                            $('.card-final-item-' + plan_image_id).remove();
+                        }
                     }
-                }
-            });
-        }
-    </script>
-@endsection
+                });
+            }
+        </script>
+    @endsection
 @endif
