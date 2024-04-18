@@ -16,7 +16,23 @@
                     <h3>Total User</h3>
                 </div>
                 <div class="card-body">
-                    <h1>10</h1>
+                    <h1>{{ $data['user'] }}</h1>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <h3>Available Service</h3>
+                </div>
+                <div class="card-body">
+                    <h1>{{ $data['service'] }}</h1>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <h3>Count Product</h3>
+                </div>
+                <div class="card-body">
+                    <h1>{{ $data['product'] }}</h1>
                 </div>
             </div>
             <div class="card">
@@ -24,7 +40,19 @@
                     <h3>Waiting For Approval</h3>
                 </div>
                 <div class="card-body">
-                    <h1>2</h1>
+                    <h1>{{ $data['transaction_waiting'] }}</h1>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <h3>Project Status</h3>
+                </div>
+                <div class="card-body">
+                    <h1>{{ $data['project']['done'] }}<span>/{{ $data['project']['on-progress'] }}</span></h1>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: {{ $data['project']['percent'] }}%;">
+                            {{ $data['project']['percent'] }}%</div>
+                    </div>
                 </div>
             </div>
         </div>
